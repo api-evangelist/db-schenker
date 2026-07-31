@@ -1,0 +1,797 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "V4",
+    "title": "Partner services API V4.",
+    "description": "<a target=\"_blank\" href=\"/Utils/PartnerServices/ParcelServicesExamples.zip\">This zip</a> includes example/sample code to connect to DB Schenker Partner API.",
+    "x-swagger-net-version": "8.5.28.001"
+  },
+  "host": "parcelservices-se.dbschenker.com",
+  "basePath": "/Apipartner",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/DeliveryPoint/v4/GetServicePoint": {
+      "get": {
+        "tags": [
+          "DeliveryPoint4"
+        ],
+        "summary": "Retrieves a service point based on the provided country code and service point number.",
+        "operationId": "DeliveryPoint4_GetServicePoint",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "countryCode",
+            "in": "query",
+            "description": "The country code for the specified country (e.g., DK, FI, SE).",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "servicePointNumber",
+            "in": "query",
+            "description": "A four-digit service point number.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Service Point found",
+            "schema": {
+              "$ref": "#/definitions/ServicePointWithPrinterDTO"
+            }
+          },
+          "204": {
+            "description": "No service point found"
+          },
+          "400": {
+            "description": "Invalid request"
+          },
+          "404": {
+            "description": "Servicepoint was not found"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "basic": []
+          }
+        ]
+      }
+    },
+    "/DeliveryPoint/v4/GetAllServicePoints": {
+      "get": {
+        "tags": [
+          "DeliveryPoint4"
+        ],
+        "summary": "Get all Existing Servicepoints for a specified country.",
+        "operationId": "DeliveryPoint4_GetAllServicePoints",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "countryCode",
+            "in": "query",
+            "description": "Countycode for specified country",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Service Points found",
+            "schema": {
+              "items": {
+                "$ref": "#/definitions/ServicePointWithPrinterDTO"
+              },
+              "xml": {
+                "name": "ServicePointWithPrinterDTO",
+                "wrapped": true
+              },
+              "type": "array"
+            }
+          },
+          "204": {
+            "description": "No service point found"
+          },
+          "400": {
+            "description": "Invalid request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "basic": []
+          }
+        ]
+      }
+    },
+    "/DeliveryPoint/v4/GetNearestServicePoint": {
+      "post": {
+        "tags": [
+          "DeliveryPoint4"
+        ],
+        "summary": "Get a list of service points nearest to the specified location based on the provided search criteria.",
+        "operationId": "DeliveryPoint4_GetNearestServicePoint",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "searchModel",
+            "in": "body",
+            "description": "The search criteria for finding the nearest service points.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SearchModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A list of nearest service points",
+            "schema": {
+              "items": {
+                "$ref": "#/definitions/ServicePointDTO"
+              },
+              "xml": {
+                "name": "ServicePointDTO",
+                "wrapped": true
+              },
+              "type": "array"
+            }
+          },
+          "204": {
+            "description": "No service points found"
+          },
+          "400": {
+            "description": "Invalid request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "basic": []
+          }
+        ]
+      }
+    },
+    "/DeliveryPoint/v4/GetTerminal": {
+      "get": {
+        "tags": [
+          "DeliveryPoint4"
+        ],
+        "summary": "Retrieves a terminal based on the provided country code and terminalcode.",
+        "operationId": "DeliveryPoint4_GetTerminal",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "countryCode",
+            "in": "query",
+            "description": "Country code for the specified country (Currently only SE available).",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "terminalCode",
+            "in": "query",
+            "description": "A four-digit terminalcode.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Terminal found",
+            "schema": {
+              "$ref": "#/definitions/ServicePointDTO"
+            }
+          },
+          "204": {
+            "description": "No terminal found"
+          },
+          "400": {
+            "description": "Invalid request"
+          },
+          "404": {
+            "description": "Terminal was not found"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "basic": []
+          }
+        ]
+      }
+    },
+    "/DeliveryPoint/v4/GetAllTerminals": {
+      "get": {
+        "tags": [
+          "DeliveryPoint4"
+        ],
+        "summary": "Get all existing terminals for a specified country.",
+        "operationId": "DeliveryPoint4_GetAllTerminals",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "countryCode",
+            "in": "query",
+            "description": "Country code for the specified country (Currently only SE available).",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Terminals found",
+            "schema": {
+              "items": {
+                "$ref": "#/definitions/ServicePointDTO"
+              },
+              "xml": {
+                "name": "ServicePointDTO",
+                "wrapped": true
+              },
+              "type": "array"
+            }
+          },
+          "204": {
+            "description": "No terminals found"
+          },
+          "400": {
+            "description": "Invalid request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "basic": []
+          }
+        ]
+      }
+    },
+    "/DeliveryPoint/v4/GetNearestTerminal": {
+      "post": {
+        "tags": [
+          "DeliveryPoint4"
+        ],
+        "summary": "Get a list of terminals nearest to the specified location based on the provided search criteria.",
+        "operationId": "DeliveryPoint4_GetNearestTerminal",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "searchModel",
+            "in": "body",
+            "description": "The search criteria for finding the nearest terminal. Currently the only available CountryCode is SE",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SearchModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A list of nearest terminals",
+            "schema": {
+              "items": {
+                "$ref": "#/definitions/ServicePointDTO"
+              },
+              "xml": {
+                "name": "ServicePointDTO",
+                "wrapped": true
+              },
+              "type": "array"
+            }
+          },
+          "204": {
+            "description": "No terminals found"
+          },
+          "400": {
+            "description": "Invalid request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "basic": []
+          }
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "ServicePointWithPrinterDTO": {
+      "required": [
+        "Name",
+        "Addresses",
+        "GeoPoint",
+        "OpeningDays",
+        "Services",
+        "References"
+      ],
+      "properties": {
+        "Name": {
+          "type": "string"
+        },
+        "DeliveryType": {
+          "type": "string"
+        },
+        "Addresses": {
+          "items": {
+            "$ref": "#/definitions/AddressDTO"
+          },
+          "xml": {
+            "name": "AddressDTO",
+            "wrapped": true
+          },
+          "type": "array"
+        },
+        "GeoPoint": {
+          "$ref": "#/definitions/GeoPointDTO"
+        },
+        "OpeningHoursShort": {
+          "type": "string"
+        },
+        "OpeningHoursRow1": {
+          "type": "string"
+        },
+        "OpeningHoursRow2": {
+          "type": "string"
+        },
+        "OpeningHoursRow3": {
+          "type": "string"
+        },
+        "OpeningDays": {
+          "items": {
+            "$ref": "#/definitions/WeekdayDTO"
+          },
+          "xml": {
+            "name": "WeekdayDTO",
+            "wrapped": true
+          },
+          "type": "array"
+        },
+        "Services": {
+          "items": {
+            "$ref": "#/definitions/ServiceDTO"
+          },
+          "xml": {
+            "name": "ServiceDTO",
+            "wrapped": true
+          },
+          "type": "array"
+        },
+        "References": {
+          "items": {
+            "$ref": "#/definitions/ReferenceDTO"
+          },
+          "xml": {
+            "name": "ReferenceDTO",
+            "wrapped": true
+          },
+          "type": "array"
+        },
+        "HasPrinter": {
+          "type": "boolean"
+        },
+        "DeliveryData": {
+          "items": {
+            "$ref": "#/definitions/DeliveryDataDTO"
+          },
+          "xml": {
+            "name": "DeliveryDataDTO",
+            "wrapped": true
+          },
+          "type": "array"
+        },
+        "Distance": {
+          "type": "string"
+        },
+        "ProviderAddon": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "ServicePointWithPrinterDTO"
+      },
+      "type": "object"
+    },
+    "AddressDTO": {
+      "required": [
+        "AddressType"
+      ],
+      "properties": {
+        "AddressType": {
+          "type": "string"
+        },
+        "AddressId": {
+          "type": "string"
+        },
+        "MailingAddress": {
+          "$ref": "#/definitions/MailingAddressDTO"
+        },
+        "Contacts": {
+          "items": {
+            "$ref": "#/definitions/ContactDTO"
+          },
+          "xml": {
+            "name": "ContactDTO",
+            "wrapped": true
+          },
+          "type": "array"
+        }
+      },
+      "xml": {
+        "name": "AddressDTO"
+      },
+      "type": "object"
+    },
+    "GeoPointDTO": {
+      "required": [
+        "Latitude",
+        "Longitude"
+      ],
+      "properties": {
+        "Latitude": {
+          "type": "string"
+        },
+        "Longitude": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "GeoPointDTO"
+      },
+      "type": "object"
+    },
+    "WeekdayDTO": {
+      "required": [
+        "Day",
+        "DisplayName",
+        "OpeningHours"
+      ],
+      "properties": {
+        "Day": {
+          "type": "string"
+        },
+        "DisplayName": {
+          "type": "string"
+        },
+        "OpeningHours": {
+          "items": {
+            "$ref": "#/definitions/OpenDTO"
+          },
+          "xml": {
+            "name": "OpenDTO",
+            "wrapped": true
+          },
+          "type": "array"
+        }
+      },
+      "xml": {
+        "name": "WeekdayDTO"
+      },
+      "type": "object"
+    },
+    "ServiceDTO": {
+      "required": [
+        "ServiceType"
+      ],
+      "properties": {
+        "ServiceType": {
+          "type": "string"
+        },
+        "DisplayName": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "ServiceDTO"
+      },
+      "type": "object"
+    },
+    "ReferenceDTO": {
+      "required": [
+        "ReferenceType",
+        "Value"
+      ],
+      "properties": {
+        "ReferenceType": {
+          "type": "string"
+        },
+        "Value": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "ReferenceDTO"
+      },
+      "type": "object"
+    },
+    "DeliveryDataDTO": {
+      "properties": {
+        "DataType": {
+          "type": "string"
+        },
+        "Value": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "DeliveryDataDTO"
+      },
+      "type": "object"
+    },
+    "MailingAddressDTO": {
+      "required": [
+        "Name",
+        "AddressLine1",
+        "City",
+        "PostalCode"
+      ],
+      "properties": {
+        "Name": {
+          "type": "string"
+        },
+        "CoAddress": {
+          "type": "string"
+        },
+        "AddressLine1": {
+          "type": "string"
+        },
+        "AddressLine2": {
+          "type": "string"
+        },
+        "City": {
+          "type": "string"
+        },
+        "PostalCode": {
+          "type": "string"
+        },
+        "CountryCode": {
+          "type": "string",
+          "maxLength": 3,
+          "minLength": 2
+        }
+      },
+      "xml": {
+        "name": "MailingAddressDTO"
+      },
+      "type": "object"
+    },
+    "ContactDTO": {
+      "required": [
+        "ContactType",
+        "Value"
+      ],
+      "properties": {
+        "ContactType": {
+          "type": "string"
+        },
+        "Value": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "ContactDTO"
+      },
+      "type": "object"
+    },
+    "OpenDTO": {
+      "required": [
+        "From",
+        "To"
+      ],
+      "properties": {
+        "From": {
+          "type": "string"
+        },
+        "To": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "OpenDTO"
+      },
+      "type": "object"
+    },
+    "SearchModel": {
+      "required": [
+        "CountryCode"
+      ],
+      "properties": {
+        "CountryCode": {
+          "type": "string"
+        },
+        "PostalCode": {
+          "type": "string"
+        },
+        "StreetAddress": {
+          "type": "string"
+        },
+        "City": {
+          "type": "string"
+        },
+        "Amount": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "xml": {
+        "name": "SearchModel"
+      },
+      "type": "object"
+    },
+    "ServicePointDTO": {
+      "required": [
+        "Name",
+        "Addresses",
+        "GeoPoint",
+        "OpeningDays",
+        "Services",
+        "References"
+      ],
+      "properties": {
+        "Name": {
+          "type": "string"
+        },
+        "DeliveryType": {
+          "type": "string"
+        },
+        "Addresses": {
+          "items": {
+            "$ref": "#/definitions/AddressDTO"
+          },
+          "xml": {
+            "name": "AddressDTO",
+            "wrapped": true
+          },
+          "type": "array"
+        },
+        "GeoPoint": {
+          "$ref": "#/definitions/GeoPointDTO"
+        },
+        "OpeningHoursShort": {
+          "type": "string"
+        },
+        "OpeningHoursRow1": {
+          "type": "string"
+        },
+        "OpeningHoursRow2": {
+          "type": "string"
+        },
+        "OpeningHoursRow3": {
+          "type": "string"
+        },
+        "OpeningDays": {
+          "items": {
+            "$ref": "#/definitions/WeekdayDTO"
+          },
+          "xml": {
+            "name": "WeekdayDTO",
+            "wrapped": true
+          },
+          "type": "array"
+        },
+        "Services": {
+          "items": {
+            "$ref": "#/definitions/ServiceDTO"
+          },
+          "xml": {
+            "name": "ServiceDTO",
+            "wrapped": true
+          },
+          "type": "array"
+        },
+        "References": {
+          "items": {
+            "$ref": "#/definitions/ReferenceDTO"
+          },
+          "xml": {
+            "name": "ReferenceDTO",
+            "wrapped": true
+          },
+          "type": "array"
+        },
+        "DeliveryData": {
+          "items": {
+            "$ref": "#/definitions/DeliveryDataDTO"
+          },
+          "xml": {
+            "name": "DeliveryDataDTO",
+            "wrapped": true
+          },
+          "type": "array"
+        },
+        "Distance": {
+          "type": "string"
+        },
+        "ProviderAddon": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "ServicePointDTO"
+      },
+      "type": "object"
+    }
+  },
+  "securityDefinitions": {
+    "basic": {
+      "type": "basic",
+      "description": "Basic HTTP Authentication"
+    }
+  },
+  "tags": [
+    {
+      "name": "DeliveryPoint4",
+      "description": "Responsible for all Web API functions related to Service Points"
+    }
+  ]
+}

@@ -1,0 +1,1337 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "V1",
+    "title": "Partner services API V1.",
+    "description": "<a target=\"_blank\" href=\"/Utils/PartnerServices/ParcelServicesExamples.zip\">This zip</a> includes example/sample code to connect to DB Schenker Partner API.",
+    "x-swagger-net-version": "8.5.28.001"
+  },
+  "host": "parcelservices-se.dbschenker.com",
+  "basePath": "/Apipartner",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/DeliveryPoint/v1/GetAllServicePoints": {
+      "get": {
+        "tags": [
+          "DeliveryPoint"
+        ],
+        "summary": "Get all Existing Servicepoints for a specified country.",
+        "operationId": "DeliveryPoint_GetAllServicePoints",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "countryCode",
+            "in": "query",
+            "description": "Countycode for specified country",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Service Points found",
+            "schema": {
+              "items": {
+                "$ref": "#/definitions/ServicePointDTO"
+              },
+              "xml": {
+                "name": "ServicePointDTO",
+                "wrapped": true
+              },
+              "type": "array"
+            }
+          },
+          "204": {
+            "description": "No service points found"
+          },
+          "400": {
+            "description": "Invalid request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "deprecated": true,
+        "security": [
+          {
+            "basic": []
+          }
+        ]
+      }
+    },
+    "/DeliveryPoint/v1/GetNearestServicePoint": {
+      "post": {
+        "tags": [
+          "DeliveryPoint"
+        ],
+        "summary": "Gives you a list of the Servicepoints nearest to the specified location.",
+        "operationId": "DeliveryPoint_GetNearestServicePoint",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "searchModel",
+            "in": "body",
+            "description": "The data structure for the search",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SearchModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Service Points found",
+            "schema": {
+              "items": {
+                "$ref": "#/definitions/ServicePointDTO"
+              },
+              "xml": {
+                "name": "ServicePointDTO",
+                "wrapped": true
+              },
+              "type": "array"
+            }
+          },
+          "204": {
+            "description": "No service point found"
+          },
+          "400": {
+            "description": "Invalid request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "deprecated": true,
+        "security": [
+          {
+            "basic": []
+          }
+        ]
+      }
+    },
+    "/Edi/v1/RegisterEdi/{countryCode}": {
+      "post": {
+        "tags": [
+          "Edi"
+        ],
+        "summary": "Creates an EDI-Shipment in our system. This is needed for all parcels that are sent with Privpak.\r\n Called when another TA has managed the creation of the EDI and is notififying PrivPak of data",
+        "operationId": "Edi_RegisterEdi",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "Edi",
+            "in": "body",
+            "description": "The freight data",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ShipmentDTO"
+            }
+          },
+          {
+            "name": "countryCode",
+            "in": "path",
+            "description": "The country code.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "deprecated": true,
+        "security": [
+          {
+            "basic": []
+          }
+        ]
+      }
+    },
+    "/Edi/v1/RegisterReturnEdi/{countryCode}": {
+      "post": {
+        "tags": [
+          "Edi"
+        ],
+        "summary": "Creates a return EDI-Shipment in our system. This is needed for all return parcels that are sent with Privpak.\r\nCalled when another TA has managed the creation of the EDI and is notififying PrivPak of data",
+        "operationId": "Edi_RegisterReturnEdi",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "ReturnEdi",
+            "in": "body",
+            "description": "The return freight",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ReturnShipmentDTO"
+            }
+          },
+          {
+            "name": "countryCode",
+            "in": "path",
+            "description": "The country code",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "deprecated": true,
+        "security": [
+          {
+            "basic": []
+          }
+        ]
+      }
+    },
+    "/ExtendedDeliveryPoint/v1/GetAllServicePoints": {
+      "get": {
+        "tags": [
+          "ExtendedDeliveryPoint"
+        ],
+        "summary": "Get all Existing Servicepoints for a specified country.",
+        "operationId": "ExtendedDeliveryPoint_GetAllServicePoints",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "countryCode",
+            "in": "query",
+            "description": "Countycode for specified country",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "204": {
+            "description": "No content"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "basic": []
+          }
+        ]
+      }
+    },
+    "/print-code/v1": {
+      "get": {
+        "tags": [
+          "PrintCode"
+        ],
+        "summary": "Gets the QR print code for a shipment based on shipment number.",
+        "operationId": "PrintCode_GetQRCode",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "shipmentNumber",
+            "in": "query",
+            "description": "Shipment number.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "colliId",
+            "in": "query",
+            "description": "Barcode/colli ID.",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Base64 encoded string of QR code",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "404": {
+            "description": "NotFound"
+          },
+          "410": {
+            "description": "Code expired"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "basic": []
+          }
+        ]
+      }
+    },
+    "/print-code/v1/image": {
+      "get": {
+        "tags": [
+          "PrintCode"
+        ],
+        "summary": "Gets the QR image for a shipment based on shipment number or colli-id.\r\n\r\nEasy to use as ex. img-src or background-image on element.\r\nEx. set img src to \"data:image/svg+xml;base64,\" + [Svg response from endpoint]\r\nIf png, a bytestream is returned.",
+        "operationId": "PrintCode_GetQRCodeImage",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "shipmentNumber",
+            "in": "query",
+            "description": "Shipment number.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "colliId",
+            "in": "query",
+            "description": "Barcode/colli ID.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "imageformat",
+            "in": "query",
+            "description": "If not set, defaults to svg. Send \"png\" if response should be a png.",
+            "required": false,
+            "type": "string",
+            "default": ""
+          },
+          {
+            "name": "useBackground",
+            "in": "query",
+            "description": "If set, it will remove the white background that can cause issues when using dark mode",
+            "required": false,
+            "type": "boolean",
+            "default": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Base64 encoded string of qr code",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "404": {
+            "description": "NotFound"
+          },
+          "410": {
+            "description": "Code expired"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "basic": []
+          }
+        ]
+      }
+    },
+    "/SortingCode/v1/GetSortingCode": {
+      "post": {
+        "tags": [
+          "SortingCode"
+        ],
+        "summary": "Returns a sorting code with the corresponding city and postal code.\r\nThe departure- and arrival code should be printed on the waybill and STES according to AGI.\r\n\r\nIf the API returns \"N/A\" the sorting code is missing. This is not an error. Print as is.\r\nIn case of time-out, print '---' for each code.\r\nIn case of other errors, print '???' for each code.\r\nCaching responses for more than 24 hours is not recommended.\r\n\r\nTo use endpoint, invoke a HTTP POST request at \r\n'https://parcelservices-se.dbschenker.com/apipartner/SortingCode/v1/GetSortingCode'",
+        "operationId": "SortingCode_GetSortingCode",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "request",
+            "in": "body",
+            "description": "Required: PostalCodeReceiver, PostalCodeSender, ProductCode",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetSortingCodeExternalDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/BaseSortingCodeDto"
+            }
+          },
+          "400": {
+            "description": "BadRequest"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "basic": []
+          }
+        ]
+      }
+    },
+    "/TrackAndTraceBoxes/v1/GetParcel": {
+      "get": {
+        "tags": [
+          "TrackAndTraceBoxes"
+        ],
+        "summary": "Retrieves a parcel from a reference",
+        "operationId": "TrackAndTraceBoxes_GetParcel",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "countryCode",
+            "in": "query",
+            "description": "Country code",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "referenceType",
+            "in": "query",
+            "description": "Parcel referenceType [BARCODE]",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "reference",
+            "in": "query",
+            "description": "Parcel reference",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "items": {
+                "$ref": "#/definitions/ParcelWithEventDTO"
+              },
+              "xml": {
+                "name": "ParcelWithEventDTO",
+                "wrapped": true
+              },
+              "type": "array"
+            }
+          },
+          "400": {
+            "description": "BadRequest"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "basic": []
+          }
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "ServicePointDTO": {
+      "required": [
+        "Name",
+        "Addresses",
+        "GeoPoint",
+        "OpeningDays",
+        "Services",
+        "References"
+      ],
+      "properties": {
+        "Name": {
+          "type": "string"
+        },
+        "DeliveryType": {
+          "type": "string"
+        },
+        "Addresses": {
+          "items": {
+            "$ref": "#/definitions/AddressDTO"
+          },
+          "xml": {
+            "name": "AddressDTO",
+            "wrapped": true
+          },
+          "type": "array"
+        },
+        "GeoPoint": {
+          "$ref": "#/definitions/GeoPointDTO"
+        },
+        "OpeningHoursShort": {
+          "type": "string"
+        },
+        "OpeningHoursRow1": {
+          "type": "string"
+        },
+        "OpeningHoursRow2": {
+          "type": "string"
+        },
+        "OpeningHoursRow3": {
+          "type": "string"
+        },
+        "OpeningDays": {
+          "items": {
+            "$ref": "#/definitions/WeekdayDTO"
+          },
+          "xml": {
+            "name": "WeekdayDTO",
+            "wrapped": true
+          },
+          "type": "array"
+        },
+        "Services": {
+          "items": {
+            "$ref": "#/definitions/ServiceDTO"
+          },
+          "xml": {
+            "name": "ServiceDTO",
+            "wrapped": true
+          },
+          "type": "array"
+        },
+        "References": {
+          "items": {
+            "$ref": "#/definitions/ReferenceDTO"
+          },
+          "xml": {
+            "name": "ReferenceDTO",
+            "wrapped": true
+          },
+          "type": "array"
+        },
+        "DeliveryData": {
+          "items": {
+            "$ref": "#/definitions/DeliveryDataDTO"
+          },
+          "xml": {
+            "name": "DeliveryDataDTO",
+            "wrapped": true
+          },
+          "type": "array"
+        },
+        "Distance": {
+          "type": "string"
+        },
+        "ProviderAddon": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "ServicePointDTO"
+      },
+      "type": "object"
+    },
+    "AddressDTO": {
+      "required": [
+        "AddressType"
+      ],
+      "properties": {
+        "AddressType": {
+          "type": "string"
+        },
+        "AddressId": {
+          "type": "string"
+        },
+        "MailingAddress": {
+          "$ref": "#/definitions/MailingAddressDTO"
+        },
+        "Contacts": {
+          "items": {
+            "$ref": "#/definitions/ContactDTO"
+          },
+          "xml": {
+            "name": "ContactDTO",
+            "wrapped": true
+          },
+          "type": "array"
+        }
+      },
+      "xml": {
+        "name": "AddressDTO"
+      },
+      "type": "object"
+    },
+    "GeoPointDTO": {
+      "required": [
+        "Latitude",
+        "Longitude"
+      ],
+      "properties": {
+        "Latitude": {
+          "type": "string"
+        },
+        "Longitude": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "GeoPointDTO"
+      },
+      "type": "object"
+    },
+    "WeekdayDTO": {
+      "required": [
+        "Day",
+        "DisplayName",
+        "OpeningHours"
+      ],
+      "properties": {
+        "Day": {
+          "type": "string"
+        },
+        "DisplayName": {
+          "type": "string"
+        },
+        "OpeningHours": {
+          "items": {
+            "$ref": "#/definitions/OpenDTO"
+          },
+          "xml": {
+            "name": "OpenDTO",
+            "wrapped": true
+          },
+          "type": "array"
+        }
+      },
+      "xml": {
+        "name": "WeekdayDTO"
+      },
+      "type": "object"
+    },
+    "ServiceDTO": {
+      "required": [
+        "ServiceType"
+      ],
+      "properties": {
+        "ServiceType": {
+          "type": "string"
+        },
+        "DisplayName": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "ServiceDTO"
+      },
+      "type": "object"
+    },
+    "ReferenceDTO": {
+      "required": [
+        "ReferenceType",
+        "Value"
+      ],
+      "properties": {
+        "ReferenceType": {
+          "type": "string"
+        },
+        "Value": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "ReferenceDTO"
+      },
+      "type": "object"
+    },
+    "DeliveryDataDTO": {
+      "properties": {
+        "DataType": {
+          "type": "string"
+        },
+        "Value": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "DeliveryDataDTO"
+      },
+      "type": "object"
+    },
+    "MailingAddressDTO": {
+      "required": [
+        "Name",
+        "AddressLine1",
+        "City",
+        "PostalCode"
+      ],
+      "properties": {
+        "Name": {
+          "type": "string"
+        },
+        "CoAddress": {
+          "type": "string"
+        },
+        "AddressLine1": {
+          "type": "string"
+        },
+        "AddressLine2": {
+          "type": "string"
+        },
+        "City": {
+          "type": "string"
+        },
+        "PostalCode": {
+          "type": "string"
+        },
+        "CountryCode": {
+          "type": "string",
+          "maxLength": 3,
+          "minLength": 2
+        }
+      },
+      "xml": {
+        "name": "MailingAddressDTO"
+      },
+      "type": "object"
+    },
+    "ContactDTO": {
+      "required": [
+        "ContactType",
+        "Value"
+      ],
+      "properties": {
+        "ContactType": {
+          "type": "string"
+        },
+        "Value": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "ContactDTO"
+      },
+      "type": "object"
+    },
+    "OpenDTO": {
+      "required": [
+        "From",
+        "To"
+      ],
+      "properties": {
+        "From": {
+          "type": "string"
+        },
+        "To": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "OpenDTO"
+      },
+      "type": "object"
+    },
+    "SearchModel": {
+      "required": [
+        "CountryCode"
+      ],
+      "properties": {
+        "CountryCode": {
+          "type": "string"
+        },
+        "PostalCode": {
+          "type": "string"
+        },
+        "StreetAddress": {
+          "type": "string"
+        },
+        "City": {
+          "type": "string"
+        },
+        "Amount": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "xml": {
+        "name": "SearchModel"
+      },
+      "type": "object"
+    },
+    "ShipmentDTO": {
+      "properties": {
+        "EntryDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "CustomerId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "PartnerId": {
+          "type": "string"
+        },
+        "Parcels": {
+          "items": {
+            "$ref": "#/definitions/ParcelDTO"
+          },
+          "xml": {
+            "name": "ParcelDTO",
+            "wrapped": true
+          },
+          "type": "array"
+        }
+      },
+      "xml": {
+        "name": "ShipmentDTO"
+      },
+      "type": "object"
+    },
+    "ParcelDTO": {
+      "required": [
+        "DeliveryService"
+      ],
+      "properties": {
+        "DeliveryService": {
+          "type": "string"
+        },
+        "Addresses": {
+          "items": {
+            "$ref": "#/definitions/AddressDTO"
+          },
+          "xml": {
+            "name": "AddressDTO",
+            "wrapped": true
+          },
+          "type": "array"
+        },
+        "Collectors": {
+          "items": {
+            "$ref": "#/definitions/CollectorDTO"
+          },
+          "xml": {
+            "name": "CollectorDTO",
+            "wrapped": true
+          },
+          "type": "array"
+        },
+        "References": {
+          "items": {
+            "$ref": "#/definitions/ReferenceDTO"
+          },
+          "xml": {
+            "name": "ReferenceDTO",
+            "wrapped": true
+          },
+          "type": "array"
+        },
+        "Measures": {
+          "items": {
+            "$ref": "#/definitions/MeasureDTO"
+          },
+          "xml": {
+            "name": "MeasureDTO",
+            "wrapped": true
+          },
+          "type": "array"
+        },
+        "Cod": {
+          "$ref": "#/definitions/CodDTO"
+        }
+      },
+      "xml": {
+        "name": "ParcelDTO"
+      },
+      "type": "object"
+    },
+    "CollectorDTO": {
+      "required": [
+        "Name"
+      ],
+      "properties": {
+        "Name": {
+          "type": "string"
+        },
+        "Reference": {
+          "$ref": "#/definitions/ReferenceDTO"
+        }
+      },
+      "xml": {
+        "name": "CollectorDTO"
+      },
+      "type": "object"
+    },
+    "MeasureDTO": {
+      "required": [
+        "MeasureType",
+        "Value"
+      ],
+      "properties": {
+        "MeasureType": {
+          "type": "string"
+        },
+        "Value": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "MeasureDTO"
+      },
+      "type": "object"
+    },
+    "CodDTO": {
+      "required": [
+        "Amount",
+        "Currency",
+        "Reference"
+      ],
+      "properties": {
+        "Amount": {
+          "type": "string"
+        },
+        "Currency": {
+          "type": "string"
+        },
+        "Reference": {
+          "$ref": "#/definitions/ReferenceDTO"
+        },
+        "AccountType": {
+          "type": "string"
+        },
+        "AccountNumber": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "CodDTO"
+      },
+      "type": "object"
+    },
+    "ReturnShipmentDTO": {
+      "properties": {
+        "EntryDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "CustomerId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "PartnerId": {
+          "type": "string"
+        },
+        "Parcels": {
+          "items": {
+            "$ref": "#/definitions/ReturnParcelDTO"
+          },
+          "xml": {
+            "name": "ReturnParcelDTO",
+            "wrapped": true
+          },
+          "type": "array"
+        }
+      },
+      "xml": {
+        "name": "ReturnShipmentDTO"
+      },
+      "type": "object"
+    },
+    "ReturnParcelDTO": {
+      "required": [
+        "DeliveryService"
+      ],
+      "properties": {
+        "DeliveryService": {
+          "type": "string"
+        },
+        "Addresses": {
+          "items": {
+            "$ref": "#/definitions/AddressDTO"
+          },
+          "xml": {
+            "name": "AddressDTO",
+            "wrapped": true
+          },
+          "type": "array"
+        },
+        "Collectors": {
+          "items": {
+            "$ref": "#/definitions/CollectorDTO"
+          },
+          "xml": {
+            "name": "CollectorDTO",
+            "wrapped": true
+          },
+          "type": "array"
+        },
+        "References": {
+          "items": {
+            "$ref": "#/definitions/ReferenceDTO"
+          },
+          "xml": {
+            "name": "ReferenceDTO",
+            "wrapped": true
+          },
+          "type": "array"
+        },
+        "Measures": {
+          "items": {
+            "$ref": "#/definitions/MeasureDTO"
+          },
+          "xml": {
+            "name": "MeasureDTO",
+            "wrapped": true
+          },
+          "type": "array"
+        },
+        "Cod": {
+          "$ref": "#/definitions/CodDTO"
+        }
+      },
+      "xml": {
+        "name": "ReturnParcelDTO"
+      },
+      "type": "object"
+    },
+    "GetSortingCodeExternalDto": {
+      "properties": {
+        "PostalCodeSender": {
+          "type": "string"
+        },
+        "PostalCodeReceiver": {
+          "type": "string"
+        },
+        "ProductCode": {
+          "type": "string"
+        },
+        "AdditionalServiceCodes": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "CustomerNumber": {
+          "type": "string"
+        },
+        "ProductType": {
+          "readOnly": true,
+          "type": "string",
+          "enum": [
+            "InvalidProduct",
+            "PAR",
+            "COM",
+            "SPC",
+            "DIR",
+            "BUD",
+            "CLD",
+            "LPA",
+            "HDG",
+            "PAH",
+            "PHD",
+            "LGO",
+            "CHA",
+            "NIP",
+            "PRI",
+            "DMO",
+            "DMA",
+            "PAL",
+            "PTE",
+            "SYS",
+            "OAS",
+            "IDP",
+            "SYP",
+            "SCO",
+            "PEX",
+            "LTL",
+            "FTL",
+            "SYH",
+            "REP",
+            "PAB",
+            "PSE",
+            "PCB",
+            "PHC"
+          ]
+        }
+      },
+      "xml": {
+        "name": "GetSortingCodeExternalDto"
+      },
+      "type": "object"
+    },
+    "BaseSortingCodeDto": {
+      "properties": {
+        "ArrivalCode": {
+          "type": "string"
+        },
+        "DepartureCode": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "BaseSortingCodeDto"
+      },
+      "type": "object"
+    },
+    "ParcelWithEventDTO": {
+      "required": [
+        "DeliveryService"
+      ],
+      "properties": {
+        "ArrivalDate": {
+          "type": "string"
+        },
+        "DeliveryService": {
+          "type": "string"
+        },
+        "DeliveryDate": {
+          "type": "string"
+        },
+        "Addresses": {
+          "items": {
+            "$ref": "#/definitions/AddressDTO"
+          },
+          "xml": {
+            "name": "AddressDTO",
+            "wrapped": true
+          },
+          "type": "array"
+        },
+        "EstimatedTimeOfArrival": {
+          "type": "string"
+        },
+        "DueDate": {
+          "type": "string"
+        },
+        "References": {
+          "items": {
+            "$ref": "#/definitions/ReferenceDTO"
+          },
+          "xml": {
+            "name": "ReferenceDTO",
+            "wrapped": true
+          },
+          "type": "array"
+        },
+        "ParcelState": {
+          "$ref": "#/definitions/TrackingEventDTO"
+        },
+        "Measures": {
+          "items": {
+            "$ref": "#/definitions/MeasureDTO"
+          },
+          "xml": {
+            "name": "MeasureDTO",
+            "wrapped": true
+          },
+          "type": "array"
+        },
+        "Events": {
+          "items": {
+            "$ref": "#/definitions/TrackingEventDTO"
+          },
+          "xml": {
+            "name": "TrackingEventDTO",
+            "wrapped": true
+          },
+          "type": "array"
+        }
+      },
+      "xml": {
+        "name": "ParcelWithEventDTO"
+      },
+      "type": "object"
+    },
+    "TrackingEventDTO": {
+      "required": [
+        "EventDate"
+      ],
+      "properties": {
+        "Name": {
+          "type": "string"
+        },
+        "DisplayName": {
+          "type": "string"
+        },
+        "EventDate": {
+          "type": "string"
+        },
+        "Description": {
+          "type": "string"
+        },
+        "Location": {
+          "$ref": "#/definitions/LocationDTO"
+        },
+        "ReferenceData": {
+          "items": {
+            "$ref": "#/definitions/ReferenceDTO"
+          },
+          "xml": {
+            "name": "ReferenceDTO",
+            "wrapped": true
+          },
+          "type": "array"
+        }
+      },
+      "xml": {
+        "name": "TrackingEventDTO"
+      },
+      "type": "object"
+    },
+    "LocationDTO": {
+      "required": [
+        "LocationType",
+        "Name"
+      ],
+      "properties": {
+        "LocationType": {
+          "type": "string"
+        },
+        "LocationId": {
+          "type": "string"
+        },
+        "Name": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "LocationDTO"
+      },
+      "type": "object"
+    }
+  },
+  "securityDefinitions": {
+    "basic": {
+      "type": "basic",
+      "description": "Basic HTTP Authentication"
+    }
+  },
+  "tags": [
+    {
+      "name": "DeliveryPoint",
+      "description": "Responsible for all Web API functions related to Service Points"
+    },
+    {
+      "name": "Edi",
+      "description": "Responsible for all Web API functions related to EDI (For example: Register, Register Return)"
+    },
+    {
+      "name": "ExtendedDeliveryPoint",
+      "description": "Responsible for all Web API functions related to HITTA"
+    },
+    {
+      "name": "PrintCode",
+      "description": "Responsible for (QR) print codes."
+    },
+    {
+      "name": "SortingCode",
+      "description": "Responsible for all Web API functions related to handling sorting codes in MANET."
+    },
+    {
+      "name": "TrackAndTraceBoxes",
+      "description": "Responsible for all Web API functions related to Boxes Track and Trace."
+    }
+  ]
+}

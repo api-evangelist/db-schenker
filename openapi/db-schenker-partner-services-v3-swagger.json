@@ -1,0 +1,893 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "V3",
+    "title": "Partner services API V3.",
+    "description": "<a target=\"_blank\" href=\"/Utils/PartnerServices/ParcelServicesExamples.zip\">This zip</a> includes example/sample code to connect to DB Schenker Partner API.",
+    "x-swagger-net-version": "8.5.28.001"
+  },
+  "host": "parcelservices-se.dbschenker.com",
+  "basePath": "/Apipartner",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/DeliveryPoint/v3/GetServicePoint": {
+      "get": {
+        "tags": [
+          "DeliveryPoint3"
+        ],
+        "summary": "Retrieves a service point based on the provided country code and service point number.",
+        "operationId": "DeliveryPoint3_GetServicePoint",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "countryCode",
+            "in": "query",
+            "description": "The country code for the specified country (e.g., DK, FI, SE).",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "servicePointNumber",
+            "in": "query",
+            "description": "A four-digit service point number.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Service Point found",
+            "schema": {
+              "$ref": "#/definitions/ServicePointWithPrinterDTO"
+            }
+          },
+          "204": {
+            "description": "No service point found"
+          },
+          "400": {
+            "description": "Invalid request"
+          },
+          "404": {
+            "description": "Servicepoint was not found"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "basic": []
+          }
+        ]
+      }
+    },
+    "/DeliveryPoint/v3/GetAllServicePoints": {
+      "get": {
+        "tags": [
+          "DeliveryPoint3"
+        ],
+        "summary": "Get all Existing Servicepoints for a specified country.",
+        "operationId": "DeliveryPoint3_GetAllServicePoints",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "countryCode",
+            "in": "query",
+            "description": "Countycode for specified country",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Service Points found",
+            "schema": {
+              "items": {
+                "$ref": "#/definitions/ServicePointWithPrinterDTO"
+              },
+              "xml": {
+                "name": "ServicePointWithPrinterDTO",
+                "wrapped": true
+              },
+              "type": "array"
+            }
+          },
+          "204": {
+            "description": "No service point found"
+          },
+          "400": {
+            "description": "Invalid request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "basic": []
+          }
+        ]
+      }
+    },
+    "/DeliveryPoint/v3/GetNearestServicePoint": {
+      "post": {
+        "tags": [
+          "DeliveryPoint3"
+        ],
+        "summary": "Get a list of service points nearest to the specified location based on the provided search criteria.",
+        "operationId": "DeliveryPoint3_GetNearestServicePoint",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "searchModel",
+            "in": "body",
+            "description": "The search criteria for finding the nearest service points.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SearchModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A list of nearest service points",
+            "schema": {
+              "items": {
+                "$ref": "#/definitions/ServicePointDTO"
+              },
+              "xml": {
+                "name": "ServicePointDTO",
+                "wrapped": true
+              },
+              "type": "array"
+            }
+          },
+          "204": {
+            "description": "No service points found"
+          },
+          "400": {
+            "description": "Invalid request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "basic": []
+          }
+        ]
+      }
+    },
+    "/DeliveryPoint/v3/GetBox": {
+      "get": {
+        "tags": [
+          "DeliveryPoint3"
+        ],
+        "summary": "Get a box based on addressId",
+        "operationId": "DeliveryPoint3_GetBox",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "addressId",
+            "in": "query",
+            "description": "An id representing the address/location of a box.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Box found",
+            "schema": {
+              "items": {
+                "$ref": "#/definitions/BoxDto"
+              },
+              "xml": {
+                "name": "BoxDto",
+                "wrapped": true
+              },
+              "type": "array"
+            }
+          },
+          "204": {
+            "description": "No box found"
+          },
+          "400": {
+            "description": "Invalid request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "basic": []
+          }
+        ]
+      }
+    },
+    "/DeliveryPoint/v3/GetNearestBoxes": {
+      "post": {
+        "tags": [
+          "DeliveryPoint3"
+        ],
+        "summary": "Get a list of iBoxes nearest to the specified location based on the provided search criteria.",
+        "operationId": "DeliveryPoint3_GetNearestBoxes",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "searchModel",
+            "in": "body",
+            "description": "The search criteria for finding the nearest iBoxes.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetNearestBoxesSearchModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A list of nearest iBoxes",
+            "schema": {
+              "items": {
+                "$ref": "#/definitions/BoxDto"
+              },
+              "xml": {
+                "name": "BoxDto",
+                "wrapped": true
+              },
+              "type": "array"
+            }
+          },
+          "204": {
+            "description": "No iBoxes found"
+          },
+          "400": {
+            "description": "Invalid request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "basic": []
+          }
+        ]
+      }
+    },
+    "/DeliveryPoint/v3/GetNearestTerminal": {
+      "post": {
+        "tags": [
+          "DeliveryPoint3"
+        ],
+        "summary": "Get a list of terminals nearest to the specified location.",
+        "operationId": "DeliveryPoint3_GetNearestTerminal",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "searchModel",
+            "in": "body",
+            "description": "The search criteria for finding the nearest terminals.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SearchModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A list of nearest terminals",
+            "schema": {
+              "items": {
+                "$ref": "#/definitions/ServicePointDTO"
+              },
+              "xml": {
+                "name": "ServicePointDTO",
+                "wrapped": true
+              },
+              "type": "array"
+            }
+          },
+          "204": {
+            "description": "No terminals found"
+          },
+          "400": {
+            "description": "Invalid request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "basic": []
+          }
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "ServicePointWithPrinterDTO": {
+      "required": [
+        "Name",
+        "Addresses",
+        "GeoPoint",
+        "OpeningDays",
+        "Services",
+        "References"
+      ],
+      "properties": {
+        "Name": {
+          "type": "string"
+        },
+        "DeliveryType": {
+          "type": "string"
+        },
+        "Addresses": {
+          "items": {
+            "$ref": "#/definitions/AddressDTO"
+          },
+          "xml": {
+            "name": "AddressDTO",
+            "wrapped": true
+          },
+          "type": "array"
+        },
+        "GeoPoint": {
+          "$ref": "#/definitions/GeoPointDTO"
+        },
+        "OpeningHoursShort": {
+          "type": "string"
+        },
+        "OpeningHoursRow1": {
+          "type": "string"
+        },
+        "OpeningHoursRow2": {
+          "type": "string"
+        },
+        "OpeningHoursRow3": {
+          "type": "string"
+        },
+        "OpeningDays": {
+          "items": {
+            "$ref": "#/definitions/WeekdayDTO"
+          },
+          "xml": {
+            "name": "WeekdayDTO",
+            "wrapped": true
+          },
+          "type": "array"
+        },
+        "Services": {
+          "items": {
+            "$ref": "#/definitions/ServiceDTO"
+          },
+          "xml": {
+            "name": "ServiceDTO",
+            "wrapped": true
+          },
+          "type": "array"
+        },
+        "References": {
+          "items": {
+            "$ref": "#/definitions/ReferenceDTO"
+          },
+          "xml": {
+            "name": "ReferenceDTO",
+            "wrapped": true
+          },
+          "type": "array"
+        },
+        "HasPrinter": {
+          "type": "boolean"
+        },
+        "DeliveryData": {
+          "items": {
+            "$ref": "#/definitions/DeliveryDataDTO"
+          },
+          "xml": {
+            "name": "DeliveryDataDTO",
+            "wrapped": true
+          },
+          "type": "array"
+        },
+        "Distance": {
+          "type": "string"
+        },
+        "ProviderAddon": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "ServicePointWithPrinterDTO"
+      },
+      "type": "object"
+    },
+    "AddressDTO": {
+      "required": [
+        "AddressType"
+      ],
+      "properties": {
+        "AddressType": {
+          "type": "string"
+        },
+        "AddressId": {
+          "type": "string"
+        },
+        "MailingAddress": {
+          "$ref": "#/definitions/MailingAddressDTO"
+        },
+        "Contacts": {
+          "items": {
+            "$ref": "#/definitions/ContactDTO"
+          },
+          "xml": {
+            "name": "ContactDTO",
+            "wrapped": true
+          },
+          "type": "array"
+        }
+      },
+      "xml": {
+        "name": "AddressDTO"
+      },
+      "type": "object"
+    },
+    "GeoPointDTO": {
+      "required": [
+        "Latitude",
+        "Longitude"
+      ],
+      "properties": {
+        "Latitude": {
+          "type": "string"
+        },
+        "Longitude": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "GeoPointDTO"
+      },
+      "type": "object"
+    },
+    "WeekdayDTO": {
+      "required": [
+        "Day",
+        "DisplayName",
+        "OpeningHours"
+      ],
+      "properties": {
+        "Day": {
+          "type": "string"
+        },
+        "DisplayName": {
+          "type": "string"
+        },
+        "OpeningHours": {
+          "items": {
+            "$ref": "#/definitions/OpenDTO"
+          },
+          "xml": {
+            "name": "OpenDTO",
+            "wrapped": true
+          },
+          "type": "array"
+        }
+      },
+      "xml": {
+        "name": "WeekdayDTO"
+      },
+      "type": "object"
+    },
+    "ServiceDTO": {
+      "required": [
+        "ServiceType"
+      ],
+      "properties": {
+        "ServiceType": {
+          "type": "string"
+        },
+        "DisplayName": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "ServiceDTO"
+      },
+      "type": "object"
+    },
+    "ReferenceDTO": {
+      "required": [
+        "ReferenceType",
+        "Value"
+      ],
+      "properties": {
+        "ReferenceType": {
+          "type": "string"
+        },
+        "Value": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "ReferenceDTO"
+      },
+      "type": "object"
+    },
+    "DeliveryDataDTO": {
+      "properties": {
+        "DataType": {
+          "type": "string"
+        },
+        "Value": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "DeliveryDataDTO"
+      },
+      "type": "object"
+    },
+    "MailingAddressDTO": {
+      "required": [
+        "Name",
+        "AddressLine1",
+        "City",
+        "PostalCode"
+      ],
+      "properties": {
+        "Name": {
+          "type": "string"
+        },
+        "CoAddress": {
+          "type": "string"
+        },
+        "AddressLine1": {
+          "type": "string"
+        },
+        "AddressLine2": {
+          "type": "string"
+        },
+        "City": {
+          "type": "string"
+        },
+        "PostalCode": {
+          "type": "string"
+        },
+        "CountryCode": {
+          "type": "string",
+          "maxLength": 3,
+          "minLength": 2
+        }
+      },
+      "xml": {
+        "name": "MailingAddressDTO"
+      },
+      "type": "object"
+    },
+    "ContactDTO": {
+      "required": [
+        "ContactType",
+        "Value"
+      ],
+      "properties": {
+        "ContactType": {
+          "type": "string"
+        },
+        "Value": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "ContactDTO"
+      },
+      "type": "object"
+    },
+    "OpenDTO": {
+      "required": [
+        "From",
+        "To"
+      ],
+      "properties": {
+        "From": {
+          "type": "string"
+        },
+        "To": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "OpenDTO"
+      },
+      "type": "object"
+    },
+    "SearchModel": {
+      "required": [
+        "CountryCode"
+      ],
+      "properties": {
+        "CountryCode": {
+          "type": "string"
+        },
+        "PostalCode": {
+          "type": "string"
+        },
+        "StreetAddress": {
+          "type": "string"
+        },
+        "City": {
+          "type": "string"
+        },
+        "Amount": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "xml": {
+        "name": "SearchModel"
+      },
+      "type": "object"
+    },
+    "ServicePointDTO": {
+      "required": [
+        "Name",
+        "Addresses",
+        "GeoPoint",
+        "OpeningDays",
+        "Services",
+        "References"
+      ],
+      "properties": {
+        "Name": {
+          "type": "string"
+        },
+        "DeliveryType": {
+          "type": "string"
+        },
+        "Addresses": {
+          "items": {
+            "$ref": "#/definitions/AddressDTO"
+          },
+          "xml": {
+            "name": "AddressDTO",
+            "wrapped": true
+          },
+          "type": "array"
+        },
+        "GeoPoint": {
+          "$ref": "#/definitions/GeoPointDTO"
+        },
+        "OpeningHoursShort": {
+          "type": "string"
+        },
+        "OpeningHoursRow1": {
+          "type": "string"
+        },
+        "OpeningHoursRow2": {
+          "type": "string"
+        },
+        "OpeningHoursRow3": {
+          "type": "string"
+        },
+        "OpeningDays": {
+          "items": {
+            "$ref": "#/definitions/WeekdayDTO"
+          },
+          "xml": {
+            "name": "WeekdayDTO",
+            "wrapped": true
+          },
+          "type": "array"
+        },
+        "Services": {
+          "items": {
+            "$ref": "#/definitions/ServiceDTO"
+          },
+          "xml": {
+            "name": "ServiceDTO",
+            "wrapped": true
+          },
+          "type": "array"
+        },
+        "References": {
+          "items": {
+            "$ref": "#/definitions/ReferenceDTO"
+          },
+          "xml": {
+            "name": "ReferenceDTO",
+            "wrapped": true
+          },
+          "type": "array"
+        },
+        "DeliveryData": {
+          "items": {
+            "$ref": "#/definitions/DeliveryDataDTO"
+          },
+          "xml": {
+            "name": "DeliveryDataDTO",
+            "wrapped": true
+          },
+          "type": "array"
+        },
+        "Distance": {
+          "type": "string"
+        },
+        "ProviderAddon": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "ServicePointDTO"
+      },
+      "type": "object"
+    },
+    "BoxDto": {
+      "description": "A object for a specific box location.",
+      "properties": {
+        "Name": {
+          "description": "Gets or sets delivery box name.",
+          "type": "string"
+        },
+        "AddressId": {
+          "description": "Gets or sets AddressId.",
+          "type": "string"
+        },
+        "Address": {
+          "$ref": "#/definitions/BoxAddressDto",
+          "description": "Gets or sets Address."
+        },
+        "ProviderAddon": {
+          "description": "Get or sets ProviderAddon.",
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "BoxDto"
+      },
+      "type": "object"
+    },
+    "BoxAddressDto": {
+      "description": "BoxAddressDto.",
+      "properties": {
+        "Name": {
+          "description": "Gets or sets delivery box name.",
+          "type": "string"
+        },
+        "AddressLine1": {
+          "description": "Gets or sets AddressLine1.",
+          "type": "string"
+        },
+        "AddressLine2": {
+          "description": "Gets or sets AddressLine2.",
+          "type": "string"
+        },
+        "City": {
+          "description": "Gets or sets City.",
+          "type": "string"
+        },
+        "PostalCode": {
+          "description": "Gets or sets PostalCode.",
+          "type": "string"
+        },
+        "CountryCode": {
+          "description": "Gets or sets CountryCode.",
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "BoxAddressDto"
+      },
+      "type": "object"
+    },
+    "GetNearestBoxesSearchModel": {
+      "description": "GetNearestIboxesSearchModel.",
+      "properties": {
+        "City": {
+          "description": "Gets or sets City.",
+          "type": "string"
+        },
+        "StreetAddress": {
+          "description": "Gets or sets StreetAddress.",
+          "type": "string"
+        },
+        "PostalCode": {
+          "description": "Gets or sets PostalCode.",
+          "type": "string"
+        },
+        "LocationMaxDistance": {
+          "description": "Gets or sets LocationMaxDistance.",
+          "type": "string"
+        },
+        "LocationsMaxQty": {
+          "description": "Gets or sets LocationsMaxQty.",
+          "type": "string"
+        },
+        "RequiresLowBox": {
+          "description": "Gets or sets a value indicating whether low box is required.",
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "GetNearestBoxesSearchModel"
+      },
+      "type": "object"
+    }
+  },
+  "securityDefinitions": {
+    "basic": {
+      "type": "basic",
+      "description": "Basic HTTP Authentication"
+    }
+  },
+  "tags": [
+    {
+      "name": "DeliveryPoint3",
+      "description": "Responsible for all Web API functions related to Service Points"
+    }
+  ]
+}

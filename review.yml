@@ -1,0 +1,418 @@
+aid: db-schenker
+name: DB Schenker
+review:
+  question: >-
+    Does DB Schenker publish an API surface a counterparty in the supply chain can
+    actually speak to, and does it conform to any logistics industry standard?
+  answer: partial
+  date: '2026-07-30'
+  reviewer: API Evangelist
+  tier: freight-forwarder
+  cohort: freight-platforms
+  homeCountry: Germany
+findings:
+  summary: |
+    DB Schenker (Schenker AG, Essen, Germany) is a top-tier global freight forwarder
+    and contract logistics provider. It is also, as of this review, a company in the
+    middle of being absorbed: Deutsche Bahn's sale of DB Schenker to DSV A/S completed
+    30 April 2025, and the API estate is visibly mid-migration.
+
+    The global developer portal is DEAD. https://api-portal.dbschenker.com/ answers
+    HTTP 410 Gone (body: "410 Gone", server awselb/2.0) at the root and at every path
+    probed, including /openapi.json, /swagger.json and /api. 410 rather than 404 is an
+    explicit sunset signal, not a misconfiguration.
+
+    The corporate web estate is gone too. https://www.dbschenker.com/ returns 200 but
+    the effective URL is https://www.dsv.com/en with title "Global Transport and
+    Logistics | DSV". connect.dbschenker.com, eschenker.dbschenker.com,
+    schenker.com, www.schenker.se, www.dbschenker.se and www.dbschenker.fi all
+    301 to dsv.com. help.eschenker.dbschenker.com still serves, but the content is
+    now branded "myDSV Online Help". The former Schenker AS Norway developer portal
+    at developer.logisticstechnology.no is live and still carries "DB Schenker APIs"
+    in its page title, but its footer reads "2026 (c) DSV Road AS" — it is a DSV
+    property now and its APIs are NOT attributed to DB Schenker in this profile.
+
+    One DB Schenker-branded, machine-readable API surface survives and was harvested:
+    the Nordic parcel "Partner services API" at
+    https://parcelservices-se.dbschenker.com/Apipartner. It is a Swashbuckle-style
+    ASP.NET Web API with a public Swagger UI exposing four discovery paths
+    (swagger/docs/V1..V4). All four Swagger 2.0 documents were fetched and parse
+    cleanly. This is the legacy Privpak / Schenker AB (Sweden) parcel network, not
+    the global forwarding business — there is no reachable published contract for
+    ocean, air or contract-logistics booking under a dbschenker.com host.
+
+    Three interface-documentation PDFs are still served from the dbschenker.com CDN
+    (resource/blob paths) and are the human counterpart to the Swagger: a parcel
+    track-and-trace doc, the Parcelbox-API doc (spec version 1.3.0), and the
+    CollectionPoint-API doc (spec version 4.2.0, dated 2025-04-23). The CollectionPoint
+    PDF is what pointed at the live Swagger host.
+  acquisitionContext:
+    acquirer: DSV A/S
+    completed: '2025-04-30'
+    seller: Deutsche Bahn AG
+    rebrandTargetReported: 2027
+    evidence:
+    - https://www.dsv.com/en/about-dsv/press/news/com/2025/04/dsv-completes-acquisition-of-schenker
+    - https://www.deutschebahn.com/en/presse/press_releases/Deutsche-Bahn-completes-sale-of-logistics-subsidiary-DB-Schenker-to-DSV-13370926
+    note: >-
+      Every dbschenker.com marketing host now 301s to dsv.com; the API estate is
+      being retired host by host. This profile records DB Schenker as it is
+      reachable on 2026-07-30, not as it was.
+interoperability:
+  standardConformance:
+    result: no standard reference found
+    detail: >-
+      No DCSA (booking, track-and-trace, eBL), IATA ONE Record, IATA Cargo-XML,
+      GS1 EPCIS, GS1 Digital Link, UN/CEFACT MMT RDM, WCO Data Model, eFTI or
+      MLETR/eBL reference appears anywhere in the four harvested Swagger documents,
+      in the three interface-documentation PDFs, or on any reachable dbschenker.com
+      host. The word "EDI" appears only as a proprietary operation name (see
+      ediLegacy below), never as a message-standard reference.
+    versionsNamed:
+    - standard: none
+      version: n/a
+    proprietaryVersionsPublished:
+    - Partner services API V1 / V2 / V3 / V4 (info.version "V1".."V4", Swagger 2.0)
+    - Parcelbox-API specification version 1.3.0 (Schenker AB, Sweden)
+    - CollectionPoint-API specification version 4.2.0 (Schenker AB, Sweden, 2025-04-23)
+    - mySCHENKER Web Service 3.0 (DB Schenker Finland, referenced in the CollectionPoint
+      PDF as the recommended Finnish solution; no reachable contract found)
+    thirdPartyClaimNotVerified: >-
+      Trade press reports DB Schenker participated in IATA ONE Record pilot work via
+      the Digital Testbed Air Cargo project with Lufthansa, Frankfurt Airport and
+      Munich Airport. No ONE Record endpoint, data model reference or conformance
+      statement was found on any DB Schenker host, so this is recorded as an
+      unverified third-party claim, not as conformance.
+    evidence:
+    - url: https://parcelservices-se.dbschenker.com/Apipartner/swagger/docs/V4
+      status: 200
+      note: Swagger 2.0; no standards vocabulary in paths, definitions or info.
+    - url: https://www.dbschenker.com/resource/blob/488786/f0364447f37034a10f72e0768fc110ef/collectionpointinfo-data.pdf
+      status: 200
+      note: CollectionPoint-API 4.2.0; proprietary DeliveryPoint methods only.
+  interfaceShape:
+    value: proprietary-documented
+    detail: >-
+      The contract is documented, versioned, machine-readable and publicly fetchable,
+      but nothing about it is shared with any other party in the chain. DeliveryPoint,
+      GetNearestBoxes, SortingCode, print-code and RegisterEdi are Schenker-shaped
+      operations over Schenker-shaped DTOs (ServicePointDTO, ParcelDTO, ShipmentDTO,
+      CollectorDTO, MeasureDTO, CodDTO, TrackingEventDTO). A shipper integrating here
+      writes an integration that works with DB Schenker Sweden and nothing else.
+  identifierScheme:
+    value: >-
+      Carrier-private parcel and shipment identifiers plus generic geography codes;
+      no cross-party logistics identifier scheme found.
+    found:
+    - name: shipment number
+      where: GET /print-code/v1 (shipmentNumber), /print-code/v1/image
+      note: Opaque Schenker shipment key.
+    - name: colli ID / barcode
+      where: /print-code/v1 (colliId), /TrackAndTraceBoxes/v1/GetParcel (referenceType=BARCODE)
+      note: >-
+        The spec names only "Barcode/colli ID" and referenceType [BARCODE]. No GS1
+        SSCC, GTIN, GLN or SGTIN encoding is claimed anywhere, so none is recorded.
+    - name: parcel ID / package ID
+      where: legacy privpakportal.schenker.nu/TrackAndTrace/packagexml.aspx?packageid=
+      note: Documented in the Schenker AB parcel-search PDF; host no longer resolves.
+    - name: four-digit service point number
+      where: GET /DeliveryPoint/v2/GetServicePoint (servicePointNumber)
+    - name: terminal code
+      where: GET /DeliveryPoint/v4/GetTerminal
+    - name: Box ID and Box ProviderAddon
+      where: GET /DeliveryPoint/v3/GetBox
+    - name: ISO country code
+      where: countryCode query/path parameter on nearly every operation
+    - name: postal codes (sender and receiver) and product code
+      where: POST /SortingCode/v1/GetSortingCode
+    notFound:
+    - BIC/ISO 6346 container numbers
+    - bill of lading numbers
+    - UN/LOCODE
+    - IMO vessel numbers
+    - air waybill (AWB) numbers / IATA airline prefixes
+    - GS1 GTIN / SSCC / GLN / SGTIN
+    - DUNS
+    - EORI and HS tariff codes
+    - SCAC
+    - VIN
+  eventModel:
+    value: polling-only
+    detail: >-
+      Track-and-trace is a synchronous GET. GET /TrackAndTraceAdvanced/v2/GetParcel
+      and GET /TrackAndTraceBoxes/v1/GetParcel return a ParcelWithEventDTO carrying an
+      Events array of TrackingEventDTO. There is no webhook, subscription, callback,
+      notification or AsyncAPI operation in any of the four harvested documents, and
+      no published event-type catalogue or event vocabulary. The CollectionPoint and
+      Parcelbox docs go further in the opposite direction and mandate scheduled
+      re-polling: collection point data must be refreshed at least every 12 hours,
+      parcel box data daily.
+    subscriptionOperationCited: none — no webhook or subscription operation exists
+    contrast: >-
+      The successor DSV Road AS portal at developer.logisticstechnology.no DOES publish
+      an Event API with webhook management (GET/POST /v1/Webhooks,
+      GET/DELETE /v1/Webhooks/{webhookId}, POST /v1/Webhooks/{webhookId}/Test,
+      GET /v1/EventTypes) on eventapi.logisticstechnology.no. That is a DSV surface,
+      not a DB Schenker one, and is recorded here only to show where the capability
+      moved.
+  ediLegacy:
+    value: >-
+      EDI in name only on the REST surface — proprietary JSON "RegisterEdi" endpoints,
+      not EDIFACT or X12; no VAN or AS2 onboarding referenced on any reachable host.
+    detail: >-
+      POST /Edi/v1/RegisterEdi/{countryCode} and POST /Edi/v1/RegisterReturnEdi/{countryCode}
+      are described as "Creates an EDI-Shipment in our system. This is needed for all
+      parcels that are sent with Privpak." The request bodies are ShipmentDTO and
+      ReturnShipmentDTO — ordinary JSON objects with Addresses, Collectors, References,
+      Measures and Cod. That is the historic Privpak EDI pre-advice flow re-fronted as
+      REST, not an EDIFACT IFTMIN/IFTSTA or ANSI X12 204/214 message set. Separately,
+      the eSchenker platform's documented integration path was XML or other file types
+      pushed into eSchenker via Web Services, subscribed through the "Usage Registration"
+      eService with a Schenker administrator provisioning an Access Key — a
+      file-and-key pattern, again not a standard message set. No mention of a VAN, an
+      AS2 connection, or an EDI mapping project was found on any reachable DB Schenker
+      host.
+  multiPartyPosture:
+    value: >-
+      Contracted-customer and TA/checkout-integrator only; DB Schenker publishes
+      downward to its own shippers, and nothing it publishes is consumable by another
+      carrier or forwarder.
+    detail: >-
+      Every operation on parcelservices-se.dbschenker.com returned 401 when called
+      without credentials (verified 2026-07-30 on
+      /DeliveryPoint/v4/GetAllServicePoints?countryCode=SE and
+      /TrackAndTraceAdvanced/v2/GetParcel). The successor DSV Sweden API page
+      (https://www.dsv.com/sv-se/digitala-losningar/dsv-api/api-sverige, where
+      www.schenker.se/api now lands) states the e-services "kräver behörighet eftersom
+      de baseras på ditt unika kundavtal" — require authorization because they are based
+      on your unique customer agreement — and routes applicants to an authorization
+      request form. The realistic caller is not a developer but the shipper's TA
+      (transport administration) or ERP system, or an e-commerce checkout integrator
+      acting for a contracted customer; the PDFs point at a curated list of such system
+      providers at www.schenker.se/ta-system. There is no public partner or
+      marketplace directory of pre-built integrations under a dbschenker.com host.
+      As a forwarder DB Schenker does resell downstream what it obtained from carriers
+      it does not own — the parcel event history in TrackingEventDTO is network data it
+      republishes — but it does not publish anything a carrier or another forwarder
+      could consume in return.
+  accessGate:
+    value: customer-account-required
+    whatADeveloperMustDo: >-
+      1) Become a contracted DB Schenker (now DSV) transport customer in the relevant
+      country — the credentials are issued against a customer agreement, not a signup.
+      2) Submit an authorization request ("behörighetsansökan") for the specific
+      e-service; a Schenker/DSV administrator provisions it.
+      3) Receive HTTP Basic credentials and send them on every call; the Swagger
+      securityDefinitions block declares exactly one scheme, {"basic": {"type": "basic"}}.
+      4) For the eSchenker path instead, subscribe via the Usage Registration eService
+      and have an administrator generate an Access Key to embed in submitted files.
+      No self-serve signup, no free tier, no sandbox key, no rate-limit or plan
+      documentation is published. A staging host
+      (staging-parcelservices-se.dbschenker.com) exists and serves the same Swagger UI,
+      but credentials for it are provisioned the same way.
+  oceanDcsaMembershipVsPublication:
+    dcsaMembership: >-
+      DCSA membership is carrier-side (ocean carriers), and DB Schenker is a forwarder,
+      not a vessel operator — no DCSA membership is claimed by or for DB Schenker, and
+      none was found.
+    dcsaPublication: >-
+      None. No DCSA-conformant booking, track-and-trace or eBL endpoint exists on any
+      reachable DB Schenker host. There is no ocean-freight API contract at all under
+      dbschenker.com; the surviving surface is Nordic parcel only.
+  headline: >-
+    A global top-tier forwarder whose only reachable machine-readable contract in
+    July 2026 is a country-level parcel API for Sweden — four proprietary Swagger 2.0
+    documents behind HTTP Basic and a signed transport agreement, with the global
+    developer portal answering 410 Gone and the corporate domain redirecting to its
+    acquirer. The forwarder tier's intermediation position is visible in the data:
+    it republishes carrier events downward to contracted shippers and publishes
+    nothing any counterparty could speak back to it.
+probes:
+- url: https://www.dbschenker.com/
+  status: 200
+  date: '2026-07-30'
+  note: Effective URL https://www.dsv.com/en — title "Global Transport and Logistics | DSV".
+- url: https://api-portal.dbschenker.com/
+  status: 410
+  date: '2026-07-30'
+  note: 'Body: "410 Gone". Global DB Schenker API portal explicitly sunset.'
+- url: https://api-portal.dbschenker.com/openapi.json
+  status: 410
+  date: '2026-07-30'
+- url: https://api-portal.dbschenker.com/swagger.json
+  status: 410
+  date: '2026-07-30'
+- url: https://api-portal.dbschenker.com/api
+  status: 410
+  date: '2026-07-30'
+- url: https://developer.dbschenker.com/
+  status: 0
+  date: '2026-07-30'
+  note: Does not resolve.
+- url: https://developers.dbschenker.com/
+  status: 0
+  date: '2026-07-30'
+  note: Does not resolve.
+- url: https://docs.dbschenker.com/
+  status: 0
+  date: '2026-07-30'
+  note: Does not resolve.
+- url: https://api.dbschenker.com/
+  status: 404
+  date: '2026-07-30'
+  note: Host resolves, no content.
+- url: https://api.dbschenker.com/openapi.json
+  status: 404
+  date: '2026-07-30'
+- url: https://api.dbschenker.com/swagger.json
+  status: 404
+  date: '2026-07-30'
+- url: https://api.dbschenker.com/.well-known/
+  status: 404
+  date: '2026-07-30'
+- url: https://www.dbschenker.com/robots.txt
+  status: 404
+  date: '2026-07-30'
+- url: https://connect.dbschenker.com/
+  status: 200
+  date: '2026-07-30'
+  note: Redirects to https://www.dsv.com/en/?utm_source=schenker&utm_medium=301
+- url: https://eschenker.dbschenker.com/
+  status: 200
+  date: '2026-07-30'
+  note: Redirects to https://www.dsv.com/mydsv/dashboard — customer login, not a developer portal.
+- url: https://help.eschenker.dbschenker.com/helpsystem/content/
+  status: 200
+  date: '2026-07-30'
+  note: Live, but content is now branded "myDSV Online Help".
+- url: https://www.schenker.se/api
+  status: 200
+  date: '2026-07-30'
+  note: Redirects to https://www.dsv.com/sv-se/digitala-losningar/dsv-api/api-sverige
+- url: https://parcelservices-se.dbschenker.com/Apipartner/Help
+  status: 200
+  date: '2026-07-30'
+  note: Live DB Schenker-branded API help page ("Partner API Swagger").
+- url: https://parcelservices-se.dbschenker.com/Apipartner/swagger/ui/index
+  status: 200
+  date: '2026-07-30'
+  note: 'Swagger UI; discoveryPaths: swagger/docs/V4|V3|V2|V1.'
+- url: https://parcelservices-se.dbschenker.com/Apipartner/swagger/docs/V1
+  status: 200
+  date: '2026-07-30'
+  note: Swagger 2.0, 9 paths, parses. HARVESTED.
+- url: https://parcelservices-se.dbschenker.com/Apipartner/swagger/docs/V2
+  status: 200
+  date: '2026-07-30'
+  note: Swagger 2.0, 4 paths, parses. HARVESTED.
+- url: https://parcelservices-se.dbschenker.com/Apipartner/swagger/docs/V3
+  status: 200
+  date: '2026-07-30'
+  note: Swagger 2.0, 6 paths, parses. HARVESTED.
+- url: https://parcelservices-se.dbschenker.com/Apipartner/swagger/docs/V4
+  status: 200
+  date: '2026-07-30'
+  note: Swagger 2.0, 6 paths, parses. HARVESTED.
+- url: https://parcelservices-se.dbschenker.com/Apipartner/swagger/v1/swagger.json
+  status: 404
+  date: '2026-07-30'
+- url: https://staging-parcelservices-se.dbschenker.com/Apipartner/swagger/docs/v1
+  status: 200
+  date: '2026-07-30'
+  note: Staging host serves the same document set.
+- url: https://parcelservices-se.dbschenker.com/Apipartner/DeliveryPoint/v4/GetAllServicePoints?countryCode=SE
+  status: 401
+  date: '2026-07-30'
+  note: Unauthenticated call rejected — HTTP Basic required.
+- url: https://parcelservices-se.dbschenker.com/Apipartner/TrackAndTraceAdvanced/v2/GetParcel?countryCode=SE&referenceType=BARCODE&reference=0011111122223
+  status: 401
+  date: '2026-07-30'
+  note: Unauthenticated call rejected — HTTP Basic required.
+- url: https://parcelservices-se.dbschenker.com/Utils/PartnerServices/ParcelServicesExamples.zip
+  status: 200
+  date: '2026-07-30'
+  note: 12,659-byte sample-code zip linked from every Swagger info.description.
+- url: https://www.dbschenker.com/resource/blob/488782/4dd6a5822abef794b803615c81a8725b/api-tracking-data.pdf
+  status: 200
+  date: '2026-07-30'
+  note: 'Schenker AB "Interface documentation Parcel search"; documents legacy
+    privpakportal.schenker.nu XML track-and-trace.'
+- url: https://www.dbschenker.com/resource/blob/837402/4a1ecfc7c167ca6fe2b1d676f41c9f2d/parcelbox-api-data.pdf
+  status: 200
+  date: '2026-07-30'
+  note: Parcelbox-API documentation, Schenker AB Sweden, specification version 1.3.0.
+- url: https://www.dbschenker.com/resource/blob/488786/f0364447f37034a10f72e0768fc110ef/collectionpointinfo-data.pdf
+  status: 200
+  date: '2026-07-30'
+  note: CollectionPoint-API documentation, spec version 4.2.0, dated 2025-04-23.
+- url: http://privpakportal.schenker.nu/TrackAndTrace/packagexml.aspx
+  status: 404
+  date: '2026-07-30'
+  note: Legacy parcel-search web service documented in the PDF no longer answers.
+- url: https://developer.logisticstechnology.no/
+  status: 200
+  date: '2026-07-30'
+  note: >-
+    Page title still says "DB Schenker APIs" but the footer reads "2026 (c) DSV Road AS".
+    13 APIs listed (Booking, Price, Schedule, Label, Invoice, Product, Tracking,
+    Terminal, Shipment, PostalCodes, Pickup Points, Event, Customs) plus an /api/edi/
+    section. No downloadable OpenAPI found (swagger.json, swagger/v1/swagger.json and
+    openapi.json all 404). Treated as a DSV property, NOT attributed to DB Schenker.
+- url: https://api.github.com/orgs/dbschenker
+  status: 200
+  date: '2026-07-30'
+  note: >-
+    Org "dbschenker" (display name "Schenker"), 8 public repos, still active
+    (vaultpal updated 2026-07-20). All internal platform tooling in Go/Python —
+    no API specifications or SDKs.
+harvest:
+  specsHarvested: 4
+  format: Swagger 2.0 (OpenAPI 2.0)
+  savedVerbatim: true
+  files:
+  - path: openapi/db-schenker-partner-services-v1-swagger.json
+    source: https://parcelservices-se.dbschenker.com/Apipartner/swagger/docs/V1
+    status: 200
+    fetched: '2026-07-30'
+    paths: 9
+    parses: true
+  - path: openapi/db-schenker-partner-services-v2-swagger.json
+    source: https://parcelservices-se.dbschenker.com/Apipartner/swagger/docs/V2
+    status: 200
+    fetched: '2026-07-30'
+    paths: 4
+    parses: true
+  - path: openapi/db-schenker-partner-services-v3-swagger.json
+    source: https://parcelservices-se.dbschenker.com/Apipartner/swagger/docs/V3
+    status: 200
+    fetched: '2026-07-30'
+    paths: 6
+    parses: true
+  - path: openapi/db-schenker-partner-services-v4-swagger.json
+    source: https://parcelservices-se.dbschenker.com/Apipartner/swagger/docs/V4
+    status: 200
+    fetched: '2026-07-30'
+    paths: 6
+    parses: true
+  totalOperations: 25
+  authScheme: HTTP Basic (securityDefinitions.basic)
+  schemes:
+  - https
+sources:
+- url: https://parcelservices-se.dbschenker.com/Apipartner/swagger/ui/index
+  type: APIReference
+  note: The only reachable DB Schenker-branded machine-readable API surface.
+- url: https://www.dsv.com/en/about-dsv/press/news/com/2025/04/dsv-completes-acquisition-of-schenker
+  type: PressRelease
+  note: DSV completed the acquisition of Schenker on 30 April 2025.
+- url: https://www.deutschebahn.com/en/presse/press_releases/Deutsche-Bahn-completes-sale-of-logistics-subsidiary-DB-Schenker-to-DSV-13370926
+  type: PressRelease
+  note: Seller-side confirmation of the same transaction.
+- url: https://www.dsv.com/sv-se/digitala-losningar/dsv-api/api-sverige
+  type: Documentation
+  note: >-
+    Successor landing page for www.schenker.se/api; confirms access is granted against
+    a unique customer agreement via an authorization request, not self-serve.
+- url: https://developer.logisticstechnology.no/
+  type: Documentation
+  note: Successor DSV Road AS portal, carrying the webhook/Event API capability.
