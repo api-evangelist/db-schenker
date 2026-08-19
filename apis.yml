@@ -34,7 +34,7 @@ tags:
 - EDI
 created: '2026-07-30'
 modified: '2026-07-30'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: db-schenker:db-schenker-partner-services-api-v1
   name: DB Schenker Partner Services API V1
