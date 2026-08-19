@@ -1,0 +1,2710 @@
+{
+  "item": [
+    {
+      "id": "5b34f500-7be2-43fb-a3b7-ce7d5d756862",
+      "name": "DeliveryPoint",
+      "description": {
+        "content": "Responsible for all Web API functions related to Service Points",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f05724e0-dd39-498f-ab25-272d1622a965",
+          "name": "Get all Existing Servicepoints for a specified country.",
+          "request": {
+            "name": "Get all Existing Servicepoints for a specified country.",
+            "description": {},
+            "url": {
+              "path": [
+                "DeliveryPoint",
+                "v1",
+                "GetAllServicePoints"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "countryCode",
+                  "value": "<string>",
+                  "description": "(Required) Countycode for specified country"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1fc50dde-3ce1-4f73-a86f-236017b48f7d",
+              "name": "Service Points found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DeliveryPoint",
+                    "v1",
+                    "GetAllServicePoints"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "countryCode",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"Name\": \"string\",\n    \"Addresses\": [\n      {\n        \"AddressType\": \"<string>\",\n        \"AddressId\": \"<string>\",\n        \"MailingAddress\": {\n          \"Name\": \"<string>\",\n          \"AddressLine1\": \"<string>\",\n          \"City\": \"<string>\",\n          \"PostalCode\": \"<string>\",\n          \"CoAddress\": \"<string>\",\n          \"AddressLine2\": \"<string>\",\n          \"CountryCode\": \"<string>\"\n        },\n        \"Contacts\": [\n          {\n            \"ContactType\": \"string\",\n            \"Value\": \"string\"\n          },\n          {\n            \"ContactType\": \"string\",\n            \"Value\": \"string\"\n          }\n        ]\n      },\n      {\n        \"AddressType\": \"<string>\",\n        \"AddressId\": \"<string>\",\n        \"MailingAddress\": {\n          \"Name\": \"<string>\",\n          \"AddressLine1\": \"<string>\",\n          \"City\": \"<string>\",\n          \"PostalCode\": \"<string>\",\n          \"CoAddress\": \"<string>\",\n          \"AddressLine2\": \"<string>\",\n          \"CountryCode\": \"<string>\"\n        },\n        \"Contacts\": [\n          {\n            \"ContactType\": \"string\",\n            \"Value\": \"string\"\n          },\n          {\n            \"ContactType\": \"string\",\n            \"Value\": \"string\"\n          }\n        ]\n      }\n    ],\n    \"GeoPoint\": {\n      \"Latitude\": \"string\",\n      \"Longitude\": \"string\"\n    },\n    \"OpeningDays\": [\n      {\n        \"Day\": \"string\",\n        \"DisplayName\": \"string\",\n        \"OpeningHours\": [\n          {\n            \"From\": \"string\",\n            \"To\": \"string\"\n          },\n          {\n            \"From\": \"string\",\n            \"To\": \"string\"\n          }\n        ]\n      },\n      {\n        \"Day\": \"string\",\n        \"DisplayName\": \"string\",\n        \"OpeningHours\": [\n          {\n            \"From\": \"string\",\n            \"To\": \"string\"\n          },\n          {\n            \"From\": \"string\",\n            \"To\": \"string\"\n          }\n        ]\n      }\n    ],\n    \"Services\": [\n      {\n        \"ServiceType\": \"string\",\n        \"DisplayName\": \"string\"\n      },\n      {\n        \"ServiceType\": \"string\",\n        \"DisplayName\": \"string\"\n      }\n    ],\n    \"References\": [\n      {\n        \"ReferenceType\": \"<string>\",\n        \"Value\": \"<string>\"\n      },\n      {\n        \"ReferenceType\": \"<string>\",\n        \"Value\": \"<string>\"\n      }\n    ],\n    \"DeliveryType\": \"string\",\n    \"OpeningHoursShort\": \"string\",\n    \"OpeningHoursRow1\": \"string\",\n    \"OpeningHoursRow2\": \"string\",\n    \"OpeningHoursRow3\": \"string\",\n    \"DeliveryData\": [\n      {\n        \"DataType\": \"string\",\n        \"Value\": \"string\"\n      },\n      {\n        \"DataType\": \"string\",\n        \"Value\": \"string\"\n      }\n    ],\n    \"Distance\": \"string\",\n    \"ProviderAddon\": \"string\"\n  },\n  {\n    \"Name\": \"string\",\n    \"Addresses\": [\n      {\n        \"AddressType\": \"<string>\",\n        \"AddressId\": \"<string>\",\n        \"MailingAddress\": {\n          \"Name\": \"<string>\",\n          \"AddressLine1\": \"<string>\",\n          \"City\": \"<string>\",\n          \"PostalCode\": \"<string>\",\n          \"CoAddress\": \"<string>\",\n          \"AddressLine2\": \"<string>\",\n          \"CountryCode\": \"<string>\"\n        },\n        \"Contacts\": [\n          {\n            \"ContactType\": \"string\",\n            \"Value\": \"string\"\n          },\n          {\n            \"ContactType\": \"string\",\n            \"Value\": \"string\"\n          }\n        ]\n      },\n      {\n        \"AddressType\": \"<string>\",\n        \"AddressId\": \"<string>\",\n        \"MailingAddress\": {\n          \"Name\": \"<string>\",\n          \"AddressLine1\": \"<string>\",\n          \"City\": \"<string>\",\n          \"PostalCode\": \"<string>\",\n          \"CoAddress\": \"<string>\",\n          \"AddressLine2\": \"<string>\",\n          \"CountryCode\": \"<string>\"\n        },\n        \"Contacts\": [\n          {\n            \"ContactType\": \"string\",\n            \"Value\": \"string\"\n          },\n          {\n            \"ContactType\": \"string\",\n            \"Value\": \"string\"\n          }\n        ]\n      }\n    ],\n    \"GeoPoint\": {\n      \"Latitude\": \"string\",\n      \"Longitude\": \"string\"\n    },\n    \"OpeningDays\": [\n      {\n        \"Day\": \"string\",\n        \"DisplayName\": \"string\",\n        \"OpeningHours\": [\n          {\n            \"From\": \"string\",\n            \"To\": \"string\"\n          },\n          {\n            \"From\": \"string\",\n            \"To\": \"string\"\n          }\n        ]\n      },\n      {\n        \"Day\": \"string\",\n        \"DisplayName\": \"string\",\n        \"OpeningHours\": [\n          {\n            \"From\": \"string\",\n            \"To\": \"string\"\n          },\n          {\n            \"From\": \"string\",\n            \"To\": \"string\"\n          }\n        ]\n      }\n    ],\n    \"Services\": [\n      {\n        \"ServiceType\": \"string\",\n        \"DisplayName\": \"string\"\n      },\n      {\n        \"ServiceType\": \"string\",\n        \"DisplayName\": \"string\"\n      }\n    ],\n    \"References\": [\n      {\n        \"ReferenceType\": \"<string>\",\n        \"Value\": \"<string>\"\n      },\n      {\n        \"ReferenceType\": \"<string>\",\n        \"Value\": \"<string>\"\n      }\n    ],\n    \"DeliveryType\": \"string\",\n    \"OpeningHoursShort\": \"string\",\n    \"OpeningHoursRow1\": \"string\",\n    \"OpeningHoursRow2\": \"string\",\n    \"OpeningHoursRow3\": \"string\",\n    \"DeliveryData\": [\n      {\n        \"DataType\": \"string\",\n        \"Value\": \"string\"\n      },\n      {\n        \"DataType\": \"string\",\n        \"Value\": \"string\"\n      }\n    ],\n    \"Distance\": \"string\",\n    \"ProviderAddon\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "734a3d0a-8758-4771-babd-7ecdb0f29de5",
+              "name": "No service points found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DeliveryPoint",
+                    "v1",
+                    "GetAllServicePoints"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "countryCode",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d4847c12-ff49-4bda-9a6d-9365d9fbdfb3",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DeliveryPoint",
+                    "v1",
+                    "GetAllServicePoints"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "countryCode",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bf1b6582-a93d-457f-a7d5-c80521b584d1",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DeliveryPoint",
+                    "v1",
+                    "GetAllServicePoints"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "countryCode",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e404c627-aa56-47c6-854d-26e8a292140c",
+          "name": "Gives you a list of the Servicepoints nearest to the specified location.",
+          "request": {
+            "name": "Gives you a list of the Servicepoints nearest to the specified location.",
+            "description": {},
+            "url": {
+              "path": [
+                "DeliveryPoint",
+                "v1",
+                "GetNearestServicePoint"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "CountryCode",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "PostalCode",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "StreetAddress",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "City",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "Amount",
+                  "value": "<integer>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8b01829b-a282-4478-80af-fd45f95829bf",
+              "name": "Service Points found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DeliveryPoint",
+                    "v1",
+                    "GetNearestServicePoint"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "CountryCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "PostalCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "StreetAddress",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "City",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "Amount",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"Name\": \"string\",\n    \"Addresses\": [\n      {\n        \"AddressType\": \"<string>\",\n        \"AddressId\": \"<string>\",\n        \"MailingAddress\": {\n          \"Name\": \"<string>\",\n          \"AddressLine1\": \"<string>\",\n          \"City\": \"<string>\",\n          \"PostalCode\": \"<string>\",\n          \"CoAddress\": \"<string>\",\n          \"AddressLine2\": \"<string>\",\n          \"CountryCode\": \"<string>\"\n        },\n        \"Contacts\": [\n          {\n            \"ContactType\": \"string\",\n            \"Value\": \"string\"\n          },\n          {\n            \"ContactType\": \"string\",\n            \"Value\": \"string\"\n          }\n        ]\n      },\n      {\n        \"AddressType\": \"<string>\",\n        \"AddressId\": \"<string>\",\n        \"MailingAddress\": {\n          \"Name\": \"<string>\",\n          \"AddressLine1\": \"<string>\",\n          \"City\": \"<string>\",\n          \"PostalCode\": \"<string>\",\n          \"CoAddress\": \"<string>\",\n          \"AddressLine2\": \"<string>\",\n          \"CountryCode\": \"<string>\"\n        },\n        \"Contacts\": [\n          {\n            \"ContactType\": \"string\",\n            \"Value\": \"string\"\n          },\n          {\n            \"ContactType\": \"string\",\n            \"Value\": \"string\"\n          }\n        ]\n      }\n    ],\n    \"GeoPoint\": {\n      \"Latitude\": \"string\",\n      \"Longitude\": \"string\"\n    },\n    \"OpeningDays\": [\n      {\n        \"Day\": \"string\",\n        \"DisplayName\": \"string\",\n        \"OpeningHours\": [\n          {\n            \"From\": \"string\",\n            \"To\": \"string\"\n          },\n          {\n            \"From\": \"string\",\n            \"To\": \"string\"\n          }\n        ]\n      },\n      {\n        \"Day\": \"string\",\n        \"DisplayName\": \"string\",\n        \"OpeningHours\": [\n          {\n            \"From\": \"string\",\n            \"To\": \"string\"\n          },\n          {\n            \"From\": \"string\",\n            \"To\": \"string\"\n          }\n        ]\n      }\n    ],\n    \"Services\": [\n      {\n        \"ServiceType\": \"string\",\n        \"DisplayName\": \"string\"\n      },\n      {\n        \"ServiceType\": \"string\",\n        \"DisplayName\": \"string\"\n      }\n    ],\n    \"References\": [\n      {\n        \"ReferenceType\": \"<string>\",\n        \"Value\": \"<string>\"\n      },\n      {\n        \"ReferenceType\": \"<string>\",\n        \"Value\": \"<string>\"\n      }\n    ],\n    \"DeliveryType\": \"string\",\n    \"OpeningHoursShort\": \"string\",\n    \"OpeningHoursRow1\": \"string\",\n    \"OpeningHoursRow2\": \"string\",\n    \"OpeningHoursRow3\": \"string\",\n    \"DeliveryData\": [\n      {\n        \"DataType\": \"string\",\n        \"Value\": \"string\"\n      },\n      {\n        \"DataType\": \"string\",\n        \"Value\": \"string\"\n      }\n    ],\n    \"Distance\": \"string\",\n    \"ProviderAddon\": \"string\"\n  },\n  {\n    \"Name\": \"string\",\n    \"Addresses\": [\n      {\n        \"AddressType\": \"<string>\",\n        \"AddressId\": \"<string>\",\n        \"MailingAddress\": {\n          \"Name\": \"<string>\",\n          \"AddressLine1\": \"<string>\",\n          \"City\": \"<string>\",\n          \"PostalCode\": \"<string>\",\n          \"CoAddress\": \"<string>\",\n          \"AddressLine2\": \"<string>\",\n          \"CountryCode\": \"<string>\"\n        },\n        \"Contacts\": [\n          {\n            \"ContactType\": \"string\",\n            \"Value\": \"string\"\n          },\n          {\n            \"ContactType\": \"string\",\n            \"Value\": \"string\"\n          }\n        ]\n      },\n      {\n        \"AddressType\": \"<string>\",\n        \"AddressId\": \"<string>\",\n        \"MailingAddress\": {\n          \"Name\": \"<string>\",\n          \"AddressLine1\": \"<string>\",\n          \"City\": \"<string>\",\n          \"PostalCode\": \"<string>\",\n          \"CoAddress\": \"<string>\",\n          \"AddressLine2\": \"<string>\",\n          \"CountryCode\": \"<string>\"\n        },\n        \"Contacts\": [\n          {\n            \"ContactType\": \"string\",\n            \"Value\": \"string\"\n          },\n          {\n            \"ContactType\": \"string\",\n            \"Value\": \"string\"\n          }\n        ]\n      }\n    ],\n    \"GeoPoint\": {\n      \"Latitude\": \"string\",\n      \"Longitude\": \"string\"\n    },\n    \"OpeningDays\": [\n      {\n        \"Day\": \"string\",\n        \"DisplayName\": \"string\",\n        \"OpeningHours\": [\n          {\n            \"From\": \"string\",\n            \"To\": \"string\"\n          },\n          {\n            \"From\": \"string\",\n            \"To\": \"string\"\n          }\n        ]\n      },\n      {\n        \"Day\": \"string\",\n        \"DisplayName\": \"string\",\n        \"OpeningHours\": [\n          {\n            \"From\": \"string\",\n            \"To\": \"string\"\n          },\n          {\n            \"From\": \"string\",\n            \"To\": \"string\"\n          }\n        ]\n      }\n    ],\n    \"Services\": [\n      {\n        \"ServiceType\": \"string\",\n        \"DisplayName\": \"string\"\n      },\n      {\n        \"ServiceType\": \"string\",\n        \"DisplayName\": \"string\"\n      }\n    ],\n    \"References\": [\n      {\n        \"ReferenceType\": \"<string>\",\n        \"Value\": \"<string>\"\n      },\n      {\n        \"ReferenceType\": \"<string>\",\n        \"Value\": \"<string>\"\n      }\n    ],\n    \"DeliveryType\": \"string\",\n    \"OpeningHoursShort\": \"string\",\n    \"OpeningHoursRow1\": \"string\",\n    \"OpeningHoursRow2\": \"string\",\n    \"OpeningHoursRow3\": \"string\",\n    \"DeliveryData\": [\n      {\n        \"DataType\": \"string\",\n        \"Value\": \"string\"\n      },\n      {\n        \"DataType\": \"string\",\n        \"Value\": \"string\"\n      }\n    ],\n    \"Distance\": \"string\",\n    \"ProviderAddon\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6a5d84f3-8dd3-4f48-833a-fed296ae90d8",
+              "name": "No service point found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DeliveryPoint",
+                    "v1",
+                    "GetNearestServicePoint"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "CountryCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "PostalCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "StreetAddress",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "City",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "Amount",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4f693a2c-35a1-48c6-9e01-080409f57814",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DeliveryPoint",
+                    "v1",
+                    "GetNearestServicePoint"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "CountryCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "PostalCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "StreetAddress",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "City",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "Amount",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1250518c-4f5c-4a48-99b3-6446f25ee1b9",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DeliveryPoint",
+                    "v1",
+                    "GetNearestServicePoint"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "CountryCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "PostalCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "StreetAddress",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "City",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "Amount",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "87875fce-f400-4e56-88d6-3b489cdd11e3",
+      "name": "Edi",
+      "description": {
+        "content": "Responsible for all Web API functions related to EDI (For example: Register, Register Return)",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "52d932b2-2a2d-4f57-8e0d-691face25e94",
+          "name": "Creates an EDI-Shipment in our system. This is needed for all parcels that are sent with Privpak.\r\n Called when another TA has managed the creation of the EDI and is notififying PrivPak of data",
+          "request": {
+            "name": "Creates an EDI-Shipment in our system. This is needed for all parcels that are sent with Privpak.\r\n Called when another TA has managed the creation of the EDI and is notififying PrivPak of data",
+            "description": {},
+            "url": {
+              "path": [
+                "Edi",
+                "v1",
+                "RegisterEdi",
+                ":countryCode"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "countryCode",
+                  "description": "(Required) The country code."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "EntryDate",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "CustomerId",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "PartnerId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "Parcels",
+                  "value": "{\"DeliveryService\":\"<string>\",\"Addresses\":[{\"AddressType\":\"<string>\",\"AddressId\":\"<string>\",\"MailingAddress\":{\"Name\":\"<string>\",\"AddressLine1\":\"<string>\",\"City\":\"<string>\",\"PostalCode\":\"<string>\",\"CoAddress\":\"<string>\",\"AddressLine2\":\"<string>\",\"CountryCode\":\"<string>\"},\"Contacts\":[{\"ContactType\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"Value\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}},{\"ContactType\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"Value\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}}]},{\"AddressType\":\"<string>\",\"AddressId\":\"<string>\",\"MailingAddress\":{\"Name\":\"<string>\",\"AddressLine1\":\"<string>\",\"City\":\"<string>\",\"PostalCode\":\"<string>\",\"CoAddress\":\"<string>\",\"AddressLine2\":\"<string>\",\"CountryCode\":\"<string>\"},\"Contacts\":[{\"ContactType\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"Value\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}},{\"ContactType\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"Value\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}}]}],\"Collectors\":[{\"Name\":\"<string>\",\"Reference\":{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"}},{\"Name\":\"<string>\",\"Reference\":{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"}}],\"References\":[{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"},{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"}],\"Measures\":[{\"MeasureType\":\"<string>\",\"Value\":\"<string>\"},{\"MeasureType\":\"<string>\",\"Value\":\"<string>\"}],\"Cod\":{\"Amount\":\"<string>\",\"Currency\":\"<string>\",\"Reference\":{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"},\"AccountType\":\"<string>\",\"AccountNumber\":\"<string>\"}}"
+                },
+                {
+                  "disabled": false,
+                  "key": "Parcels",
+                  "value": "{\"DeliveryService\":\"<string>\",\"Addresses\":[{\"AddressType\":\"<string>\",\"AddressId\":\"<string>\",\"MailingAddress\":{\"Name\":\"<string>\",\"AddressLine1\":\"<string>\",\"City\":\"<string>\",\"PostalCode\":\"<string>\",\"CoAddress\":\"<string>\",\"AddressLine2\":\"<string>\",\"CountryCode\":\"<string>\"},\"Contacts\":[{\"ContactType\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"Value\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}},{\"ContactType\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"Value\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}}]},{\"AddressType\":\"<string>\",\"AddressId\":\"<string>\",\"MailingAddress\":{\"Name\":\"<string>\",\"AddressLine1\":\"<string>\",\"City\":\"<string>\",\"PostalCode\":\"<string>\",\"CoAddress\":\"<string>\",\"AddressLine2\":\"<string>\",\"CountryCode\":\"<string>\"},\"Contacts\":[{\"ContactType\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"Value\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}},{\"ContactType\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"Value\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}}]}],\"Collectors\":[{\"Name\":\"<string>\",\"Reference\":{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"}},{\"Name\":\"<string>\",\"Reference\":{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"}}],\"References\":[{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"},{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"}],\"Measures\":[{\"MeasureType\":\"<string>\",\"Value\":\"<string>\"},{\"MeasureType\":\"<string>\",\"Value\":\"<string>\"}],\"Cod\":{\"Amount\":\"<string>\",\"Currency\":\"<string>\",\"Reference\":{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"},\"AccountType\":\"<string>\",\"AccountNumber\":\"<string>\"}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "775c8e73-f92c-4c31-80de-087588575da2",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Edi",
+                    "v1",
+                    "RegisterEdi",
+                    ":countryCode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "countryCode",
+                      "description": "(Required) The country code."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "EntryDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "CustomerId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "PartnerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "Parcels",
+                      "value": "{\"DeliveryService\":\"<string>\",\"Addresses\":[{\"AddressType\":\"<string>\",\"AddressId\":\"<string>\",\"MailingAddress\":{\"Name\":\"<string>\",\"AddressLine1\":\"<string>\",\"City\":\"<string>\",\"PostalCode\":\"<string>\",\"CoAddress\":\"<string>\",\"AddressLine2\":\"<string>\",\"CountryCode\":\"<string>\"},\"Contacts\":[{\"ContactType\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"Value\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}},{\"ContactType\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"Value\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}}]},{\"AddressType\":\"<string>\",\"AddressId\":\"<string>\",\"MailingAddress\":{\"Name\":\"<string>\",\"AddressLine1\":\"<string>\",\"City\":\"<string>\",\"PostalCode\":\"<string>\",\"CoAddress\":\"<string>\",\"AddressLine2\":\"<string>\",\"CountryCode\":\"<string>\"},\"Contacts\":[{\"ContactType\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"Value\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}},{\"ContactType\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"Value\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}}]}],\"Collectors\":[{\"Name\":\"<string>\",\"Reference\":{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"}},{\"Name\":\"<string>\",\"Reference\":{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"}}],\"References\":[{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"},{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"}],\"Measures\":[{\"MeasureType\":\"<string>\",\"Value\":\"<string>\"},{\"MeasureType\":\"<string>\",\"Value\":\"<string>\"}],\"Cod\":{\"Amount\":\"<string>\",\"Currency\":\"<string>\",\"Reference\":{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"},\"AccountType\":\"<string>\",\"AccountNumber\":\"<string>\"}}"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "Parcels",
+                      "value": "{\"DeliveryService\":\"<string>\",\"Addresses\":[{\"AddressType\":\"<string>\",\"AddressId\":\"<string>\",\"MailingAddress\":{\"Name\":\"<string>\",\"AddressLine1\":\"<string>\",\"City\":\"<string>\",\"PostalCode\":\"<string>\",\"CoAddress\":\"<string>\",\"AddressLine2\":\"<string>\",\"CountryCode\":\"<string>\"},\"Contacts\":[{\"ContactType\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"Value\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}},{\"ContactType\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"Value\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}}]},{\"AddressType\":\"<string>\",\"AddressId\":\"<string>\",\"MailingAddress\":{\"Name\":\"<string>\",\"AddressLine1\":\"<string>\",\"City\":\"<string>\",\"PostalCode\":\"<string>\",\"CoAddress\":\"<string>\",\"AddressLine2\":\"<string>\",\"CountryCode\":\"<string>\"},\"Contacts\":[{\"ContactType\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"Value\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}},{\"ContactType\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"Value\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}}]}],\"Collectors\":[{\"Name\":\"<string>\",\"Reference\":{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"}},{\"Name\":\"<string>\",\"Reference\":{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"}}],\"References\":[{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"},{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"}],\"Measures\":[{\"MeasureType\":\"<string>\",\"Value\":\"<string>\"},{\"MeasureType\":\"<string>\",\"Value\":\"<string>\"}],\"Cod\":{\"Amount\":\"<string>\",\"Currency\":\"<string>\",\"Reference\":{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"},\"AccountType\":\"<string>\",\"AccountNumber\":\"<string>\"}}"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c777d8e1-3eca-4222-a4d8-6bdaa18e4cf5",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Edi",
+                    "v1",
+                    "RegisterEdi",
+                    ":countryCode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "countryCode",
+                      "description": "(Required) The country code."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "EntryDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "CustomerId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "PartnerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "Parcels",
+                      "value": "{\"DeliveryService\":\"<string>\",\"Addresses\":[{\"AddressType\":\"<string>\",\"AddressId\":\"<string>\",\"MailingAddress\":{\"Name\":\"<string>\",\"AddressLine1\":\"<string>\",\"City\":\"<string>\",\"PostalCode\":\"<string>\",\"CoAddress\":\"<string>\",\"AddressLine2\":\"<string>\",\"CountryCode\":\"<string>\"},\"Contacts\":[{\"ContactType\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"Value\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}},{\"ContactType\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"Value\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}}]},{\"AddressType\":\"<string>\",\"AddressId\":\"<string>\",\"MailingAddress\":{\"Name\":\"<string>\",\"AddressLine1\":\"<string>\",\"City\":\"<string>\",\"PostalCode\":\"<string>\",\"CoAddress\":\"<string>\",\"AddressLine2\":\"<string>\",\"CountryCode\":\"<string>\"},\"Contacts\":[{\"ContactType\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"Value\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}},{\"ContactType\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"Value\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}}]}],\"Collectors\":[{\"Name\":\"<string>\",\"Reference\":{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"}},{\"Name\":\"<string>\",\"Reference\":{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"}}],\"References\":[{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"},{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"}],\"Measures\":[{\"MeasureType\":\"<string>\",\"Value\":\"<string>\"},{\"MeasureType\":\"<string>\",\"Value\":\"<string>\"}],\"Cod\":{\"Amount\":\"<string>\",\"Currency\":\"<string>\",\"Reference\":{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"},\"AccountType\":\"<string>\",\"AccountNumber\":\"<string>\"}}"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "Parcels",
+                      "value": "{\"DeliveryService\":\"<string>\",\"Addresses\":[{\"AddressType\":\"<string>\",\"AddressId\":\"<string>\",\"MailingAddress\":{\"Name\":\"<string>\",\"AddressLine1\":\"<string>\",\"City\":\"<string>\",\"PostalCode\":\"<string>\",\"CoAddress\":\"<string>\",\"AddressLine2\":\"<string>\",\"CountryCode\":\"<string>\"},\"Contacts\":[{\"ContactType\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"Value\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}},{\"ContactType\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"Value\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}}]},{\"AddressType\":\"<string>\",\"AddressId\":\"<string>\",\"MailingAddress\":{\"Name\":\"<string>\",\"AddressLine1\":\"<string>\",\"City\":\"<string>\",\"PostalCode\":\"<string>\",\"CoAddress\":\"<string>\",\"AddressLine2\":\"<string>\",\"CountryCode\":\"<string>\"},\"Contacts\":[{\"ContactType\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"Value\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}},{\"ContactType\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"Value\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}}]}],\"Collectors\":[{\"Name\":\"<string>\",\"Reference\":{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"}},{\"Name\":\"<string>\",\"Reference\":{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"}}],\"References\":[{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"},{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"}],\"Measures\":[{\"MeasureType\":\"<string>\",\"Value\":\"<string>\"},{\"MeasureType\":\"<string>\",\"Value\":\"<string>\"}],\"Cod\":{\"Amount\":\"<string>\",\"Currency\":\"<string>\",\"Reference\":{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"},\"AccountType\":\"<string>\",\"AccountNumber\":\"<string>\"}}"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4a76cfa5-2e1a-49e0-99cd-f094bb01732c",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Edi",
+                    "v1",
+                    "RegisterEdi",
+                    ":countryCode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "countryCode",
+                      "description": "(Required) The country code."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "EntryDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "CustomerId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "PartnerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "Parcels",
+                      "value": "{\"DeliveryService\":\"<string>\",\"Addresses\":[{\"AddressType\":\"<string>\",\"AddressId\":\"<string>\",\"MailingAddress\":{\"Name\":\"<string>\",\"AddressLine1\":\"<string>\",\"City\":\"<string>\",\"PostalCode\":\"<string>\",\"CoAddress\":\"<string>\",\"AddressLine2\":\"<string>\",\"CountryCode\":\"<string>\"},\"Contacts\":[{\"ContactType\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"Value\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}},{\"ContactType\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"Value\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}}]},{\"AddressType\":\"<string>\",\"AddressId\":\"<string>\",\"MailingAddress\":{\"Name\":\"<string>\",\"AddressLine1\":\"<string>\",\"City\":\"<string>\",\"PostalCode\":\"<string>\",\"CoAddress\":\"<string>\",\"AddressLine2\":\"<string>\",\"CountryCode\":\"<string>\"},\"Contacts\":[{\"ContactType\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"Value\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}},{\"ContactType\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"Value\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}}]}],\"Collectors\":[{\"Name\":\"<string>\",\"Reference\":{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"}},{\"Name\":\"<string>\",\"Reference\":{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"}}],\"References\":[{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"},{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"}],\"Measures\":[{\"MeasureType\":\"<string>\",\"Value\":\"<string>\"},{\"MeasureType\":\"<string>\",\"Value\":\"<string>\"}],\"Cod\":{\"Amount\":\"<string>\",\"Currency\":\"<string>\",\"Reference\":{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"},\"AccountType\":\"<string>\",\"AccountNumber\":\"<string>\"}}"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "Parcels",
+                      "value": "{\"DeliveryService\":\"<string>\",\"Addresses\":[{\"AddressType\":\"<string>\",\"AddressId\":\"<string>\",\"MailingAddress\":{\"Name\":\"<string>\",\"AddressLine1\":\"<string>\",\"City\":\"<string>\",\"PostalCode\":\"<string>\",\"CoAddress\":\"<string>\",\"AddressLine2\":\"<string>\",\"CountryCode\":\"<string>\"},\"Contacts\":[{\"ContactType\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"Value\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}},{\"ContactType\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"Value\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}}]},{\"AddressType\":\"<string>\",\"AddressId\":\"<string>\",\"MailingAddress\":{\"Name\":\"<string>\",\"AddressLine1\":\"<string>\",\"City\":\"<string>\",\"PostalCode\":\"<string>\",\"CoAddress\":\"<string>\",\"AddressLine2\":\"<string>\",\"CountryCode\":\"<string>\"},\"Contacts\":[{\"ContactType\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"Value\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}},{\"ContactType\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"Value\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}}]}],\"Collectors\":[{\"Name\":\"<string>\",\"Reference\":{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"}},{\"Name\":\"<string>\",\"Reference\":{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"}}],\"References\":[{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"},{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"}],\"Measures\":[{\"MeasureType\":\"<string>\",\"Value\":\"<string>\"},{\"MeasureType\":\"<string>\",\"Value\":\"<string>\"}],\"Cod\":{\"Amount\":\"<string>\",\"Currency\":\"<string>\",\"Reference\":{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"},\"AccountType\":\"<string>\",\"AccountNumber\":\"<string>\"}}"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "37e66da0-9ca8-47b2-8f45-c9dedeff246d",
+          "name": "Creates a return EDI-Shipment in our system. This is needed for all return parcels that are sent with Privpak.\r\nCalled when another TA has managed the creation of the EDI and is notififying PrivPak of data",
+          "request": {
+            "name": "Creates a return EDI-Shipment in our system. This is needed for all return parcels that are sent with Privpak.\r\nCalled when another TA has managed the creation of the EDI and is notififying PrivPak of data",
+            "description": {},
+            "url": {
+              "path": [
+                "Edi",
+                "v1",
+                "RegisterReturnEdi",
+                ":countryCode"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "countryCode",
+                  "description": "(Required) The country code"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "EntryDate",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "CustomerId",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "PartnerId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "Parcels",
+                  "value": "{\"DeliveryService\":\"<string>\",\"Addresses\":[{\"AddressType\":\"<string>\",\"AddressId\":\"<string>\",\"MailingAddress\":{\"Name\":\"<string>\",\"AddressLine1\":\"<string>\",\"City\":\"<string>\",\"PostalCode\":\"<string>\",\"CoAddress\":\"<string>\",\"AddressLine2\":\"<string>\",\"CountryCode\":\"<string>\"},\"Contacts\":[{\"ContactType\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"Value\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}},{\"ContactType\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"Value\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}}]},{\"AddressType\":\"<string>\",\"AddressId\":\"<string>\",\"MailingAddress\":{\"Name\":\"<string>\",\"AddressLine1\":\"<string>\",\"City\":\"<string>\",\"PostalCode\":\"<string>\",\"CoAddress\":\"<string>\",\"AddressLine2\":\"<string>\",\"CountryCode\":\"<string>\"},\"Contacts\":[{\"ContactType\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"Value\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}},{\"ContactType\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"Value\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}}]}],\"Collectors\":[{\"Name\":\"<string>\",\"Reference\":{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"}},{\"Name\":\"<string>\",\"Reference\":{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"}}],\"References\":[{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"},{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"}],\"Measures\":[{\"MeasureType\":\"<string>\",\"Value\":\"<string>\"},{\"MeasureType\":\"<string>\",\"Value\":\"<string>\"}],\"Cod\":{\"Amount\":\"<string>\",\"Currency\":\"<string>\",\"Reference\":{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"},\"AccountType\":\"<string>\",\"AccountNumber\":\"<string>\"}}"
+                },
+                {
+                  "disabled": false,
+                  "key": "Parcels",
+                  "value": "{\"DeliveryService\":\"<string>\",\"Addresses\":[{\"AddressType\":\"<string>\",\"AddressId\":\"<string>\",\"MailingAddress\":{\"Name\":\"<string>\",\"AddressLine1\":\"<string>\",\"City\":\"<string>\",\"PostalCode\":\"<string>\",\"CoAddress\":\"<string>\",\"AddressLine2\":\"<string>\",\"CountryCode\":\"<string>\"},\"Contacts\":[{\"ContactType\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"Value\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}},{\"ContactType\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"Value\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}}]},{\"AddressType\":\"<string>\",\"AddressId\":\"<string>\",\"MailingAddress\":{\"Name\":\"<string>\",\"AddressLine1\":\"<string>\",\"City\":\"<string>\",\"PostalCode\":\"<string>\",\"CoAddress\":\"<string>\",\"AddressLine2\":\"<string>\",\"CountryCode\":\"<string>\"},\"Contacts\":[{\"ContactType\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"Value\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}},{\"ContactType\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"Value\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}}]}],\"Collectors\":[{\"Name\":\"<string>\",\"Reference\":{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"}},{\"Name\":\"<string>\",\"Reference\":{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"}}],\"References\":[{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"},{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"}],\"Measures\":[{\"MeasureType\":\"<string>\",\"Value\":\"<string>\"},{\"MeasureType\":\"<string>\",\"Value\":\"<string>\"}],\"Cod\":{\"Amount\":\"<string>\",\"Currency\":\"<string>\",\"Reference\":{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"},\"AccountType\":\"<string>\",\"AccountNumber\":\"<string>\"}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "15a5d158-0696-4d74-a47a-64adb2269667",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Edi",
+                    "v1",
+                    "RegisterReturnEdi",
+                    ":countryCode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "countryCode",
+                      "description": "(Required) The country code"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "EntryDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "CustomerId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "PartnerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "Parcels",
+                      "value": "{\"DeliveryService\":\"<string>\",\"Addresses\":[{\"AddressType\":\"<string>\",\"AddressId\":\"<string>\",\"MailingAddress\":{\"Name\":\"<string>\",\"AddressLine1\":\"<string>\",\"City\":\"<string>\",\"PostalCode\":\"<string>\",\"CoAddress\":\"<string>\",\"AddressLine2\":\"<string>\",\"CountryCode\":\"<string>\"},\"Contacts\":[{\"ContactType\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"Value\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}},{\"ContactType\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"Value\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}}]},{\"AddressType\":\"<string>\",\"AddressId\":\"<string>\",\"MailingAddress\":{\"Name\":\"<string>\",\"AddressLine1\":\"<string>\",\"City\":\"<string>\",\"PostalCode\":\"<string>\",\"CoAddress\":\"<string>\",\"AddressLine2\":\"<string>\",\"CountryCode\":\"<string>\"},\"Contacts\":[{\"ContactType\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"Value\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}},{\"ContactType\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"Value\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}}]}],\"Collectors\":[{\"Name\":\"<string>\",\"Reference\":{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"}},{\"Name\":\"<string>\",\"Reference\":{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"}}],\"References\":[{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"},{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"}],\"Measures\":[{\"MeasureType\":\"<string>\",\"Value\":\"<string>\"},{\"MeasureType\":\"<string>\",\"Value\":\"<string>\"}],\"Cod\":{\"Amount\":\"<string>\",\"Currency\":\"<string>\",\"Reference\":{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"},\"AccountType\":\"<string>\",\"AccountNumber\":\"<string>\"}}"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "Parcels",
+                      "value": "{\"DeliveryService\":\"<string>\",\"Addresses\":[{\"AddressType\":\"<string>\",\"AddressId\":\"<string>\",\"MailingAddress\":{\"Name\":\"<string>\",\"AddressLine1\":\"<string>\",\"City\":\"<string>\",\"PostalCode\":\"<string>\",\"CoAddress\":\"<string>\",\"AddressLine2\":\"<string>\",\"CountryCode\":\"<string>\"},\"Contacts\":[{\"ContactType\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"Value\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}},{\"ContactType\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"Value\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}}]},{\"AddressType\":\"<string>\",\"AddressId\":\"<string>\",\"MailingAddress\":{\"Name\":\"<string>\",\"AddressLine1\":\"<string>\",\"City\":\"<string>\",\"PostalCode\":\"<string>\",\"CoAddress\":\"<string>\",\"AddressLine2\":\"<string>\",\"CountryCode\":\"<string>\"},\"Contacts\":[{\"ContactType\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"Value\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}},{\"ContactType\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"Value\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}}]}],\"Collectors\":[{\"Name\":\"<string>\",\"Reference\":{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"}},{\"Name\":\"<string>\",\"Reference\":{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"}}],\"References\":[{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"},{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"}],\"Measures\":[{\"MeasureType\":\"<string>\",\"Value\":\"<string>\"},{\"MeasureType\":\"<string>\",\"Value\":\"<string>\"}],\"Cod\":{\"Amount\":\"<string>\",\"Currency\":\"<string>\",\"Reference\":{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"},\"AccountType\":\"<string>\",\"AccountNumber\":\"<string>\"}}"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1108d9cb-e29a-4305-a26a-62f0454d123f",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Edi",
+                    "v1",
+                    "RegisterReturnEdi",
+                    ":countryCode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "countryCode",
+                      "description": "(Required) The country code"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "EntryDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "CustomerId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "PartnerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "Parcels",
+                      "value": "{\"DeliveryService\":\"<string>\",\"Addresses\":[{\"AddressType\":\"<string>\",\"AddressId\":\"<string>\",\"MailingAddress\":{\"Name\":\"<string>\",\"AddressLine1\":\"<string>\",\"City\":\"<string>\",\"PostalCode\":\"<string>\",\"CoAddress\":\"<string>\",\"AddressLine2\":\"<string>\",\"CountryCode\":\"<string>\"},\"Contacts\":[{\"ContactType\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"Value\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}},{\"ContactType\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"Value\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}}]},{\"AddressType\":\"<string>\",\"AddressId\":\"<string>\",\"MailingAddress\":{\"Name\":\"<string>\",\"AddressLine1\":\"<string>\",\"City\":\"<string>\",\"PostalCode\":\"<string>\",\"CoAddress\":\"<string>\",\"AddressLine2\":\"<string>\",\"CountryCode\":\"<string>\"},\"Contacts\":[{\"ContactType\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"Value\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}},{\"ContactType\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"Value\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}}]}],\"Collectors\":[{\"Name\":\"<string>\",\"Reference\":{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"}},{\"Name\":\"<string>\",\"Reference\":{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"}}],\"References\":[{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"},{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"}],\"Measures\":[{\"MeasureType\":\"<string>\",\"Value\":\"<string>\"},{\"MeasureType\":\"<string>\",\"Value\":\"<string>\"}],\"Cod\":{\"Amount\":\"<string>\",\"Currency\":\"<string>\",\"Reference\":{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"},\"AccountType\":\"<string>\",\"AccountNumber\":\"<string>\"}}"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "Parcels",
+                      "value": "{\"DeliveryService\":\"<string>\",\"Addresses\":[{\"AddressType\":\"<string>\",\"AddressId\":\"<string>\",\"MailingAddress\":{\"Name\":\"<string>\",\"AddressLine1\":\"<string>\",\"City\":\"<string>\",\"PostalCode\":\"<string>\",\"CoAddress\":\"<string>\",\"AddressLine2\":\"<string>\",\"CountryCode\":\"<string>\"},\"Contacts\":[{\"ContactType\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"Value\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}},{\"ContactType\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"Value\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}}]},{\"AddressType\":\"<string>\",\"AddressId\":\"<string>\",\"MailingAddress\":{\"Name\":\"<string>\",\"AddressLine1\":\"<string>\",\"City\":\"<string>\",\"PostalCode\":\"<string>\",\"CoAddress\":\"<string>\",\"AddressLine2\":\"<string>\",\"CountryCode\":\"<string>\"},\"Contacts\":[{\"ContactType\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"Value\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}},{\"ContactType\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"Value\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}}]}],\"Collectors\":[{\"Name\":\"<string>\",\"Reference\":{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"}},{\"Name\":\"<string>\",\"Reference\":{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"}}],\"References\":[{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"},{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"}],\"Measures\":[{\"MeasureType\":\"<string>\",\"Value\":\"<string>\"},{\"MeasureType\":\"<string>\",\"Value\":\"<string>\"}],\"Cod\":{\"Amount\":\"<string>\",\"Currency\":\"<string>\",\"Reference\":{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"},\"AccountType\":\"<string>\",\"AccountNumber\":\"<string>\"}}"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "21d31db6-e1e9-4279-a2a9-bff6d48b7b2e",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Edi",
+                    "v1",
+                    "RegisterReturnEdi",
+                    ":countryCode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "countryCode",
+                      "description": "(Required) The country code"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "EntryDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "CustomerId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "PartnerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "Parcels",
+                      "value": "{\"DeliveryService\":\"<string>\",\"Addresses\":[{\"AddressType\":\"<string>\",\"AddressId\":\"<string>\",\"MailingAddress\":{\"Name\":\"<string>\",\"AddressLine1\":\"<string>\",\"City\":\"<string>\",\"PostalCode\":\"<string>\",\"CoAddress\":\"<string>\",\"AddressLine2\":\"<string>\",\"CountryCode\":\"<string>\"},\"Contacts\":[{\"ContactType\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"Value\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}},{\"ContactType\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"Value\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}}]},{\"AddressType\":\"<string>\",\"AddressId\":\"<string>\",\"MailingAddress\":{\"Name\":\"<string>\",\"AddressLine1\":\"<string>\",\"City\":\"<string>\",\"PostalCode\":\"<string>\",\"CoAddress\":\"<string>\",\"AddressLine2\":\"<string>\",\"CountryCode\":\"<string>\"},\"Contacts\":[{\"ContactType\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"Value\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}},{\"ContactType\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"Value\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}}]}],\"Collectors\":[{\"Name\":\"<string>\",\"Reference\":{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"}},{\"Name\":\"<string>\",\"Reference\":{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"}}],\"References\":[{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"},{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"}],\"Measures\":[{\"MeasureType\":\"<string>\",\"Value\":\"<string>\"},{\"MeasureType\":\"<string>\",\"Value\":\"<string>\"}],\"Cod\":{\"Amount\":\"<string>\",\"Currency\":\"<string>\",\"Reference\":{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"},\"AccountType\":\"<string>\",\"AccountNumber\":\"<string>\"}}"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "Parcels",
+                      "value": "{\"DeliveryService\":\"<string>\",\"Addresses\":[{\"AddressType\":\"<string>\",\"AddressId\":\"<string>\",\"MailingAddress\":{\"Name\":\"<string>\",\"AddressLine1\":\"<string>\",\"City\":\"<string>\",\"PostalCode\":\"<string>\",\"CoAddress\":\"<string>\",\"AddressLine2\":\"<string>\",\"CountryCode\":\"<string>\"},\"Contacts\":[{\"ContactType\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"Value\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}},{\"ContactType\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"Value\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}}]},{\"AddressType\":\"<string>\",\"AddressId\":\"<string>\",\"MailingAddress\":{\"Name\":\"<string>\",\"AddressLine1\":\"<string>\",\"City\":\"<string>\",\"PostalCode\":\"<string>\",\"CoAddress\":\"<string>\",\"AddressLine2\":\"<string>\",\"CountryCode\":\"<string>\"},\"Contacts\":[{\"ContactType\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"Value\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}},{\"ContactType\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"},\"Value\":{\"value\":\"<Error: Too many levels of nesting to fake this schema>\"}}]}],\"Collectors\":[{\"Name\":\"<string>\",\"Reference\":{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"}},{\"Name\":\"<string>\",\"Reference\":{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"}}],\"References\":[{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"},{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"}],\"Measures\":[{\"MeasureType\":\"<string>\",\"Value\":\"<string>\"},{\"MeasureType\":\"<string>\",\"Value\":\"<string>\"}],\"Cod\":{\"Amount\":\"<string>\",\"Currency\":\"<string>\",\"Reference\":{\"ReferenceType\":\"<string>\",\"Value\":\"<string>\"},\"AccountType\":\"<string>\",\"AccountNumber\":\"<string>\"}}"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "804ba69c-a9a0-479b-8412-07bee53b9180",
+      "name": "ExtendedDeliveryPoint",
+      "description": {
+        "content": "Responsible for all Web API functions related to HITTA",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bcfa74d4-01c1-4d13-b2f0-c66c63ac3be8",
+          "name": "Get all Existing Servicepoints for a specified country.",
+          "request": {
+            "name": "Get all Existing Servicepoints for a specified country.",
+            "description": {},
+            "url": {
+              "path": [
+                "ExtendedDeliveryPoint",
+                "v1",
+                "GetAllServicePoints"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "countryCode",
+                  "value": "<string>",
+                  "description": "(Required) Countycode for specified country"
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "571000fd-4105-418e-8970-6c7a0758767c",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ExtendedDeliveryPoint",
+                    "v1",
+                    "GetAllServicePoints"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "countryCode",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "eb762686-3dd8-4188-89f5-493384975227",
+              "name": "No content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ExtendedDeliveryPoint",
+                    "v1",
+                    "GetAllServicePoints"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "countryCode",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "430a7aad-936f-405d-bd10-79ce9ad59579",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ExtendedDeliveryPoint",
+                    "v1",
+                    "GetAllServicePoints"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "countryCode",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "09b2812a-6560-4d4c-b5ff-642accffe2d5",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ExtendedDeliveryPoint",
+                    "v1",
+                    "GetAllServicePoints"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "countryCode",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "634a899d-8685-4efa-b9fa-164ef007ebd1",
+      "name": "PrintCode",
+      "description": {
+        "content": "Responsible for (QR) print codes.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f830c657-7733-454c-859c-054e4a747ae6",
+          "name": "Gets the QR print code for a shipment based on shipment number.",
+          "request": {
+            "name": "Gets the QR print code for a shipment based on shipment number.",
+            "description": {},
+            "url": {
+              "path": [
+                "print-code",
+                "v1"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "shipmentNumber",
+                  "value": "<string>",
+                  "description": "Shipment number."
+                },
+                {
+                  "disabled": false,
+                  "key": "colliId",
+                  "value": "<string>",
+                  "description": "Barcode/colli ID."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7b298e18-5af2-4ddd-a027-ec065720f857",
+              "name": "Base64 encoded string of QR code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "print-code",
+                    "v1"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "shipmentNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "colliId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e14f1b55-838b-4732-8fa9-b281218e2ecc",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "print-code",
+                    "v1"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "shipmentNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "colliId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5685aaa5-59ec-49c0-a6ed-60b16c1f8197",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "print-code",
+                    "v1"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "shipmentNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "colliId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cb69f1ef-1147-42fb-98bb-7cd4f91f883f",
+              "name": "Code expired",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "print-code",
+                    "v1"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "shipmentNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "colliId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Gone",
+              "code": 410,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e7852b56-f323-4854-9afc-65711dfc657a",
+          "name": "Gets the QR image for a shipment based on shipment number or colli-id.\r\n\r\nEasy to use as ex. img-src or background-image on element.\r\nEx. set img src to \"data:image/svg+xml;base64,\" + [Svg response from endpoint]\r\nIf png, a bytestream is returned.",
+          "request": {
+            "name": "Gets the QR image for a shipment based on shipment number or colli-id.\r\n\r\nEasy to use as ex. img-src or background-image on element.\r\nEx. set img src to \"data:image/svg+xml;base64,\" + [Svg response from endpoint]\r\nIf png, a bytestream is returned.",
+            "description": {},
+            "url": {
+              "path": [
+                "print-code",
+                "v1",
+                "image"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "shipmentNumber",
+                  "value": "<string>",
+                  "description": "Shipment number."
+                },
+                {
+                  "disabled": false,
+                  "key": "colliId",
+                  "value": "<string>",
+                  "description": "Barcode/colli ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "imageformat",
+                  "value": "",
+                  "description": "If not set, defaults to svg. Send \"png\" if response should be a png."
+                },
+                {
+                  "disabled": false,
+                  "key": "useBackground",
+                  "value": "true",
+                  "description": "If set, it will remove the white background that can cause issues when using dark mode"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e3c93126-0887-47b5-b03e-1de2d4c161e9",
+              "name": "Base64 encoded string of qr code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "print-code",
+                    "v1",
+                    "image"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "shipmentNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "colliId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "imageformat",
+                      "value": ""
+                    },
+                    {
+                      "key": "useBackground",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e631858e-d94d-4583-bf85-f50716454263",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "print-code",
+                    "v1",
+                    "image"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "shipmentNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "colliId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "imageformat",
+                      "value": ""
+                    },
+                    {
+                      "key": "useBackground",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c85b5f90-f47a-4814-b579-ed0c43396a84",
+              "name": "NotFound",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "print-code",
+                    "v1",
+                    "image"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "shipmentNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "colliId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "imageformat",
+                      "value": ""
+                    },
+                    {
+                      "key": "useBackground",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "30cb3362-384d-4bc4-a328-b584dd12a154",
+              "name": "Code expired",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "print-code",
+                    "v1",
+                    "image"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "shipmentNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "colliId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "imageformat",
+                      "value": ""
+                    },
+                    {
+                      "key": "useBackground",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Gone",
+              "code": 410,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "bbde7a21-e82c-45a4-91b2-2c1a9f021116",
+      "name": "SortingCode",
+      "description": {
+        "content": "Responsible for all Web API functions related to handling sorting codes in MANET.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "58eb26c3-7b37-46d6-a567-5f9cb42f797d",
+          "name": "Returns a sorting code with the corresponding city and postal code.\r\nThe departure- and arrival code should be printed on the waybill and STES according to AGI.\r\n\r\nIf the API returns \"N/A\" the sorting code is missing. This is not an error. Print as is.\r\nIn case of time-out, print '---' for each code.\r\nIn case of other errors, print '???' for each code.\r\nCaching responses for more than 24 hours is not recommended.\r\n\r\nTo use endpoint, invoke a HTTP POST request at \r\n'https://parcelservices-se.dbschenker.com/apipartner/SortingCode/v1/GetSortingCode'",
+          "request": {
+            "name": "Returns a sorting code with the corresponding city and postal code.\r\nThe departure- and arrival code should be printed on the waybill and STES according to AGI.\r\n\r\nIf the API returns \"N/A\" the sorting code is missing. This is not an error. Print as is.\r\nIn case of time-out, print '---' for each code.\r\nIn case of other errors, print '???' for each code.\r\nCaching responses for more than 24 hours is not recommended.\r\n\r\nTo use endpoint, invoke a HTTP POST request at \r\n'https://parcelservices-se.dbschenker.com/apipartner/SortingCode/v1/GetSortingCode'",
+            "description": {},
+            "url": {
+              "path": [
+                "SortingCode",
+                "v1",
+                "GetSortingCode"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "PostalCodeSender",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "PostalCodeReceiver",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "ProductCode",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "AdditionalServiceCodes",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "AdditionalServiceCodes",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "CustomerNumber",
+                  "value": "<string>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9e5ef44c-d787-433d-949c-17cf07e9e6fd",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "SortingCode",
+                    "v1",
+                    "GetSortingCode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "PostalCodeSender",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "PostalCodeReceiver",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "ProductCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "AdditionalServiceCodes",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "AdditionalServiceCodes",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "CustomerNumber",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ArrivalCode\": \"string\",\n  \"DepartureCode\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ce11511f-5c8f-45cb-953e-cc4284c51dd9",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "SortingCode",
+                    "v1",
+                    "GetSortingCode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "PostalCodeSender",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "PostalCodeReceiver",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "ProductCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "AdditionalServiceCodes",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "AdditionalServiceCodes",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "CustomerNumber",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3924addf-91a3-402c-bc49-9f4736687a99",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "SortingCode",
+                    "v1",
+                    "GetSortingCode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "PostalCodeSender",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "PostalCodeReceiver",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "ProductCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "AdditionalServiceCodes",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "AdditionalServiceCodes",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "CustomerNumber",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "ab2f667a-981e-4560-a67c-6e298c4bb20f",
+      "name": "TrackAndTraceBoxes",
+      "description": {
+        "content": "Responsible for all Web API functions related to Boxes Track and Trace.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "eb6ad0dc-c638-4fab-a9d0-4c8ea0709bc2",
+          "name": "Retrieves a parcel from a reference",
+          "request": {
+            "name": "Retrieves a parcel from a reference",
+            "description": {},
+            "url": {
+              "path": [
+                "TrackAndTraceBoxes",
+                "v1",
+                "GetParcel"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "countryCode",
+                  "value": "<string>",
+                  "description": "(Required) Country code"
+                },
+                {
+                  "disabled": false,
+                  "key": "referenceType",
+                  "value": "<string>",
+                  "description": "(Required) Parcel referenceType [BARCODE]"
+                },
+                {
+                  "disabled": false,
+                  "key": "reference",
+                  "value": "<string>",
+                  "description": "(Required) Parcel reference"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "36ddfd61-ae02-48e0-a531-4b435e7a540d",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "TrackAndTraceBoxes",
+                    "v1",
+                    "GetParcel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "countryCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "referenceType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reference",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"DeliveryService\": \"string\",\n    \"ArrivalDate\": \"string\",\n    \"DeliveryDate\": \"string\",\n    \"Addresses\": [\n      {\n        \"AddressType\": \"string\",\n        \"AddressId\": \"string\",\n        \"MailingAddress\": {\n          \"Name\": \"string\",\n          \"AddressLine1\": \"string\",\n          \"City\": \"string\",\n          \"PostalCode\": \"string\",\n          \"CoAddress\": \"string\",\n          \"AddressLine2\": \"string\",\n          \"CountryCode\": \"st\"\n        },\n        \"Contacts\": [\n          {\n            \"ContactType\": \"string\",\n            \"Value\": \"string\"\n          },\n          {\n            \"ContactType\": \"string\",\n            \"Value\": \"string\"\n          }\n        ]\n      },\n      {\n        \"AddressType\": \"string\",\n        \"AddressId\": \"string\",\n        \"MailingAddress\": {\n          \"Name\": \"string\",\n          \"AddressLine1\": \"string\",\n          \"City\": \"string\",\n          \"PostalCode\": \"string\",\n          \"CoAddress\": \"string\",\n          \"AddressLine2\": \"string\",\n          \"CountryCode\": \"str\"\n        },\n        \"Contacts\": [\n          {\n            \"ContactType\": \"string\",\n            \"Value\": \"string\"\n          },\n          {\n            \"ContactType\": \"string\",\n            \"Value\": \"string\"\n          }\n        ]\n      }\n    ],\n    \"EstimatedTimeOfArrival\": \"string\",\n    \"DueDate\": \"string\",\n    \"References\": [\n      {\n        \"ReferenceType\": \"string\",\n        \"Value\": \"string\"\n      },\n      {\n        \"ReferenceType\": \"string\",\n        \"Value\": \"string\"\n      }\n    ],\n    \"ParcelState\": {\n      \"EventDate\": \"string\",\n      \"Name\": \"string\",\n      \"DisplayName\": \"string\",\n      \"Description\": \"string\",\n      \"Location\": {\n        \"LocationType\": \"string\",\n        \"Name\": \"string\",\n        \"LocationId\": \"string\"\n      },\n      \"ReferenceData\": [\n        {\n          \"ReferenceType\": \"string\",\n          \"Value\": \"string\"\n        },\n        {\n          \"ReferenceType\": \"string\",\n          \"Value\": \"string\"\n        }\n      ]\n    },\n    \"Measures\": [\n      {\n        \"MeasureType\": \"string\",\n        \"Value\": \"string\"\n      },\n      {\n        \"MeasureType\": \"string\",\n        \"Value\": \"string\"\n      }\n    ],\n    \"Events\": [\n      {\n        \"EventDate\": \"string\",\n        \"Name\": \"string\",\n        \"DisplayName\": \"string\",\n        \"Description\": \"string\",\n        \"Location\": {\n          \"LocationType\": \"string\",\n          \"Name\": \"string\",\n          \"LocationId\": \"string\"\n        },\n        \"ReferenceData\": [\n          {\n            \"ReferenceType\": \"string\",\n            \"Value\": \"string\"\n          },\n          {\n            \"ReferenceType\": \"string\",\n            \"Value\": \"string\"\n          }\n        ]\n      },\n      {\n        \"EventDate\": \"string\",\n        \"Name\": \"string\",\n        \"DisplayName\": \"string\",\n        \"Description\": \"string\",\n        \"Location\": {\n          \"LocationType\": \"string\",\n          \"Name\": \"string\",\n          \"LocationId\": \"string\"\n        },\n        \"ReferenceData\": [\n          {\n            \"ReferenceType\": \"string\",\n            \"Value\": \"string\"\n          },\n          {\n            \"ReferenceType\": \"string\",\n            \"Value\": \"string\"\n          }\n        ]\n      }\n    ]\n  },\n  {\n    \"DeliveryService\": \"string\",\n    \"ArrivalDate\": \"string\",\n    \"DeliveryDate\": \"string\",\n    \"Addresses\": [\n      {\n        \"AddressType\": \"string\",\n        \"AddressId\": \"string\",\n        \"MailingAddress\": {\n          \"Name\": \"string\",\n          \"AddressLine1\": \"string\",\n          \"City\": \"string\",\n          \"PostalCode\": \"string\",\n          \"CoAddress\": \"string\",\n          \"AddressLine2\": \"string\",\n          \"CountryCode\": \"str\"\n        },\n        \"Contacts\": [\n          {\n            \"ContactType\": \"string\",\n            \"Value\": \"string\"\n          },\n          {\n            \"ContactType\": \"string\",\n            \"Value\": \"string\"\n          }\n        ]\n      },\n      {\n        \"AddressType\": \"string\",\n        \"AddressId\": \"string\",\n        \"MailingAddress\": {\n          \"Name\": \"string\",\n          \"AddressLine1\": \"string\",\n          \"City\": \"string\",\n          \"PostalCode\": \"string\",\n          \"CoAddress\": \"string\",\n          \"AddressLine2\": \"string\",\n          \"CountryCode\": \"str\"\n        },\n        \"Contacts\": [\n          {\n            \"ContactType\": \"string\",\n            \"Value\": \"string\"\n          },\n          {\n            \"ContactType\": \"string\",\n            \"Value\": \"string\"\n          }\n        ]\n      }\n    ],\n    \"EstimatedTimeOfArrival\": \"string\",\n    \"DueDate\": \"string\",\n    \"References\": [\n      {\n        \"ReferenceType\": \"string\",\n        \"Value\": \"string\"\n      },\n      {\n        \"ReferenceType\": \"string\",\n        \"Value\": \"string\"\n      }\n    ],\n    \"ParcelState\": {\n      \"EventDate\": \"string\",\n      \"Name\": \"string\",\n      \"DisplayName\": \"string\",\n      \"Description\": \"string\",\n      \"Location\": {\n        \"LocationType\": \"string\",\n        \"Name\": \"string\",\n        \"LocationId\": \"string\"\n      },\n      \"ReferenceData\": [\n        {\n          \"ReferenceType\": \"string\",\n          \"Value\": \"string\"\n        },\n        {\n          \"ReferenceType\": \"string\",\n          \"Value\": \"string\"\n        }\n      ]\n    },\n    \"Measures\": [\n      {\n        \"MeasureType\": \"string\",\n        \"Value\": \"string\"\n      },\n      {\n        \"MeasureType\": \"string\",\n        \"Value\": \"string\"\n      }\n    ],\n    \"Events\": [\n      {\n        \"EventDate\": \"string\",\n        \"Name\": \"string\",\n        \"DisplayName\": \"string\",\n        \"Description\": \"string\",\n        \"Location\": {\n          \"LocationType\": \"string\",\n          \"Name\": \"string\",\n          \"LocationId\": \"string\"\n        },\n        \"ReferenceData\": [\n          {\n            \"ReferenceType\": \"string\",\n            \"Value\": \"string\"\n          },\n          {\n            \"ReferenceType\": \"string\",\n            \"Value\": \"string\"\n          }\n        ]\n      },\n      {\n        \"EventDate\": \"string\",\n        \"Name\": \"string\",\n        \"DisplayName\": \"string\",\n        \"Description\": \"string\",\n        \"Location\": {\n          \"LocationType\": \"string\",\n          \"Name\": \"string\",\n          \"LocationId\": \"string\"\n        },\n        \"ReferenceData\": [\n          {\n            \"ReferenceType\": \"string\",\n            \"Value\": \"string\"\n          },\n          {\n            \"ReferenceType\": \"string\",\n            \"Value\": \"string\"\n          }\n        ]\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "75e3910a-60c0-4fb3-ba07-ccdb63fb1788",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "TrackAndTraceBoxes",
+                    "v1",
+                    "GetParcel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "countryCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "referenceType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reference",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "40498d05-a2cb-4f34-bba8-b8355abe03dc",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "TrackAndTraceBoxes",
+                    "v1",
+                    "GetParcel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "countryCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "referenceType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reference",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://parcelservices-se.dbschenker.com/Apipartner",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "576d92ba-c5cc-48cb-82f8-024d7465b8ee",
+    "name": "Partner services API V1.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "<a target=\"_blank\" href=\"/Utils/PartnerServices/ParcelServicesExamples.zip\">This zip</a> includes example/sample code to connect to DB Schenker Partner API.",
+      "type": "text/plain"
+    }
+  }
+}

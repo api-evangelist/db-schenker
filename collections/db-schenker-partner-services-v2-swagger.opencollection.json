@@ -1,0 +1,112 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Partner services API V2.",
+    "version": "V2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "DeliveryPoint2",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Servicepoints based on servicepoint number.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/DeliveryPoint/v2/GetServicePoint",
+            "params": [
+              {
+                "name": "countryCode",
+                "value": "",
+                "type": "query",
+                "description": "Countycode for specified country."
+              },
+              {
+                "name": "servicePointNumber",
+                "value": "",
+                "type": "query",
+                "description": "Four digit servicepoint number."
+              }
+            ]
+          },
+          "docs": "Get Servicepoints based on servicepoint number."
+        },
+        {
+          "info": {
+            "name": "Get all Existing Servicepoints for a specified country.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/DeliveryPoint/v2/GetAllServicePoints",
+            "params": [
+              {
+                "name": "countryCode",
+                "value": "",
+                "type": "query",
+                "description": "Countycode for specified country"
+              }
+            ]
+          },
+          "docs": "Get all Existing Servicepoints for a specified country."
+        },
+        {
+          "info": {
+            "name": "Gives you a list of the ServicePoints nearest to the specified location.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/DeliveryPoint/v2/GetNearestServicePoint"
+          },
+          "docs": "Gives you a list of the ServicePoints nearest to the specified location."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "TrackAndTraceAdvanced2",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieves a parcel from a reference",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/TrackAndTraceAdvanced/v2/GetParcel",
+            "params": [
+              {
+                "name": "countryCode",
+                "value": "",
+                "type": "query",
+                "description": "The country code"
+              },
+              {
+                "name": "referenceType",
+                "value": "",
+                "type": "query",
+                "description": "A parcel's referenceType"
+              },
+              {
+                "name": "reference",
+                "value": "",
+                "type": "query",
+                "description": "A parcel's reference"
+              }
+            ]
+          },
+          "docs": "Retrieves a parcel from a reference"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

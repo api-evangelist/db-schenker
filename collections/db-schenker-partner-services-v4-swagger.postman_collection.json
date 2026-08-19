@@ -1,0 +1,1902 @@
+{
+  "item": [
+    {
+      "id": "d6c2373c-1b4a-43dc-86f0-0365213ea690",
+      "name": "DeliveryPoint4",
+      "description": {
+        "content": "Responsible for all Web API functions related to Service Points",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5670bdbd-98f8-4d2c-8f80-93d0e67db622",
+          "name": "Retrieves a service point based on the provided country code and service point number.",
+          "request": {
+            "name": "Retrieves a service point based on the provided country code and service point number.",
+            "description": {},
+            "url": {
+              "path": [
+                "DeliveryPoint",
+                "v4",
+                "GetServicePoint"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "countryCode",
+                  "value": "<string>",
+                  "description": "(Required) The country code for the specified country (e.g., DK, FI, SE)."
+                },
+                {
+                  "disabled": false,
+                  "key": "servicePointNumber",
+                  "value": "<string>",
+                  "description": "(Required) A four-digit service point number."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "be830960-ead6-453a-8f5e-f76ef6dd7c4c",
+              "name": "Service Point found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DeliveryPoint",
+                    "v4",
+                    "GetServicePoint"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "countryCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "servicePointNumber",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Name\": \"string\",\n  \"Addresses\": [\n    {\n      \"AddressType\": \"string\",\n      \"AddressId\": \"string\",\n      \"MailingAddress\": {\n        \"Name\": \"string\",\n        \"AddressLine1\": \"string\",\n        \"City\": \"string\",\n        \"PostalCode\": \"string\",\n        \"CoAddress\": \"string\",\n        \"AddressLine2\": \"string\",\n        \"CountryCode\": \"st\"\n      },\n      \"Contacts\": [\n        {\n          \"ContactType\": \"string\",\n          \"Value\": \"string\"\n        },\n        {\n          \"ContactType\": \"string\",\n          \"Value\": \"string\"\n        }\n      ]\n    },\n    {\n      \"AddressType\": \"string\",\n      \"AddressId\": \"string\",\n      \"MailingAddress\": {\n        \"Name\": \"string\",\n        \"AddressLine1\": \"string\",\n        \"City\": \"string\",\n        \"PostalCode\": \"string\",\n        \"CoAddress\": \"string\",\n        \"AddressLine2\": \"string\",\n        \"CountryCode\": \"str\"\n      },\n      \"Contacts\": [\n        {\n          \"ContactType\": \"string\",\n          \"Value\": \"string\"\n        },\n        {\n          \"ContactType\": \"string\",\n          \"Value\": \"string\"\n        }\n      ]\n    }\n  ],\n  \"GeoPoint\": {\n    \"Latitude\": \"string\",\n    \"Longitude\": \"string\"\n  },\n  \"OpeningDays\": [\n    {\n      \"Day\": \"string\",\n      \"DisplayName\": \"string\",\n      \"OpeningHours\": [\n        {\n          \"From\": \"string\",\n          \"To\": \"string\"\n        },\n        {\n          \"From\": \"string\",\n          \"To\": \"string\"\n        }\n      ]\n    },\n    {\n      \"Day\": \"string\",\n      \"DisplayName\": \"string\",\n      \"OpeningHours\": [\n        {\n          \"From\": \"string\",\n          \"To\": \"string\"\n        },\n        {\n          \"From\": \"string\",\n          \"To\": \"string\"\n        }\n      ]\n    }\n  ],\n  \"Services\": [\n    {\n      \"ServiceType\": \"string\",\n      \"DisplayName\": \"string\"\n    },\n    {\n      \"ServiceType\": \"string\",\n      \"DisplayName\": \"string\"\n    }\n  ],\n  \"References\": [\n    {\n      \"ReferenceType\": \"string\",\n      \"Value\": \"string\"\n    },\n    {\n      \"ReferenceType\": \"string\",\n      \"Value\": \"string\"\n    }\n  ],\n  \"DeliveryType\": \"string\",\n  \"OpeningHoursShort\": \"string\",\n  \"OpeningHoursRow1\": \"string\",\n  \"OpeningHoursRow2\": \"string\",\n  \"OpeningHoursRow3\": \"string\",\n  \"HasPrinter\": false,\n  \"DeliveryData\": [\n    {\n      \"DataType\": \"string\",\n      \"Value\": \"string\"\n    },\n    {\n      \"DataType\": \"string\",\n      \"Value\": \"string\"\n    }\n  ],\n  \"Distance\": \"string\",\n  \"ProviderAddon\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7868c78a-6dac-4090-8b8a-6f02fb3a3901",
+              "name": "No service point found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DeliveryPoint",
+                    "v4",
+                    "GetServicePoint"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "countryCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "servicePointNumber",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "74a831da-433d-4dfb-852e-7292ac22a7f8",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DeliveryPoint",
+                    "v4",
+                    "GetServicePoint"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "countryCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "servicePointNumber",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4aa436d0-24d7-4b1b-91ab-da3510c14b70",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DeliveryPoint",
+                    "v4",
+                    "GetServicePoint"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "countryCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "servicePointNumber",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ab80b8e0-49fe-4a24-b745-34913a659e17",
+              "name": "Servicepoint was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DeliveryPoint",
+                    "v4",
+                    "GetServicePoint"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "countryCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "servicePointNumber",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0b20a04d-9fee-43f4-98d5-672d1ebeddb5",
+          "name": "Get all Existing Servicepoints for a specified country.",
+          "request": {
+            "name": "Get all Existing Servicepoints for a specified country.",
+            "description": {},
+            "url": {
+              "path": [
+                "DeliveryPoint",
+                "v4",
+                "GetAllServicePoints"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "countryCode",
+                  "value": "<string>",
+                  "description": "(Required) Countycode for specified country"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b8e8ef11-68d9-41b0-8366-0f400ccb554f",
+              "name": "Service Points found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DeliveryPoint",
+                    "v4",
+                    "GetAllServicePoints"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "countryCode",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"Name\": \"string\",\n    \"Addresses\": [\n      {\n        \"AddressType\": \"string\",\n        \"AddressId\": \"string\",\n        \"MailingAddress\": {\n          \"Name\": \"string\",\n          \"AddressLine1\": \"string\",\n          \"City\": \"string\",\n          \"PostalCode\": \"string\",\n          \"CoAddress\": \"string\",\n          \"AddressLine2\": \"string\",\n          \"CountryCode\": \"st\"\n        },\n        \"Contacts\": [\n          {\n            \"ContactType\": \"string\",\n            \"Value\": \"string\"\n          },\n          {\n            \"ContactType\": \"string\",\n            \"Value\": \"string\"\n          }\n        ]\n      },\n      {\n        \"AddressType\": \"string\",\n        \"AddressId\": \"string\",\n        \"MailingAddress\": {\n          \"Name\": \"string\",\n          \"AddressLine1\": \"string\",\n          \"City\": \"string\",\n          \"PostalCode\": \"string\",\n          \"CoAddress\": \"string\",\n          \"AddressLine2\": \"string\",\n          \"CountryCode\": \"str\"\n        },\n        \"Contacts\": [\n          {\n            \"ContactType\": \"string\",\n            \"Value\": \"string\"\n          },\n          {\n            \"ContactType\": \"string\",\n            \"Value\": \"string\"\n          }\n        ]\n      }\n    ],\n    \"GeoPoint\": {\n      \"Latitude\": \"string\",\n      \"Longitude\": \"string\"\n    },\n    \"OpeningDays\": [\n      {\n        \"Day\": \"string\",\n        \"DisplayName\": \"string\",\n        \"OpeningHours\": [\n          {\n            \"From\": \"string\",\n            \"To\": \"string\"\n          },\n          {\n            \"From\": \"string\",\n            \"To\": \"string\"\n          }\n        ]\n      },\n      {\n        \"Day\": \"string\",\n        \"DisplayName\": \"string\",\n        \"OpeningHours\": [\n          {\n            \"From\": \"string\",\n            \"To\": \"string\"\n          },\n          {\n            \"From\": \"string\",\n            \"To\": \"string\"\n          }\n        ]\n      }\n    ],\n    \"Services\": [\n      {\n        \"ServiceType\": \"string\",\n        \"DisplayName\": \"string\"\n      },\n      {\n        \"ServiceType\": \"string\",\n        \"DisplayName\": \"string\"\n      }\n    ],\n    \"References\": [\n      {\n        \"ReferenceType\": \"string\",\n        \"Value\": \"string\"\n      },\n      {\n        \"ReferenceType\": \"string\",\n        \"Value\": \"string\"\n      }\n    ],\n    \"DeliveryType\": \"string\",\n    \"OpeningHoursShort\": \"string\",\n    \"OpeningHoursRow1\": \"string\",\n    \"OpeningHoursRow2\": \"string\",\n    \"OpeningHoursRow3\": \"string\",\n    \"HasPrinter\": false,\n    \"DeliveryData\": [\n      {\n        \"DataType\": \"string\",\n        \"Value\": \"string\"\n      },\n      {\n        \"DataType\": \"string\",\n        \"Value\": \"string\"\n      }\n    ],\n    \"Distance\": \"string\",\n    \"ProviderAddon\": \"string\"\n  },\n  {\n    \"Name\": \"string\",\n    \"Addresses\": [\n      {\n        \"AddressType\": \"string\",\n        \"AddressId\": \"string\",\n        \"MailingAddress\": {\n          \"Name\": \"string\",\n          \"AddressLine1\": \"string\",\n          \"City\": \"string\",\n          \"PostalCode\": \"string\",\n          \"CoAddress\": \"string\",\n          \"AddressLine2\": \"string\",\n          \"CountryCode\": \"str\"\n        },\n        \"Contacts\": [\n          {\n            \"ContactType\": \"string\",\n            \"Value\": \"string\"\n          },\n          {\n            \"ContactType\": \"string\",\n            \"Value\": \"string\"\n          }\n        ]\n      },\n      {\n        \"AddressType\": \"string\",\n        \"AddressId\": \"string\",\n        \"MailingAddress\": {\n          \"Name\": \"string\",\n          \"AddressLine1\": \"string\",\n          \"City\": \"string\",\n          \"PostalCode\": \"string\",\n          \"CoAddress\": \"string\",\n          \"AddressLine2\": \"string\",\n          \"CountryCode\": \"str\"\n        },\n        \"Contacts\": [\n          {\n            \"ContactType\": \"string\",\n            \"Value\": \"string\"\n          },\n          {\n            \"ContactType\": \"string\",\n            \"Value\": \"string\"\n          }\n        ]\n      }\n    ],\n    \"GeoPoint\": {\n      \"Latitude\": \"string\",\n      \"Longitude\": \"string\"\n    },\n    \"OpeningDays\": [\n      {\n        \"Day\": \"string\",\n        \"DisplayName\": \"string\",\n        \"OpeningHours\": [\n          {\n            \"From\": \"string\",\n            \"To\": \"string\"\n          },\n          {\n            \"From\": \"string\",\n            \"To\": \"string\"\n          }\n        ]\n      },\n      {\n        \"Day\": \"string\",\n        \"DisplayName\": \"string\",\n        \"OpeningHours\": [\n          {\n            \"From\": \"string\",\n            \"To\": \"string\"\n          },\n          {\n            \"From\": \"string\",\n            \"To\": \"string\"\n          }\n        ]\n      }\n    ],\n    \"Services\": [\n      {\n        \"ServiceType\": \"string\",\n        \"DisplayName\": \"string\"\n      },\n      {\n        \"ServiceType\": \"string\",\n        \"DisplayName\": \"string\"\n      }\n    ],\n    \"References\": [\n      {\n        \"ReferenceType\": \"string\",\n        \"Value\": \"string\"\n      },\n      {\n        \"ReferenceType\": \"string\",\n        \"Value\": \"string\"\n      }\n    ],\n    \"DeliveryType\": \"string\",\n    \"OpeningHoursShort\": \"string\",\n    \"OpeningHoursRow1\": \"string\",\n    \"OpeningHoursRow2\": \"string\",\n    \"OpeningHoursRow3\": \"string\",\n    \"HasPrinter\": false,\n    \"DeliveryData\": [\n      {\n        \"DataType\": \"string\",\n        \"Value\": \"string\"\n      },\n      {\n        \"DataType\": \"string\",\n        \"Value\": \"string\"\n      }\n    ],\n    \"Distance\": \"string\",\n    \"ProviderAddon\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "41a0aae9-8f01-4008-8b57-a20c5d5051fb",
+              "name": "No service point found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DeliveryPoint",
+                    "v4",
+                    "GetAllServicePoints"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "countryCode",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2a65faf1-b52e-4ed0-adab-aa8a3bcc0b9c",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DeliveryPoint",
+                    "v4",
+                    "GetAllServicePoints"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "countryCode",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5cc1fcc2-dc03-4ab0-a6b3-fec4237aadaa",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DeliveryPoint",
+                    "v4",
+                    "GetAllServicePoints"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "countryCode",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cf34abbf-a801-4316-a513-10d74999a3c5",
+          "name": "Get a list of service points nearest to the specified location based on the provided search criteria.",
+          "request": {
+            "name": "Get a list of service points nearest to the specified location based on the provided search criteria.",
+            "description": {},
+            "url": {
+              "path": [
+                "DeliveryPoint",
+                "v4",
+                "GetNearestServicePoint"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "CountryCode",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "PostalCode",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "StreetAddress",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "City",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "Amount",
+                  "value": "<integer>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5725c84a-18af-4e6f-ba1c-026f9b2d46e7",
+              "name": "A list of nearest service points",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DeliveryPoint",
+                    "v4",
+                    "GetNearestServicePoint"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "CountryCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "PostalCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "StreetAddress",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "City",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "Amount",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"Name\": \"string\",\n    \"Addresses\": [\n      {\n        \"AddressType\": \"string\",\n        \"AddressId\": \"string\",\n        \"MailingAddress\": {\n          \"Name\": \"string\",\n          \"AddressLine1\": \"string\",\n          \"City\": \"string\",\n          \"PostalCode\": \"string\",\n          \"CoAddress\": \"string\",\n          \"AddressLine2\": \"string\",\n          \"CountryCode\": \"str\"\n        },\n        \"Contacts\": [\n          {\n            \"ContactType\": \"string\",\n            \"Value\": \"string\"\n          },\n          {\n            \"ContactType\": \"string\",\n            \"Value\": \"string\"\n          }\n        ]\n      },\n      {\n        \"AddressType\": \"string\",\n        \"AddressId\": \"string\",\n        \"MailingAddress\": {\n          \"Name\": \"string\",\n          \"AddressLine1\": \"string\",\n          \"City\": \"string\",\n          \"PostalCode\": \"string\",\n          \"CoAddress\": \"string\",\n          \"AddressLine2\": \"string\",\n          \"CountryCode\": \"st\"\n        },\n        \"Contacts\": [\n          {\n            \"ContactType\": \"string\",\n            \"Value\": \"string\"\n          },\n          {\n            \"ContactType\": \"string\",\n            \"Value\": \"string\"\n          }\n        ]\n      }\n    ],\n    \"GeoPoint\": {\n      \"Latitude\": \"string\",\n      \"Longitude\": \"string\"\n    },\n    \"OpeningDays\": [\n      {\n        \"Day\": \"string\",\n        \"DisplayName\": \"string\",\n        \"OpeningHours\": [\n          {\n            \"From\": \"string\",\n            \"To\": \"string\"\n          },\n          {\n            \"From\": \"string\",\n            \"To\": \"string\"\n          }\n        ]\n      },\n      {\n        \"Day\": \"string\",\n        \"DisplayName\": \"string\",\n        \"OpeningHours\": [\n          {\n            \"From\": \"string\",\n            \"To\": \"string\"\n          },\n          {\n            \"From\": \"string\",\n            \"To\": \"string\"\n          }\n        ]\n      }\n    ],\n    \"Services\": [\n      {\n        \"ServiceType\": \"string\",\n        \"DisplayName\": \"string\"\n      },\n      {\n        \"ServiceType\": \"string\",\n        \"DisplayName\": \"string\"\n      }\n    ],\n    \"References\": [\n      {\n        \"ReferenceType\": \"string\",\n        \"Value\": \"string\"\n      },\n      {\n        \"ReferenceType\": \"string\",\n        \"Value\": \"string\"\n      }\n    ],\n    \"DeliveryType\": \"string\",\n    \"OpeningHoursShort\": \"string\",\n    \"OpeningHoursRow1\": \"string\",\n    \"OpeningHoursRow2\": \"string\",\n    \"OpeningHoursRow3\": \"string\",\n    \"DeliveryData\": [\n      {\n        \"DataType\": \"string\",\n        \"Value\": \"string\"\n      },\n      {\n        \"DataType\": \"string\",\n        \"Value\": \"string\"\n      }\n    ],\n    \"Distance\": \"string\",\n    \"ProviderAddon\": \"string\"\n  },\n  {\n    \"Name\": \"string\",\n    \"Addresses\": [\n      {\n        \"AddressType\": \"string\",\n        \"AddressId\": \"string\",\n        \"MailingAddress\": {\n          \"Name\": \"string\",\n          \"AddressLine1\": \"string\",\n          \"City\": \"string\",\n          \"PostalCode\": \"string\",\n          \"CoAddress\": \"string\",\n          \"AddressLine2\": \"string\",\n          \"CountryCode\": \"str\"\n        },\n        \"Contacts\": [\n          {\n            \"ContactType\": \"string\",\n            \"Value\": \"string\"\n          },\n          {\n            \"ContactType\": \"string\",\n            \"Value\": \"string\"\n          }\n        ]\n      },\n      {\n        \"AddressType\": \"string\",\n        \"AddressId\": \"string\",\n        \"MailingAddress\": {\n          \"Name\": \"string\",\n          \"AddressLine1\": \"string\",\n          \"City\": \"string\",\n          \"PostalCode\": \"string\",\n          \"CoAddress\": \"string\",\n          \"AddressLine2\": \"string\",\n          \"CountryCode\": \"st\"\n        },\n        \"Contacts\": [\n          {\n            \"ContactType\": \"string\",\n            \"Value\": \"string\"\n          },\n          {\n            \"ContactType\": \"string\",\n            \"Value\": \"string\"\n          }\n        ]\n      }\n    ],\n    \"GeoPoint\": {\n      \"Latitude\": \"string\",\n      \"Longitude\": \"string\"\n    },\n    \"OpeningDays\": [\n      {\n        \"Day\": \"string\",\n        \"DisplayName\": \"string\",\n        \"OpeningHours\": [\n          {\n            \"From\": \"string\",\n            \"To\": \"string\"\n          },\n          {\n            \"From\": \"string\",\n            \"To\": \"string\"\n          }\n        ]\n      },\n      {\n        \"Day\": \"string\",\n        \"DisplayName\": \"string\",\n        \"OpeningHours\": [\n          {\n            \"From\": \"string\",\n            \"To\": \"string\"\n          },\n          {\n            \"From\": \"string\",\n            \"To\": \"string\"\n          }\n        ]\n      }\n    ],\n    \"Services\": [\n      {\n        \"ServiceType\": \"string\",\n        \"DisplayName\": \"string\"\n      },\n      {\n        \"ServiceType\": \"string\",\n        \"DisplayName\": \"string\"\n      }\n    ],\n    \"References\": [\n      {\n        \"ReferenceType\": \"string\",\n        \"Value\": \"string\"\n      },\n      {\n        \"ReferenceType\": \"string\",\n        \"Value\": \"string\"\n      }\n    ],\n    \"DeliveryType\": \"string\",\n    \"OpeningHoursShort\": \"string\",\n    \"OpeningHoursRow1\": \"string\",\n    \"OpeningHoursRow2\": \"string\",\n    \"OpeningHoursRow3\": \"string\",\n    \"DeliveryData\": [\n      {\n        \"DataType\": \"string\",\n        \"Value\": \"string\"\n      },\n      {\n        \"DataType\": \"string\",\n        \"Value\": \"string\"\n      }\n    ],\n    \"Distance\": \"string\",\n    \"ProviderAddon\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e3d1f0f8-0106-4f54-b6f9-b7ef8fe87f44",
+              "name": "No service points found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DeliveryPoint",
+                    "v4",
+                    "GetNearestServicePoint"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "CountryCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "PostalCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "StreetAddress",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "City",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "Amount",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9108934b-5286-4937-8c1f-20ce3e354b7b",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DeliveryPoint",
+                    "v4",
+                    "GetNearestServicePoint"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "CountryCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "PostalCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "StreetAddress",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "City",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "Amount",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6093e0d0-4ad2-4b70-bee6-ea7942508ca4",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DeliveryPoint",
+                    "v4",
+                    "GetNearestServicePoint"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "CountryCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "PostalCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "StreetAddress",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "City",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "Amount",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d59cffd0-1af7-43d3-8c4a-7134714c29a5",
+          "name": "Retrieves a terminal based on the provided country code and terminalcode.",
+          "request": {
+            "name": "Retrieves a terminal based on the provided country code and terminalcode.",
+            "description": {},
+            "url": {
+              "path": [
+                "DeliveryPoint",
+                "v4",
+                "GetTerminal"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "countryCode",
+                  "value": "<string>",
+                  "description": "(Required) Country code for the specified country (Currently only SE available)."
+                },
+                {
+                  "disabled": false,
+                  "key": "terminalCode",
+                  "value": "<string>",
+                  "description": "(Required) A four-digit terminalcode."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8b894a32-3303-4304-84ad-6d23280c239d",
+              "name": "Terminal found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DeliveryPoint",
+                    "v4",
+                    "GetTerminal"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "countryCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "terminalCode",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Name\": \"string\",\n  \"Addresses\": [\n    {\n      \"AddressType\": \"string\",\n      \"AddressId\": \"string\",\n      \"MailingAddress\": {\n        \"Name\": \"string\",\n        \"AddressLine1\": \"string\",\n        \"City\": \"string\",\n        \"PostalCode\": \"string\",\n        \"CoAddress\": \"string\",\n        \"AddressLine2\": \"string\",\n        \"CountryCode\": \"st\"\n      },\n      \"Contacts\": [\n        {\n          \"ContactType\": \"string\",\n          \"Value\": \"string\"\n        },\n        {\n          \"ContactType\": \"string\",\n          \"Value\": \"string\"\n        }\n      ]\n    },\n    {\n      \"AddressType\": \"string\",\n      \"AddressId\": \"string\",\n      \"MailingAddress\": {\n        \"Name\": \"string\",\n        \"AddressLine1\": \"string\",\n        \"City\": \"string\",\n        \"PostalCode\": \"string\",\n        \"CoAddress\": \"string\",\n        \"AddressLine2\": \"string\",\n        \"CountryCode\": \"str\"\n      },\n      \"Contacts\": [\n        {\n          \"ContactType\": \"string\",\n          \"Value\": \"string\"\n        },\n        {\n          \"ContactType\": \"string\",\n          \"Value\": \"string\"\n        }\n      ]\n    }\n  ],\n  \"GeoPoint\": {\n    \"Latitude\": \"string\",\n    \"Longitude\": \"string\"\n  },\n  \"OpeningDays\": [\n    {\n      \"Day\": \"string\",\n      \"DisplayName\": \"string\",\n      \"OpeningHours\": [\n        {\n          \"From\": \"string\",\n          \"To\": \"string\"\n        },\n        {\n          \"From\": \"string\",\n          \"To\": \"string\"\n        }\n      ]\n    },\n    {\n      \"Day\": \"string\",\n      \"DisplayName\": \"string\",\n      \"OpeningHours\": [\n        {\n          \"From\": \"string\",\n          \"To\": \"string\"\n        },\n        {\n          \"From\": \"string\",\n          \"To\": \"string\"\n        }\n      ]\n    }\n  ],\n  \"Services\": [\n    {\n      \"ServiceType\": \"string\",\n      \"DisplayName\": \"string\"\n    },\n    {\n      \"ServiceType\": \"string\",\n      \"DisplayName\": \"string\"\n    }\n  ],\n  \"References\": [\n    {\n      \"ReferenceType\": \"string\",\n      \"Value\": \"string\"\n    },\n    {\n      \"ReferenceType\": \"string\",\n      \"Value\": \"string\"\n    }\n  ],\n  \"DeliveryType\": \"string\",\n  \"OpeningHoursShort\": \"string\",\n  \"OpeningHoursRow1\": \"string\",\n  \"OpeningHoursRow2\": \"string\",\n  \"OpeningHoursRow3\": \"string\",\n  \"DeliveryData\": [\n    {\n      \"DataType\": \"string\",\n      \"Value\": \"string\"\n    },\n    {\n      \"DataType\": \"string\",\n      \"Value\": \"string\"\n    }\n  ],\n  \"Distance\": \"string\",\n  \"ProviderAddon\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ae050e68-a259-4b3e-8ecf-4945e9a5b734",
+              "name": "No terminal found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DeliveryPoint",
+                    "v4",
+                    "GetTerminal"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "countryCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "terminalCode",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4c226358-e5ba-4a33-a361-ac37c5756916",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DeliveryPoint",
+                    "v4",
+                    "GetTerminal"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "countryCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "terminalCode",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "95fbeedc-f151-4145-a154-14d9734f12bb",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DeliveryPoint",
+                    "v4",
+                    "GetTerminal"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "countryCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "terminalCode",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5969bc45-2834-4559-869c-96930161828b",
+              "name": "Terminal was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DeliveryPoint",
+                    "v4",
+                    "GetTerminal"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "countryCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "terminalCode",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "73a86f6d-3c4e-4eba-ab6f-e31e0434e1cb",
+          "name": "Get all existing terminals for a specified country.",
+          "request": {
+            "name": "Get all existing terminals for a specified country.",
+            "description": {},
+            "url": {
+              "path": [
+                "DeliveryPoint",
+                "v4",
+                "GetAllTerminals"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "countryCode",
+                  "value": "<string>",
+                  "description": "(Required) Country code for the specified country (Currently only SE available)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "993f3b32-c4bd-4078-bae7-d29f6f09cc67",
+              "name": "Terminals found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DeliveryPoint",
+                    "v4",
+                    "GetAllTerminals"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "countryCode",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"Name\": \"string\",\n    \"Addresses\": [\n      {\n        \"AddressType\": \"string\",\n        \"AddressId\": \"string\",\n        \"MailingAddress\": {\n          \"Name\": \"string\",\n          \"AddressLine1\": \"string\",\n          \"City\": \"string\",\n          \"PostalCode\": \"string\",\n          \"CoAddress\": \"string\",\n          \"AddressLine2\": \"string\",\n          \"CountryCode\": \"str\"\n        },\n        \"Contacts\": [\n          {\n            \"ContactType\": \"string\",\n            \"Value\": \"string\"\n          },\n          {\n            \"ContactType\": \"string\",\n            \"Value\": \"string\"\n          }\n        ]\n      },\n      {\n        \"AddressType\": \"string\",\n        \"AddressId\": \"string\",\n        \"MailingAddress\": {\n          \"Name\": \"string\",\n          \"AddressLine1\": \"string\",\n          \"City\": \"string\",\n          \"PostalCode\": \"string\",\n          \"CoAddress\": \"string\",\n          \"AddressLine2\": \"string\",\n          \"CountryCode\": \"st\"\n        },\n        \"Contacts\": [\n          {\n            \"ContactType\": \"string\",\n            \"Value\": \"string\"\n          },\n          {\n            \"ContactType\": \"string\",\n            \"Value\": \"string\"\n          }\n        ]\n      }\n    ],\n    \"GeoPoint\": {\n      \"Latitude\": \"string\",\n      \"Longitude\": \"string\"\n    },\n    \"OpeningDays\": [\n      {\n        \"Day\": \"string\",\n        \"DisplayName\": \"string\",\n        \"OpeningHours\": [\n          {\n            \"From\": \"string\",\n            \"To\": \"string\"\n          },\n          {\n            \"From\": \"string\",\n            \"To\": \"string\"\n          }\n        ]\n      },\n      {\n        \"Day\": \"string\",\n        \"DisplayName\": \"string\",\n        \"OpeningHours\": [\n          {\n            \"From\": \"string\",\n            \"To\": \"string\"\n          },\n          {\n            \"From\": \"string\",\n            \"To\": \"string\"\n          }\n        ]\n      }\n    ],\n    \"Services\": [\n      {\n        \"ServiceType\": \"string\",\n        \"DisplayName\": \"string\"\n      },\n      {\n        \"ServiceType\": \"string\",\n        \"DisplayName\": \"string\"\n      }\n    ],\n    \"References\": [\n      {\n        \"ReferenceType\": \"string\",\n        \"Value\": \"string\"\n      },\n      {\n        \"ReferenceType\": \"string\",\n        \"Value\": \"string\"\n      }\n    ],\n    \"DeliveryType\": \"string\",\n    \"OpeningHoursShort\": \"string\",\n    \"OpeningHoursRow1\": \"string\",\n    \"OpeningHoursRow2\": \"string\",\n    \"OpeningHoursRow3\": \"string\",\n    \"DeliveryData\": [\n      {\n        \"DataType\": \"string\",\n        \"Value\": \"string\"\n      },\n      {\n        \"DataType\": \"string\",\n        \"Value\": \"string\"\n      }\n    ],\n    \"Distance\": \"string\",\n    \"ProviderAddon\": \"string\"\n  },\n  {\n    \"Name\": \"string\",\n    \"Addresses\": [\n      {\n        \"AddressType\": \"string\",\n        \"AddressId\": \"string\",\n        \"MailingAddress\": {\n          \"Name\": \"string\",\n          \"AddressLine1\": \"string\",\n          \"City\": \"string\",\n          \"PostalCode\": \"string\",\n          \"CoAddress\": \"string\",\n          \"AddressLine2\": \"string\",\n          \"CountryCode\": \"str\"\n        },\n        \"Contacts\": [\n          {\n            \"ContactType\": \"string\",\n            \"Value\": \"string\"\n          },\n          {\n            \"ContactType\": \"string\",\n            \"Value\": \"string\"\n          }\n        ]\n      },\n      {\n        \"AddressType\": \"string\",\n        \"AddressId\": \"string\",\n        \"MailingAddress\": {\n          \"Name\": \"string\",\n          \"AddressLine1\": \"string\",\n          \"City\": \"string\",\n          \"PostalCode\": \"string\",\n          \"CoAddress\": \"string\",\n          \"AddressLine2\": \"string\",\n          \"CountryCode\": \"st\"\n        },\n        \"Contacts\": [\n          {\n            \"ContactType\": \"string\",\n            \"Value\": \"string\"\n          },\n          {\n            \"ContactType\": \"string\",\n            \"Value\": \"string\"\n          }\n        ]\n      }\n    ],\n    \"GeoPoint\": {\n      \"Latitude\": \"string\",\n      \"Longitude\": \"string\"\n    },\n    \"OpeningDays\": [\n      {\n        \"Day\": \"string\",\n        \"DisplayName\": \"string\",\n        \"OpeningHours\": [\n          {\n            \"From\": \"string\",\n            \"To\": \"string\"\n          },\n          {\n            \"From\": \"string\",\n            \"To\": \"string\"\n          }\n        ]\n      },\n      {\n        \"Day\": \"string\",\n        \"DisplayName\": \"string\",\n        \"OpeningHours\": [\n          {\n            \"From\": \"string\",\n            \"To\": \"string\"\n          },\n          {\n            \"From\": \"string\",\n            \"To\": \"string\"\n          }\n        ]\n      }\n    ],\n    \"Services\": [\n      {\n        \"ServiceType\": \"string\",\n        \"DisplayName\": \"string\"\n      },\n      {\n        \"ServiceType\": \"string\",\n        \"DisplayName\": \"string\"\n      }\n    ],\n    \"References\": [\n      {\n        \"ReferenceType\": \"string\",\n        \"Value\": \"string\"\n      },\n      {\n        \"ReferenceType\": \"string\",\n        \"Value\": \"string\"\n      }\n    ],\n    \"DeliveryType\": \"string\",\n    \"OpeningHoursShort\": \"string\",\n    \"OpeningHoursRow1\": \"string\",\n    \"OpeningHoursRow2\": \"string\",\n    \"OpeningHoursRow3\": \"string\",\n    \"DeliveryData\": [\n      {\n        \"DataType\": \"string\",\n        \"Value\": \"string\"\n      },\n      {\n        \"DataType\": \"string\",\n        \"Value\": \"string\"\n      }\n    ],\n    \"Distance\": \"string\",\n    \"ProviderAddon\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3a7bc4a1-bb79-4254-9fe5-f6642e970ee0",
+              "name": "No terminals found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DeliveryPoint",
+                    "v4",
+                    "GetAllTerminals"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "countryCode",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4657e007-0483-4564-b827-216bd225f24d",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DeliveryPoint",
+                    "v4",
+                    "GetAllTerminals"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "countryCode",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "614240c5-e150-42a7-a85a-a0bc02af0f10",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DeliveryPoint",
+                    "v4",
+                    "GetAllTerminals"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "countryCode",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "18a08f56-d0d9-4930-b906-8566ea21d13c",
+          "name": "Get a list of terminals nearest to the specified location based on the provided search criteria.",
+          "request": {
+            "name": "Get a list of terminals nearest to the specified location based on the provided search criteria.",
+            "description": {},
+            "url": {
+              "path": [
+                "DeliveryPoint",
+                "v4",
+                "GetNearestTerminal"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "CountryCode",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "PostalCode",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "StreetAddress",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "City",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "Amount",
+                  "value": "<integer>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7b6de616-4579-45c8-ba56-c5abe211c2aa",
+              "name": "A list of nearest terminals",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DeliveryPoint",
+                    "v4",
+                    "GetNearestTerminal"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "CountryCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "PostalCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "StreetAddress",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "City",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "Amount",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"Name\": \"string\",\n    \"Addresses\": [\n      {\n        \"AddressType\": \"string\",\n        \"AddressId\": \"string\",\n        \"MailingAddress\": {\n          \"Name\": \"string\",\n          \"AddressLine1\": \"string\",\n          \"City\": \"string\",\n          \"PostalCode\": \"string\",\n          \"CoAddress\": \"string\",\n          \"AddressLine2\": \"string\",\n          \"CountryCode\": \"str\"\n        },\n        \"Contacts\": [\n          {\n            \"ContactType\": \"string\",\n            \"Value\": \"string\"\n          },\n          {\n            \"ContactType\": \"string\",\n            \"Value\": \"string\"\n          }\n        ]\n      },\n      {\n        \"AddressType\": \"string\",\n        \"AddressId\": \"string\",\n        \"MailingAddress\": {\n          \"Name\": \"string\",\n          \"AddressLine1\": \"string\",\n          \"City\": \"string\",\n          \"PostalCode\": \"string\",\n          \"CoAddress\": \"string\",\n          \"AddressLine2\": \"string\",\n          \"CountryCode\": \"st\"\n        },\n        \"Contacts\": [\n          {\n            \"ContactType\": \"string\",\n            \"Value\": \"string\"\n          },\n          {\n            \"ContactType\": \"string\",\n            \"Value\": \"string\"\n          }\n        ]\n      }\n    ],\n    \"GeoPoint\": {\n      \"Latitude\": \"string\",\n      \"Longitude\": \"string\"\n    },\n    \"OpeningDays\": [\n      {\n        \"Day\": \"string\",\n        \"DisplayName\": \"string\",\n        \"OpeningHours\": [\n          {\n            \"From\": \"string\",\n            \"To\": \"string\"\n          },\n          {\n            \"From\": \"string\",\n            \"To\": \"string\"\n          }\n        ]\n      },\n      {\n        \"Day\": \"string\",\n        \"DisplayName\": \"string\",\n        \"OpeningHours\": [\n          {\n            \"From\": \"string\",\n            \"To\": \"string\"\n          },\n          {\n            \"From\": \"string\",\n            \"To\": \"string\"\n          }\n        ]\n      }\n    ],\n    \"Services\": [\n      {\n        \"ServiceType\": \"string\",\n        \"DisplayName\": \"string\"\n      },\n      {\n        \"ServiceType\": \"string\",\n        \"DisplayName\": \"string\"\n      }\n    ],\n    \"References\": [\n      {\n        \"ReferenceType\": \"string\",\n        \"Value\": \"string\"\n      },\n      {\n        \"ReferenceType\": \"string\",\n        \"Value\": \"string\"\n      }\n    ],\n    \"DeliveryType\": \"string\",\n    \"OpeningHoursShort\": \"string\",\n    \"OpeningHoursRow1\": \"string\",\n    \"OpeningHoursRow2\": \"string\",\n    \"OpeningHoursRow3\": \"string\",\n    \"DeliveryData\": [\n      {\n        \"DataType\": \"string\",\n        \"Value\": \"string\"\n      },\n      {\n        \"DataType\": \"string\",\n        \"Value\": \"string\"\n      }\n    ],\n    \"Distance\": \"string\",\n    \"ProviderAddon\": \"string\"\n  },\n  {\n    \"Name\": \"string\",\n    \"Addresses\": [\n      {\n        \"AddressType\": \"string\",\n        \"AddressId\": \"string\",\n        \"MailingAddress\": {\n          \"Name\": \"string\",\n          \"AddressLine1\": \"string\",\n          \"City\": \"string\",\n          \"PostalCode\": \"string\",\n          \"CoAddress\": \"string\",\n          \"AddressLine2\": \"string\",\n          \"CountryCode\": \"str\"\n        },\n        \"Contacts\": [\n          {\n            \"ContactType\": \"string\",\n            \"Value\": \"string\"\n          },\n          {\n            \"ContactType\": \"string\",\n            \"Value\": \"string\"\n          }\n        ]\n      },\n      {\n        \"AddressType\": \"string\",\n        \"AddressId\": \"string\",\n        \"MailingAddress\": {\n          \"Name\": \"string\",\n          \"AddressLine1\": \"string\",\n          \"City\": \"string\",\n          \"PostalCode\": \"string\",\n          \"CoAddress\": \"string\",\n          \"AddressLine2\": \"string\",\n          \"CountryCode\": \"st\"\n        },\n        \"Contacts\": [\n          {\n            \"ContactType\": \"string\",\n            \"Value\": \"string\"\n          },\n          {\n            \"ContactType\": \"string\",\n            \"Value\": \"string\"\n          }\n        ]\n      }\n    ],\n    \"GeoPoint\": {\n      \"Latitude\": \"string\",\n      \"Longitude\": \"string\"\n    },\n    \"OpeningDays\": [\n      {\n        \"Day\": \"string\",\n        \"DisplayName\": \"string\",\n        \"OpeningHours\": [\n          {\n            \"From\": \"string\",\n            \"To\": \"string\"\n          },\n          {\n            \"From\": \"string\",\n            \"To\": \"string\"\n          }\n        ]\n      },\n      {\n        \"Day\": \"string\",\n        \"DisplayName\": \"string\",\n        \"OpeningHours\": [\n          {\n            \"From\": \"string\",\n            \"To\": \"string\"\n          },\n          {\n            \"From\": \"string\",\n            \"To\": \"string\"\n          }\n        ]\n      }\n    ],\n    \"Services\": [\n      {\n        \"ServiceType\": \"string\",\n        \"DisplayName\": \"string\"\n      },\n      {\n        \"ServiceType\": \"string\",\n        \"DisplayName\": \"string\"\n      }\n    ],\n    \"References\": [\n      {\n        \"ReferenceType\": \"string\",\n        \"Value\": \"string\"\n      },\n      {\n        \"ReferenceType\": \"string\",\n        \"Value\": \"string\"\n      }\n    ],\n    \"DeliveryType\": \"string\",\n    \"OpeningHoursShort\": \"string\",\n    \"OpeningHoursRow1\": \"string\",\n    \"OpeningHoursRow2\": \"string\",\n    \"OpeningHoursRow3\": \"string\",\n    \"DeliveryData\": [\n      {\n        \"DataType\": \"string\",\n        \"Value\": \"string\"\n      },\n      {\n        \"DataType\": \"string\",\n        \"Value\": \"string\"\n      }\n    ],\n    \"Distance\": \"string\",\n    \"ProviderAddon\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "25e1448c-d67e-47b1-8549-fb6d022d16e8",
+              "name": "No terminals found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DeliveryPoint",
+                    "v4",
+                    "GetNearestTerminal"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "CountryCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "PostalCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "StreetAddress",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "City",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "Amount",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "51190f3c-bcf8-4864-992d-0d311204868b",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DeliveryPoint",
+                    "v4",
+                    "GetNearestTerminal"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "CountryCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "PostalCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "StreetAddress",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "City",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "Amount",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d8e9bab6-9f01-4d1e-9c41-4b462687748d",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DeliveryPoint",
+                    "v4",
+                    "GetNearestTerminal"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "CountryCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "PostalCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "StreetAddress",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "City",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "Amount",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://parcelservices-se.dbschenker.com/Apipartner",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "459d38db-570e-4d24-8709-73f4d8120055",
+    "name": "Partner services API V4.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "<a target=\"_blank\" href=\"/Utils/PartnerServices/ParcelServicesExamples.zip\">This zip</a> includes example/sample code to connect to DB Schenker Partner API.",
+      "type": "text/plain"
+    }
+  }
+}

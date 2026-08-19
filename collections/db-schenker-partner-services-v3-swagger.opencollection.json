@@ -1,0 +1,114 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Partner services API V3.",
+    "version": "V3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "DeliveryPoint3",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieves a service point based on the provided country code and service point number.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/DeliveryPoint/v3/GetServicePoint",
+            "params": [
+              {
+                "name": "countryCode",
+                "value": "",
+                "type": "query",
+                "description": "The country code for the specified country (e.g., DK, FI, SE)."
+              },
+              {
+                "name": "servicePointNumber",
+                "value": "",
+                "type": "query",
+                "description": "A four-digit service point number."
+              }
+            ]
+          },
+          "docs": "Retrieves a service point based on the provided country code and service point number."
+        },
+        {
+          "info": {
+            "name": "Get all Existing Servicepoints for a specified country.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/DeliveryPoint/v3/GetAllServicePoints",
+            "params": [
+              {
+                "name": "countryCode",
+                "value": "",
+                "type": "query",
+                "description": "Countycode for specified country"
+              }
+            ]
+          },
+          "docs": "Get all Existing Servicepoints for a specified country."
+        },
+        {
+          "info": {
+            "name": "Get a list of service points nearest to the specified location based on the provided search criteria.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/DeliveryPoint/v3/GetNearestServicePoint"
+          },
+          "docs": "Get a list of service points nearest to the specified location based on the provided search criteria."
+        },
+        {
+          "info": {
+            "name": "Get a box based on addressId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/DeliveryPoint/v3/GetBox",
+            "params": [
+              {
+                "name": "addressId",
+                "value": "",
+                "type": "query",
+                "description": "An id representing the address/location of a box."
+              }
+            ]
+          },
+          "docs": "Get a box based on addressId"
+        },
+        {
+          "info": {
+            "name": "Get a list of iBoxes nearest to the specified location based on the provided search criteria.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/DeliveryPoint/v3/GetNearestBoxes"
+          },
+          "docs": "Get a list of iBoxes nearest to the specified location based on the provided search criteria."
+        },
+        {
+          "info": {
+            "name": "Get a list of terminals nearest to the specified location.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/DeliveryPoint/v3/GetNearestTerminal"
+          },
+          "docs": "Get a list of terminals nearest to the specified location."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,128 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Partner services API V4.",
+    "version": "V4"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "DeliveryPoint4",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieves a service point based on the provided country code and service point number.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/DeliveryPoint/v4/GetServicePoint",
+            "params": [
+              {
+                "name": "countryCode",
+                "value": "",
+                "type": "query",
+                "description": "The country code for the specified country (e.g., DK, FI, SE)."
+              },
+              {
+                "name": "servicePointNumber",
+                "value": "",
+                "type": "query",
+                "description": "A four-digit service point number."
+              }
+            ]
+          },
+          "docs": "Retrieves a service point based on the provided country code and service point number."
+        },
+        {
+          "info": {
+            "name": "Get all Existing Servicepoints for a specified country.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/DeliveryPoint/v4/GetAllServicePoints",
+            "params": [
+              {
+                "name": "countryCode",
+                "value": "",
+                "type": "query",
+                "description": "Countycode for specified country"
+              }
+            ]
+          },
+          "docs": "Get all Existing Servicepoints for a specified country."
+        },
+        {
+          "info": {
+            "name": "Get a list of service points nearest to the specified location based on the provided search criteria.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/DeliveryPoint/v4/GetNearestServicePoint"
+          },
+          "docs": "Get a list of service points nearest to the specified location based on the provided search criteria."
+        },
+        {
+          "info": {
+            "name": "Retrieves a terminal based on the provided country code and terminalcode.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/DeliveryPoint/v4/GetTerminal",
+            "params": [
+              {
+                "name": "countryCode",
+                "value": "",
+                "type": "query",
+                "description": "Country code for the specified country (Currently only SE available)."
+              },
+              {
+                "name": "terminalCode",
+                "value": "",
+                "type": "query",
+                "description": "A four-digit terminalcode."
+              }
+            ]
+          },
+          "docs": "Retrieves a terminal based on the provided country code and terminalcode."
+        },
+        {
+          "info": {
+            "name": "Get all existing terminals for a specified country.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/DeliveryPoint/v4/GetAllTerminals",
+            "params": [
+              {
+                "name": "countryCode",
+                "value": "",
+                "type": "query",
+                "description": "Country code for the specified country (Currently only SE available)."
+              }
+            ]
+          },
+          "docs": "Get all existing terminals for a specified country."
+        },
+        {
+          "info": {
+            "name": "Get a list of terminals nearest to the specified location based on the provided search criteria.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/DeliveryPoint/v4/GetNearestTerminal"
+          },
+          "docs": "Get a list of terminals nearest to the specified location based on the provided search criteria."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
