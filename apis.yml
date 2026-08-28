@@ -19,6 +19,17 @@ description: >-
   without HTTP Basic credentials issued against a signed Swedish transport agreement.
   Its EDI endpoints are proprietary JSON, not EDIFACT or X12, and no DCSA, IATA ONE Record,
   GS1 EPCIS or WCO Data Model conformant contract was found on any reachable host.
+deliveryModel:
+  model: unknown
+  open_source: false
+  commercial: false
+  callable_host: true
+  label: Delivery model not determined — needs a product licence on record
+  confidence: low
+  source:
+  - openapi
+  generated: '2026-08-28'
+  method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
 - Logistics
