@@ -329,6 +329,9 @@ apis:
     url: >-
       https://www.dbschenker.com/resource/blob/488786/f0364447f37034a10f72e0768fc110ef/collectionpointinfo-data.pdf
 common:
+- type: CapabilityMap
+  url: capabilities/db-schenker-capability-edges.yml
+  name: DB Schenker Business Capability Map
 - type: Website
   url: https://www.dbschenker.com/
 - type: APIReference

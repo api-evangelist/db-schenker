@@ -1,0 +1,35 @@
+slug: db-schenker
+provider: DB Schenker
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Transportation & Logistics
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 2
+edges:
+- tag: TrackAndTraceBoxes
+  spec_file: db-schenker-trackandtraceboxes-api-openapi.yml
+  capability_id: BC-2510.20
+  capability_id_l1: BC-2510
+  capability_name: Shipment Tracking Management
+  confidence: 0.9
+  evidence: 'TrackAndTraceBoxes_GetParcel  Retrieves a parcel from a reference; schemas: ParcelWithEventDTO,
+    TrackingEventDTO, LocationDTO'
+  reason: Returns a parcel with tracking events and locations — direct shipment tracking/status resolution
+    capability.
+- tag: TrackAndTraceAdvanced2
+  spec_file: db-schenker-trackandtraceadvanced2-api-openapi.yml
+  capability_id: BC-2510.20
+  capability_id_l1: BC-2510
+  capability_name: Shipment Tracking Management
+  confidence: 0.82
+  evidence: GET /TrackAndTraceAdvanced/v2/GetParcel  TrackAndTraceAdvanced2_GetParcel  Retrieves a parcel
+    from a reference
+  reason: Tag and operation expose parcel track-and-trace retrieval by reference, i.e. shipment status
+    resolution for internal and customer-facing tracking. No schemas shown, so slightly reduced confidence.
