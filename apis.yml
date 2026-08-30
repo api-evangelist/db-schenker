@@ -166,6 +166,8 @@ apis:
   humanURL: https://parcelservices-se.dbschenker.com/Apipartner/swagger/ui/index
   baseURL: https://parcelservices-se.dbschenker.com/Apipartner
   tags:
+  - EDI
+  tags_raw:
   - Edi
   properties:
   - type: OpenAPI
