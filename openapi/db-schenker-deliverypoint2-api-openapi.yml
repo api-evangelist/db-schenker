@@ -1,0 +1,408 @@
+openapi: 3.2.0
+info:
+  version: V2
+  title: Partner services API V2. Delivery Point2 API
+  description: <a target="_blank" href="/Utils/PartnerServices/ParcelServicesExamples.zip">This zip</a> includes example/sample code to connect to DB Schenker Partner API.
+  x-swagger-net-version: 8.5.28.001
+servers:
+- url: https://parcelservices-se.dbschenker.com/Apipartner
+tags:
+- name: DeliveryPoint2
+  description: Responsible for all Web API functions related to Service Points
+paths:
+  /DeliveryPoint/v2/GetServicePoint:
+    get:
+      tags:
+      - DeliveryPoint2
+      summary: Get Servicepoints based on servicepoint number.
+      operationId: DeliveryPoint2_GetServicePoint
+      parameters:
+      - name: countryCode
+        in: query
+        description: Countycode for specified country.
+        required: true
+        schema:
+          type: string
+      - name: servicePointNumber
+        in: query
+        description: Four digit servicepoint number.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Service Point found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServicePointDTO'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ServicePointDTO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ServicePointDTO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ServicePointDTO'
+        '204':
+          description: No service point found
+        '400':
+          description: Invalid request
+        '401':
+          description: Unauthorized
+      deprecated: false
+      security:
+      - basic: []
+  /DeliveryPoint/v2/GetAllServicePoints:
+    get:
+      tags:
+      - DeliveryPoint2
+      summary: Get all Existing Servicepoints for a specified country.
+      operationId: DeliveryPoint2_GetAllServicePoints
+      parameters:
+      - name: countryCode
+        in: query
+        description: Countycode for specified country
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Service Points found
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ServicePointDTO'
+                xml:
+                  name: ServicePointDTO
+                  wrapped: true
+                type: array
+            text/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ServicePointDTO'
+                xml:
+                  name: ServicePointDTO
+                  wrapped: true
+                type: array
+            application/xml:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ServicePointDTO'
+                xml:
+                  name: ServicePointDTO
+                  wrapped: true
+                type: array
+            text/xml:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ServicePointDTO'
+                xml:
+                  name: ServicePointDTO
+                  wrapped: true
+                type: array
+        '204':
+          description: No service point found
+        '400':
+          description: Invalid request
+        '401':
+          description: Unauthorized
+      deprecated: true
+      security:
+      - basic: []
+  /DeliveryPoint/v2/GetNearestServicePoint:
+    post:
+      tags:
+      - DeliveryPoint2
+      summary: Gives you a list of the ServicePoints nearest to the specified location.
+      operationId: DeliveryPoint2_GetNearestServicePoint
+      responses:
+        '200':
+          description: Service Points found
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ServicePointDTO'
+                xml:
+                  name: ServicePointDTO
+                  wrapped: true
+                type: array
+            text/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ServicePointDTO'
+                xml:
+                  name: ServicePointDTO
+                  wrapped: true
+                type: array
+            application/xml:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ServicePointDTO'
+                xml:
+                  name: ServicePointDTO
+                  wrapped: true
+                type: array
+            text/xml:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ServicePointDTO'
+                xml:
+                  name: ServicePointDTO
+                  wrapped: true
+                type: array
+        '204':
+          description: No service point found
+        '400':
+          description: Invalid request
+        '401':
+          description: Unauthorized
+      deprecated: true
+      security:
+      - basic: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchModel'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/SearchModel'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/SearchModel'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/SearchModel'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SearchModel'
+        description: The data structure for the search
+        required: true
+components:
+  schemas:
+    ServicePointDTO:
+      required:
+      - Name
+      - Addresses
+      - GeoPoint
+      - OpeningDays
+      - Services
+      - References
+      properties:
+        Name:
+          type: string
+        DeliveryType:
+          type: string
+        Addresses:
+          items:
+            $ref: '#/components/schemas/AddressDTO'
+          xml:
+            name: AddressDTO
+            wrapped: true
+          type: array
+        GeoPoint:
+          $ref: '#/components/schemas/GeoPointDTO'
+        OpeningHoursShort:
+          type: string
+        OpeningHoursRow1:
+          type: string
+        OpeningHoursRow2:
+          type: string
+        OpeningHoursRow3:
+          type: string
+        OpeningDays:
+          items:
+            $ref: '#/components/schemas/WeekdayDTO'
+          xml:
+            name: WeekdayDTO
+            wrapped: true
+          type: array
+        Services:
+          items:
+            $ref: '#/components/schemas/ServiceDTO'
+          xml:
+            name: ServiceDTO
+            wrapped: true
+          type: array
+        References:
+          items:
+            $ref: '#/components/schemas/ReferenceDTO'
+          xml:
+            name: ReferenceDTO
+            wrapped: true
+          type: array
+        DeliveryData:
+          items:
+            $ref: '#/components/schemas/DeliveryDataDTO'
+          xml:
+            name: DeliveryDataDTO
+            wrapped: true
+          type: array
+        Distance:
+          type: string
+        ProviderAddon:
+          type: string
+      xml:
+        name: ServicePointDTO
+      type: object
+    DeliveryDataDTO:
+      properties:
+        DataType:
+          type: string
+        Value:
+          type: string
+      xml:
+        name: DeliveryDataDTO
+      type: object
+    OpenDTO:
+      required:
+      - From
+      - To
+      properties:
+        From:
+          type: string
+        To:
+          type: string
+      xml:
+        name: OpenDTO
+      type: object
+    SearchModel:
+      required:
+      - CountryCode
+      properties:
+        CountryCode:
+          type: string
+        PostalCode:
+          type: string
+        StreetAddress:
+          type: string
+        City:
+          type: string
+        Amount:
+          type: integer
+          format: int32
+      xml:
+        name: SearchModel
+      type: object
+    ServiceDTO:
+      required:
+      - ServiceType
+      properties:
+        ServiceType:
+          type: string
+        DisplayName:
+          type: string
+      xml:
+        name: ServiceDTO
+      type: object
+    AddressDTO:
+      required:
+      - AddressType
+      properties:
+        AddressType:
+          type: string
+        AddressId:
+          type: string
+        MailingAddress:
+          $ref: '#/components/schemas/MailingAddressDTO'
+        Contacts:
+          items:
+            $ref: '#/components/schemas/ContactDTO'
+          xml:
+            name: ContactDTO
+            wrapped: true
+          type: array
+      xml:
+        name: AddressDTO
+      type: object
+    ContactDTO:
+      required:
+      - ContactType
+      - Value
+      properties:
+        ContactType:
+          type: string
+        Value:
+          type: string
+      xml:
+        name: ContactDTO
+      type: object
+    MailingAddressDTO:
+      required:
+      - Name
+      - AddressLine1
+      - City
+      - PostalCode
+      properties:
+        Name:
+          type: string
+        CoAddress:
+          type: string
+        AddressLine1:
+          type: string
+        AddressLine2:
+          type: string
+        City:
+          type: string
+        PostalCode:
+          type: string
+        CountryCode:
+          type: string
+          maxLength: 3
+          minLength: 2
+      xml:
+        name: MailingAddressDTO
+      type: object
+    ReferenceDTO:
+      required:
+      - ReferenceType
+      - Value
+      properties:
+        ReferenceType:
+          type: string
+        Value:
+          type: string
+      xml:
+        name: ReferenceDTO
+      type: object
+    GeoPointDTO:
+      required:
+      - Latitude
+      - Longitude
+      properties:
+        Latitude:
+          type: string
+        Longitude:
+          type: string
+      xml:
+        name: GeoPointDTO
+      type: object
+    WeekdayDTO:
+      required:
+      - Day
+      - DisplayName
+      - OpeningHours
+      properties:
+        Day:
+          type: string
+        DisplayName:
+          type: string
+        OpeningHours:
+          items:
+            $ref: '#/components/schemas/OpenDTO'
+          xml:
+            name: OpenDTO
+            wrapped: true
+          type: array
+      xml:
+        name: WeekdayDTO
+      type: object
+  securitySchemes:
+    basic:
+      type: http
+      scheme: basic
+      description: Basic HTTP Authentication

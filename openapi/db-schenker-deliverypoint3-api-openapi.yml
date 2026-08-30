@@ -1,0 +1,741 @@
+openapi: 3.2.0
+info:
+  version: V3
+  title: Partner services API V3. Delivery Point3 API
+  description: <a target="_blank" href="/Utils/PartnerServices/ParcelServicesExamples.zip">This zip</a> includes example/sample code to connect to DB Schenker Partner API.
+  x-swagger-net-version: 8.5.28.001
+servers:
+- url: https://parcelservices-se.dbschenker.com/Apipartner
+tags:
+- name: DeliveryPoint3
+  description: Responsible for all Web API functions related to Service Points
+paths:
+  /DeliveryPoint/v3/GetServicePoint:
+    get:
+      tags:
+      - DeliveryPoint3
+      summary: Retrieves a service point based on the provided country code and service point number.
+      operationId: DeliveryPoint3_GetServicePoint
+      parameters:
+      - name: countryCode
+        in: query
+        description: The country code for the specified country (e.g., DK, FI, SE).
+        required: true
+        schema:
+          type: string
+      - name: servicePointNumber
+        in: query
+        description: A four-digit service point number.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Service Point found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServicePointWithPrinterDTO'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ServicePointWithPrinterDTO'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ServicePointWithPrinterDTO'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/ServicePointWithPrinterDTO'
+        '204':
+          description: No service point found
+        '400':
+          description: Invalid request
+        '404':
+          description: Servicepoint was not found
+        '401':
+          description: Unauthorized
+      deprecated: false
+      security:
+      - basic: []
+  /DeliveryPoint/v3/GetAllServicePoints:
+    get:
+      tags:
+      - DeliveryPoint3
+      summary: Get all Existing Servicepoints for a specified country.
+      operationId: DeliveryPoint3_GetAllServicePoints
+      parameters:
+      - name: countryCode
+        in: query
+        description: Countycode for specified country
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Service Points found
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ServicePointWithPrinterDTO'
+                xml:
+                  name: ServicePointWithPrinterDTO
+                  wrapped: true
+                type: array
+            text/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ServicePointWithPrinterDTO'
+                xml:
+                  name: ServicePointWithPrinterDTO
+                  wrapped: true
+                type: array
+            application/xml:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ServicePointWithPrinterDTO'
+                xml:
+                  name: ServicePointWithPrinterDTO
+                  wrapped: true
+                type: array
+            text/xml:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ServicePointWithPrinterDTO'
+                xml:
+                  name: ServicePointWithPrinterDTO
+                  wrapped: true
+                type: array
+        '204':
+          description: No service point found
+        '400':
+          description: Invalid request
+        '401':
+          description: Unauthorized
+      deprecated: false
+      security:
+      - basic: []
+  /DeliveryPoint/v3/GetNearestServicePoint:
+    post:
+      tags:
+      - DeliveryPoint3
+      summary: Get a list of service points nearest to the specified location based on the provided search criteria.
+      operationId: DeliveryPoint3_GetNearestServicePoint
+      responses:
+        '200':
+          description: A list of nearest service points
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ServicePointDTO'
+                xml:
+                  name: ServicePointDTO
+                  wrapped: true
+                type: array
+            text/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ServicePointDTO'
+                xml:
+                  name: ServicePointDTO
+                  wrapped: true
+                type: array
+            application/xml:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ServicePointDTO'
+                xml:
+                  name: ServicePointDTO
+                  wrapped: true
+                type: array
+            text/xml:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ServicePointDTO'
+                xml:
+                  name: ServicePointDTO
+                  wrapped: true
+                type: array
+        '204':
+          description: No service points found
+        '400':
+          description: Invalid request
+        '401':
+          description: Unauthorized
+      deprecated: false
+      security:
+      - basic: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchModel'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/SearchModel'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/SearchModel'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/SearchModel'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SearchModel'
+        description: The search criteria for finding the nearest service points.
+        required: true
+  /DeliveryPoint/v3/GetBox:
+    get:
+      tags:
+      - DeliveryPoint3
+      summary: Get a box based on addressId
+      operationId: DeliveryPoint3_GetBox
+      parameters:
+      - name: addressId
+        in: query
+        description: An id representing the address/location of a box.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Box found
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/BoxDto'
+                xml:
+                  name: BoxDto
+                  wrapped: true
+                type: array
+            text/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/BoxDto'
+                xml:
+                  name: BoxDto
+                  wrapped: true
+                type: array
+            application/xml:
+              schema:
+                items:
+                  $ref: '#/components/schemas/BoxDto'
+                xml:
+                  name: BoxDto
+                  wrapped: true
+                type: array
+            text/xml:
+              schema:
+                items:
+                  $ref: '#/components/schemas/BoxDto'
+                xml:
+                  name: BoxDto
+                  wrapped: true
+                type: array
+        '204':
+          description: No box found
+        '400':
+          description: Invalid request
+        '401':
+          description: Unauthorized
+      deprecated: false
+      security:
+      - basic: []
+  /DeliveryPoint/v3/GetNearestBoxes:
+    post:
+      tags:
+      - DeliveryPoint3
+      summary: Get a list of iBoxes nearest to the specified location based on the provided search criteria.
+      operationId: DeliveryPoint3_GetNearestBoxes
+      responses:
+        '200':
+          description: A list of nearest iBoxes
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/BoxDto'
+                xml:
+                  name: BoxDto
+                  wrapped: true
+                type: array
+            text/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/BoxDto'
+                xml:
+                  name: BoxDto
+                  wrapped: true
+                type: array
+            application/xml:
+              schema:
+                items:
+                  $ref: '#/components/schemas/BoxDto'
+                xml:
+                  name: BoxDto
+                  wrapped: true
+                type: array
+            text/xml:
+              schema:
+                items:
+                  $ref: '#/components/schemas/BoxDto'
+                xml:
+                  name: BoxDto
+                  wrapped: true
+                type: array
+        '204':
+          description: No iBoxes found
+        '400':
+          description: Invalid request
+        '401':
+          description: Unauthorized
+      deprecated: false
+      security:
+      - basic: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetNearestBoxesSearchModel'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/GetNearestBoxesSearchModel'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/GetNearestBoxesSearchModel'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/GetNearestBoxesSearchModel'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/GetNearestBoxesSearchModel'
+        description: The search criteria for finding the nearest iBoxes.
+        required: true
+  /DeliveryPoint/v3/GetNearestTerminal:
+    post:
+      tags:
+      - DeliveryPoint3
+      summary: Get a list of terminals nearest to the specified location.
+      operationId: DeliveryPoint3_GetNearestTerminal
+      responses:
+        '200':
+          description: A list of nearest terminals
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ServicePointDTO'
+                xml:
+                  name: ServicePointDTO
+                  wrapped: true
+                type: array
+            text/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ServicePointDTO'
+                xml:
+                  name: ServicePointDTO
+                  wrapped: true
+                type: array
+            application/xml:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ServicePointDTO'
+                xml:
+                  name: ServicePointDTO
+                  wrapped: true
+                type: array
+            text/xml:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ServicePointDTO'
+                xml:
+                  name: ServicePointDTO
+                  wrapped: true
+                type: array
+        '204':
+          description: No terminals found
+        '400':
+          description: Invalid request
+        '401':
+          description: Unauthorized
+      deprecated: false
+      security:
+      - basic: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchModel'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/SearchModel'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/SearchModel'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/SearchModel'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SearchModel'
+        description: The search criteria for finding the nearest terminals.
+        required: true
+components:
+  schemas:
+    ServicePointDTO:
+      required:
+      - Name
+      - Addresses
+      - GeoPoint
+      - OpeningDays
+      - Services
+      - References
+      properties:
+        Name:
+          type: string
+        DeliveryType:
+          type: string
+        Addresses:
+          items:
+            $ref: '#/components/schemas/AddressDTO'
+          xml:
+            name: AddressDTO
+            wrapped: true
+          type: array
+        GeoPoint:
+          $ref: '#/components/schemas/GeoPointDTO'
+        OpeningHoursShort:
+          type: string
+        OpeningHoursRow1:
+          type: string
+        OpeningHoursRow2:
+          type: string
+        OpeningHoursRow3:
+          type: string
+        OpeningDays:
+          items:
+            $ref: '#/components/schemas/WeekdayDTO'
+          xml:
+            name: WeekdayDTO
+            wrapped: true
+          type: array
+        Services:
+          items:
+            $ref: '#/components/schemas/ServiceDTO'
+          xml:
+            name: ServiceDTO
+            wrapped: true
+          type: array
+        References:
+          items:
+            $ref: '#/components/schemas/ReferenceDTO'
+          xml:
+            name: ReferenceDTO
+            wrapped: true
+          type: array
+        DeliveryData:
+          items:
+            $ref: '#/components/schemas/DeliveryDataDTO'
+          xml:
+            name: DeliveryDataDTO
+            wrapped: true
+          type: array
+        Distance:
+          type: string
+        ProviderAddon:
+          type: string
+      xml:
+        name: ServicePointDTO
+      type: object
+    DeliveryDataDTO:
+      properties:
+        DataType:
+          type: string
+        Value:
+          type: string
+      xml:
+        name: DeliveryDataDTO
+      type: object
+    BoxAddressDto:
+      description: BoxAddressDto.
+      properties:
+        Name:
+          description: Gets or sets delivery box name.
+          type: string
+        AddressLine1:
+          description: Gets or sets AddressLine1.
+          type: string
+        AddressLine2:
+          description: Gets or sets AddressLine2.
+          type: string
+        City:
+          description: Gets or sets City.
+          type: string
+        PostalCode:
+          description: Gets or sets PostalCode.
+          type: string
+        CountryCode:
+          description: Gets or sets CountryCode.
+          type: string
+      xml:
+        name: BoxAddressDto
+      type: object
+    ServicePointWithPrinterDTO:
+      required:
+      - Name
+      - Addresses
+      - GeoPoint
+      - OpeningDays
+      - Services
+      - References
+      properties:
+        Name:
+          type: string
+        DeliveryType:
+          type: string
+        Addresses:
+          items:
+            $ref: '#/components/schemas/AddressDTO'
+          xml:
+            name: AddressDTO
+            wrapped: true
+          type: array
+        GeoPoint:
+          $ref: '#/components/schemas/GeoPointDTO'
+        OpeningHoursShort:
+          type: string
+        OpeningHoursRow1:
+          type: string
+        OpeningHoursRow2:
+          type: string
+        OpeningHoursRow3:
+          type: string
+        OpeningDays:
+          items:
+            $ref: '#/components/schemas/WeekdayDTO'
+          xml:
+            name: WeekdayDTO
+            wrapped: true
+          type: array
+        Services:
+          items:
+            $ref: '#/components/schemas/ServiceDTO'
+          xml:
+            name: ServiceDTO
+            wrapped: true
+          type: array
+        References:
+          items:
+            $ref: '#/components/schemas/ReferenceDTO'
+          xml:
+            name: ReferenceDTO
+            wrapped: true
+          type: array
+        HasPrinter:
+          type: boolean
+        DeliveryData:
+          items:
+            $ref: '#/components/schemas/DeliveryDataDTO'
+          xml:
+            name: DeliveryDataDTO
+            wrapped: true
+          type: array
+        Distance:
+          type: string
+        ProviderAddon:
+          type: string
+      xml:
+        name: ServicePointWithPrinterDTO
+      type: object
+    GetNearestBoxesSearchModel:
+      description: GetNearestIboxesSearchModel.
+      properties:
+        City:
+          description: Gets or sets City.
+          type: string
+        StreetAddress:
+          description: Gets or sets StreetAddress.
+          type: string
+        PostalCode:
+          description: Gets or sets PostalCode.
+          type: string
+        LocationMaxDistance:
+          description: Gets or sets LocationMaxDistance.
+          type: string
+        LocationsMaxQty:
+          description: Gets or sets LocationsMaxQty.
+          type: string
+        RequiresLowBox:
+          description: Gets or sets a value indicating whether low box is required.
+          type: string
+      xml:
+        name: GetNearestBoxesSearchModel
+      type: object
+    SearchModel:
+      required:
+      - CountryCode
+      properties:
+        CountryCode:
+          type: string
+        PostalCode:
+          type: string
+        StreetAddress:
+          type: string
+        City:
+          type: string
+        Amount:
+          type: integer
+          format: int32
+      xml:
+        name: SearchModel
+      type: object
+    OpenDTO:
+      required:
+      - From
+      - To
+      properties:
+        From:
+          type: string
+        To:
+          type: string
+      xml:
+        name: OpenDTO
+      type: object
+    ServiceDTO:
+      required:
+      - ServiceType
+      properties:
+        ServiceType:
+          type: string
+        DisplayName:
+          type: string
+      xml:
+        name: ServiceDTO
+      type: object
+    AddressDTO:
+      required:
+      - AddressType
+      properties:
+        AddressType:
+          type: string
+        AddressId:
+          type: string
+        MailingAddress:
+          $ref: '#/components/schemas/MailingAddressDTO'
+        Contacts:
+          items:
+            $ref: '#/components/schemas/ContactDTO'
+          xml:
+            name: ContactDTO
+            wrapped: true
+          type: array
+      xml:
+        name: AddressDTO
+      type: object
+    ContactDTO:
+      required:
+      - ContactType
+      - Value
+      properties:
+        ContactType:
+          type: string
+        Value:
+          type: string
+      xml:
+        name: ContactDTO
+      type: object
+    MailingAddressDTO:
+      required:
+      - Name
+      - AddressLine1
+      - City
+      - PostalCode
+      properties:
+        Name:
+          type: string
+        CoAddress:
+          type: string
+        AddressLine1:
+          type: string
+        AddressLine2:
+          type: string
+        City:
+          type: string
+        PostalCode:
+          type: string
+        CountryCode:
+          type: string
+          maxLength: 3
+          minLength: 2
+      xml:
+        name: MailingAddressDTO
+      type: object
+    ReferenceDTO:
+      required:
+      - ReferenceType
+      - Value
+      properties:
+        ReferenceType:
+          type: string
+        Value:
+          type: string
+      xml:
+        name: ReferenceDTO
+      type: object
+    GeoPointDTO:
+      required:
+      - Latitude
+      - Longitude
+      properties:
+        Latitude:
+          type: string
+        Longitude:
+          type: string
+      xml:
+        name: GeoPointDTO
+      type: object
+    BoxDto:
+      description: A object for a specific box location.
+      properties:
+        Name:
+          description: Gets or sets delivery box name.
+          type: string
+        AddressId:
+          description: Gets or sets AddressId.
+          type: string
+        Address:
+          $ref: '#/components/schemas/BoxAddressDto'
+          description: Gets or sets Address.
+        ProviderAddon:
+          description: Get or sets ProviderAddon.
+          type: string
+      xml:
+        name: BoxDto
+      type: object
+    WeekdayDTO:
+      required:
+      - Day
+      - DisplayName
+      - OpeningHours
+      properties:
+        Day:
+          type: string
+        DisplayName:
+          type: string
+        OpeningHours:
+          items:
+            $ref: '#/components/schemas/OpenDTO'
+          xml:
+            name: OpenDTO
+            wrapped: true
+          type: array
+      xml:
+        name: WeekdayDTO
+      type: object
+  securitySchemes:
+    basic:
+      type: http
+      scheme: basic
+      description: Basic HTTP Authentication

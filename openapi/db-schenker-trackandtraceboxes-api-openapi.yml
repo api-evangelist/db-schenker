@@ -1,0 +1,254 @@
+openapi: 3.2.0
+info:
+  version: V1
+  title: Partner services API V1. Track And Trace Boxes API
+  description: <a target="_blank" href="/Utils/PartnerServices/ParcelServicesExamples.zip">This zip</a> includes example/sample code to connect to DB Schenker Partner API.
+  x-swagger-net-version: 8.5.28.001
+servers:
+- url: https://parcelservices-se.dbschenker.com/Apipartner
+tags:
+- name: TrackAndTraceBoxes
+  description: Responsible for all Web API functions related to Boxes Track and Trace.
+paths:
+  /TrackAndTraceBoxes/v1/GetParcel:
+    get:
+      tags:
+      - TrackAndTraceBoxes
+      summary: Retrieves a parcel from a reference
+      operationId: TrackAndTraceBoxes_GetParcel
+      parameters:
+      - name: countryCode
+        in: query
+        description: Country code
+        required: true
+        schema:
+          type: string
+      - name: referenceType
+        in: query
+        description: Parcel referenceType [BARCODE]
+        required: true
+        schema:
+          type: string
+      - name: reference
+        in: query
+        description: Parcel reference
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ParcelWithEventDTO'
+                xml:
+                  name: ParcelWithEventDTO
+                  wrapped: true
+                type: array
+            text/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ParcelWithEventDTO'
+                xml:
+                  name: ParcelWithEventDTO
+                  wrapped: true
+                type: array
+            application/xml:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ParcelWithEventDTO'
+                xml:
+                  name: ParcelWithEventDTO
+                  wrapped: true
+                type: array
+            text/xml:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ParcelWithEventDTO'
+                xml:
+                  name: ParcelWithEventDTO
+                  wrapped: true
+                type: array
+        '400':
+          description: BadRequest
+        '401':
+          description: Unauthorized
+      deprecated: false
+      security:
+      - basic: []
+components:
+  schemas:
+    ParcelWithEventDTO:
+      required:
+      - DeliveryService
+      properties:
+        ArrivalDate:
+          type: string
+        DeliveryService:
+          type: string
+        DeliveryDate:
+          type: string
+        Addresses:
+          items:
+            $ref: '#/components/schemas/AddressDTO'
+          xml:
+            name: AddressDTO
+            wrapped: true
+          type: array
+        EstimatedTimeOfArrival:
+          type: string
+        DueDate:
+          type: string
+        References:
+          items:
+            $ref: '#/components/schemas/ReferenceDTO'
+          xml:
+            name: ReferenceDTO
+            wrapped: true
+          type: array
+        ParcelState:
+          $ref: '#/components/schemas/TrackingEventDTO'
+        Measures:
+          items:
+            $ref: '#/components/schemas/MeasureDTO'
+          xml:
+            name: MeasureDTO
+            wrapped: true
+          type: array
+        Events:
+          items:
+            $ref: '#/components/schemas/TrackingEventDTO'
+          xml:
+            name: TrackingEventDTO
+            wrapped: true
+          type: array
+      xml:
+        name: ParcelWithEventDTO
+      type: object
+    LocationDTO:
+      required:
+      - LocationType
+      - Name
+      properties:
+        LocationType:
+          type: string
+        LocationId:
+          type: string
+        Name:
+          type: string
+      xml:
+        name: LocationDTO
+      type: object
+    AddressDTO:
+      required:
+      - AddressType
+      properties:
+        AddressType:
+          type: string
+        AddressId:
+          type: string
+        MailingAddress:
+          $ref: '#/components/schemas/MailingAddressDTO'
+        Contacts:
+          items:
+            $ref: '#/components/schemas/ContactDTO'
+          xml:
+            name: ContactDTO
+            wrapped: true
+          type: array
+      xml:
+        name: AddressDTO
+      type: object
+    ContactDTO:
+      required:
+      - ContactType
+      - Value
+      properties:
+        ContactType:
+          type: string
+        Value:
+          type: string
+      xml:
+        name: ContactDTO
+      type: object
+    MailingAddressDTO:
+      required:
+      - Name
+      - AddressLine1
+      - City
+      - PostalCode
+      properties:
+        Name:
+          type: string
+        CoAddress:
+          type: string
+        AddressLine1:
+          type: string
+        AddressLine2:
+          type: string
+        City:
+          type: string
+        PostalCode:
+          type: string
+        CountryCode:
+          type: string
+          maxLength: 3
+          minLength: 2
+      xml:
+        name: MailingAddressDTO
+      type: object
+    TrackingEventDTO:
+      required:
+      - EventDate
+      properties:
+        Name:
+          type: string
+        DisplayName:
+          type: string
+        EventDate:
+          type: string
+        Description:
+          type: string
+        Location:
+          $ref: '#/components/schemas/LocationDTO'
+        ReferenceData:
+          items:
+            $ref: '#/components/schemas/ReferenceDTO'
+          xml:
+            name: ReferenceDTO
+            wrapped: true
+          type: array
+      xml:
+        name: TrackingEventDTO
+      type: object
+    ReferenceDTO:
+      required:
+      - ReferenceType
+      - Value
+      properties:
+        ReferenceType:
+          type: string
+        Value:
+          type: string
+      xml:
+        name: ReferenceDTO
+      type: object
+    MeasureDTO:
+      required:
+      - MeasureType
+      - Value
+      properties:
+        MeasureType:
+          type: string
+        Value:
+          type: string
+      xml:
+        name: MeasureDTO
+      type: object
+  securitySchemes:
+    basic:
+      type: http
+      scheme: basic
+      description: Basic HTTP Authentication

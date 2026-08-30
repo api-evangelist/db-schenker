@@ -1,0 +1,361 @@
+openapi: 3.2.0
+info:
+  version: V1
+  title: Partner services API V1. Edi API
+  description: <a target="_blank" href="/Utils/PartnerServices/ParcelServicesExamples.zip">This zip</a> includes example/sample code to connect to DB Schenker Partner API.
+  x-swagger-net-version: 8.5.28.001
+servers:
+- url: https://parcelservices-se.dbschenker.com/Apipartner
+tags:
+- name: Edi
+  description: 'Responsible for all Web API functions related to EDI (For example: Register, Register Return)'
+paths:
+  /Edi/v1/RegisterEdi/{countryCode}:
+    post:
+      tags:
+      - Edi
+      summary: "Creates an EDI-Shipment in our system. This is needed for all parcels that are sent with Privpak.\n Called when another TA has managed the creation of the EDI and is notififying PrivPak of data"
+      operationId: Edi_RegisterEdi
+      parameters:
+      - name: countryCode
+        in: path
+        description: The country code.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+      deprecated: true
+      security:
+      - basic: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ShipmentDTO'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ShipmentDTO'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/ShipmentDTO'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/ShipmentDTO'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ShipmentDTO'
+        description: The freight data
+        required: true
+  /Edi/v1/RegisterReturnEdi/{countryCode}:
+    post:
+      tags:
+      - Edi
+      summary: 'Creates a return EDI-Shipment in our system. This is needed for all return parcels that are sent with Privpak.
+
+        Called when another TA has managed the creation of the EDI and is notififying PrivPak of data'
+      operationId: Edi_RegisterReturnEdi
+      parameters:
+      - name: countryCode
+        in: path
+        description: The country code
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+      deprecated: true
+      security:
+      - basic: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReturnShipmentDTO'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ReturnShipmentDTO'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/ReturnShipmentDTO'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/ReturnShipmentDTO'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ReturnShipmentDTO'
+        description: The return freight
+        required: true
+components:
+  schemas:
+    CodDTO:
+      required:
+      - Amount
+      - Currency
+      - Reference
+      properties:
+        Amount:
+          type: string
+        Currency:
+          type: string
+        Reference:
+          $ref: '#/components/schemas/ReferenceDTO'
+        AccountType:
+          type: string
+        AccountNumber:
+          type: string
+      xml:
+        name: CodDTO
+      type: object
+    ShipmentDTO:
+      properties:
+        EntryDate:
+          type: string
+          format: date-time
+        CustomerId:
+          type: integer
+          format: int32
+        PartnerId:
+          type: string
+        Parcels:
+          items:
+            $ref: '#/components/schemas/ParcelDTO'
+          xml:
+            name: ParcelDTO
+            wrapped: true
+          type: array
+      xml:
+        name: ShipmentDTO
+      type: object
+    ParcelDTO:
+      required:
+      - DeliveryService
+      properties:
+        DeliveryService:
+          type: string
+        Addresses:
+          items:
+            $ref: '#/components/schemas/AddressDTO'
+          xml:
+            name: AddressDTO
+            wrapped: true
+          type: array
+        Collectors:
+          items:
+            $ref: '#/components/schemas/CollectorDTO'
+          xml:
+            name: CollectorDTO
+            wrapped: true
+          type: array
+        References:
+          items:
+            $ref: '#/components/schemas/ReferenceDTO'
+          xml:
+            name: ReferenceDTO
+            wrapped: true
+          type: array
+        Measures:
+          items:
+            $ref: '#/components/schemas/MeasureDTO'
+          xml:
+            name: MeasureDTO
+            wrapped: true
+          type: array
+        Cod:
+          $ref: '#/components/schemas/CodDTO'
+      xml:
+        name: ParcelDTO
+      type: object
+    ReturnShipmentDTO:
+      properties:
+        EntryDate:
+          type: string
+          format: date-time
+        CustomerId:
+          type: integer
+          format: int32
+        PartnerId:
+          type: string
+        Parcels:
+          items:
+            $ref: '#/components/schemas/ReturnParcelDTO'
+          xml:
+            name: ReturnParcelDTO
+            wrapped: true
+          type: array
+      xml:
+        name: ReturnShipmentDTO
+      type: object
+    AddressDTO:
+      required:
+      - AddressType
+      properties:
+        AddressType:
+          type: string
+        AddressId:
+          type: string
+        MailingAddress:
+          $ref: '#/components/schemas/MailingAddressDTO'
+        Contacts:
+          items:
+            $ref: '#/components/schemas/ContactDTO'
+          xml:
+            name: ContactDTO
+            wrapped: true
+          type: array
+      xml:
+        name: AddressDTO
+      type: object
+    ContactDTO:
+      required:
+      - ContactType
+      - Value
+      properties:
+        ContactType:
+          type: string
+        Value:
+          type: string
+      xml:
+        name: ContactDTO
+      type: object
+    ReturnParcelDTO:
+      required:
+      - DeliveryService
+      properties:
+        DeliveryService:
+          type: string
+        Addresses:
+          items:
+            $ref: '#/components/schemas/AddressDTO'
+          xml:
+            name: AddressDTO
+            wrapped: true
+          type: array
+        Collectors:
+          items:
+            $ref: '#/components/schemas/CollectorDTO'
+          xml:
+            name: CollectorDTO
+            wrapped: true
+          type: array
+        References:
+          items:
+            $ref: '#/components/schemas/ReferenceDTO'
+          xml:
+            name: ReferenceDTO
+            wrapped: true
+          type: array
+        Measures:
+          items:
+            $ref: '#/components/schemas/MeasureDTO'
+          xml:
+            name: MeasureDTO
+            wrapped: true
+          type: array
+        Cod:
+          $ref: '#/components/schemas/CodDTO'
+      xml:
+        name: ReturnParcelDTO
+      type: object
+    MailingAddressDTO:
+      required:
+      - Name
+      - AddressLine1
+      - City
+      - PostalCode
+      properties:
+        Name:
+          type: string
+        CoAddress:
+          type: string
+        AddressLine1:
+          type: string
+        AddressLine2:
+          type: string
+        City:
+          type: string
+        PostalCode:
+          type: string
+        CountryCode:
+          type: string
+          maxLength: 3
+          minLength: 2
+      xml:
+        name: MailingAddressDTO
+      type: object
+    ReferenceDTO:
+      required:
+      - ReferenceType
+      - Value
+      properties:
+        ReferenceType:
+          type: string
+        Value:
+          type: string
+      xml:
+        name: ReferenceDTO
+      type: object
+    MeasureDTO:
+      required:
+      - MeasureType
+      - Value
+      properties:
+        MeasureType:
+          type: string
+        Value:
+          type: string
+      xml:
+        name: MeasureDTO
+      type: object
+    CollectorDTO:
+      required:
+      - Name
+      properties:
+        Name:
+          type: string
+        Reference:
+          $ref: '#/components/schemas/ReferenceDTO'
+      xml:
+        name: CollectorDTO
+      type: object
+  securitySchemes:
+    basic:
+      type: http
+      scheme: basic
+      description: Basic HTTP Authentication

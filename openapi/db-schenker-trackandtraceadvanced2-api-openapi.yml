@@ -1,0 +1,64 @@
+openapi: 3.2.0
+info:
+  version: V2
+  title: Partner services API V2. Track And Trace Advanced2 API
+  description: <a target="_blank" href="/Utils/PartnerServices/ParcelServicesExamples.zip">This zip</a> includes example/sample code to connect to DB Schenker Partner API.
+  x-swagger-net-version: 8.5.28.001
+servers:
+- url: https://parcelservices-se.dbschenker.com/Apipartner
+tags:
+- name: TrackAndTraceAdvanced2
+  description: Responsible for all Web API functions related to Advanced Track and Trace.
+paths:
+  /TrackAndTraceAdvanced/v2/GetParcel:
+    get:
+      tags:
+      - TrackAndTraceAdvanced2
+      summary: Retrieves a parcel from a reference
+      operationId: TrackAndTraceAdvanced2_GetParcel
+      parameters:
+      - name: countryCode
+        in: query
+        description: The country code
+        required: true
+        schema:
+          type: string
+      - name: referenceType
+        in: query
+        description: A parcel's referenceType
+        required: true
+        schema:
+          type: string
+      - name: reference
+        in: query
+        description: A parcel's reference
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+      deprecated: false
+      security:
+      - basic: []
+components:
+  securitySchemes:
+    basic:
+      type: http
+      scheme: basic
+      description: Basic HTTP Authentication

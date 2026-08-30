@@ -1,0 +1,130 @@
+openapi: 3.2.0
+info:
+  version: V1
+  title: Partner services API V1. Sorting Code API
+  description: <a target="_blank" href="/Utils/PartnerServices/ParcelServicesExamples.zip">This zip</a> includes example/sample code to connect to DB Schenker Partner API.
+  x-swagger-net-version: 8.5.28.001
+servers:
+- url: https://parcelservices-se.dbschenker.com/Apipartner
+tags:
+- name: SortingCode
+  description: Responsible for all Web API functions related to handling sorting codes in MANET.
+paths:
+  /SortingCode/v1/GetSortingCode:
+    post:
+      tags:
+      - SortingCode
+      summary: "Returns a sorting code with the corresponding city and postal code.\nThe departure- and arrival code should be printed on the waybill and STES according to AGI.\n\nIf the API returns \"N/A\" the sorting code is missing. This is not an error. Print as is.\nIn case of time-out, print '---' for each code.\nIn case of other errors, print '???' for each code.\nCaching responses for more than 24 hours is not recommended.\n\nTo use endpoint, invoke a HTTP POST request at \n'https://parcelservices-se.dbschenker.com/apipartner/SortingCode/v1/GetSortingCode'"
+      operationId: SortingCode_GetSortingCode
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaseSortingCodeDto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/BaseSortingCodeDto'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/BaseSortingCodeDto'
+            text/xml:
+              schema:
+                $ref: '#/components/schemas/BaseSortingCodeDto'
+        '400':
+          description: BadRequest
+        '401':
+          description: Unauthorized
+      deprecated: false
+      security:
+      - basic: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetSortingCodeExternalDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/GetSortingCodeExternalDto'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/GetSortingCodeExternalDto'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/GetSortingCodeExternalDto'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/GetSortingCodeExternalDto'
+        description: 'Required: PostalCodeReceiver, PostalCodeSender, ProductCode'
+        required: true
+components:
+  schemas:
+    GetSortingCodeExternalDto:
+      properties:
+        PostalCodeSender:
+          type: string
+        PostalCodeReceiver:
+          type: string
+        ProductCode:
+          type: string
+        AdditionalServiceCodes:
+          items:
+            type: string
+          type: array
+        CustomerNumber:
+          type: string
+        ProductType:
+          readOnly: true
+          type: string
+          enum:
+          - InvalidProduct
+          - PAR
+          - COM
+          - SPC
+          - DIR
+          - BUD
+          - CLD
+          - LPA
+          - HDG
+          - PAH
+          - PHD
+          - LGO
+          - CHA
+          - NIP
+          - PRI
+          - DMO
+          - DMA
+          - PAL
+          - PTE
+          - SYS
+          - OAS
+          - IDP
+          - SYP
+          - SCO
+          - PEX
+          - LTL
+          - FTL
+          - SYH
+          - REP
+          - PAB
+          - PSE
+          - PCB
+          - PHC
+      xml:
+        name: GetSortingCodeExternalDto
+      type: object
+    BaseSortingCodeDto:
+      properties:
+        ArrivalCode:
+          type: string
+        DepartureCode:
+          type: string
+      xml:
+        name: BaseSortingCodeDto
+      type: object
+  securitySchemes:
+    basic:
+      type: http
+      scheme: basic
+      description: Basic HTTP Authentication
