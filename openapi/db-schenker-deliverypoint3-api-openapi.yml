@@ -2,7 +2,7 @@ openapi: 3.2.0
 info:
   version: V3
   title: Partner services API V3. Delivery Point3 API
-  description: <a target="_blank" href="/Utils/PartnerServices/ParcelServicesExamples.zip">This zip</a> includes example/sample code to connect to DB Schenker Partner API.
+  description: This zip includes example/sample code to connect to DB Schenker Partner API.
   x-swagger-net-version: 8.5.28.001
 servers:
 - url: https://parcelservices-se.dbschenker.com/Apipartner
@@ -14,7 +14,7 @@ paths:
     get:
       tags:
       - DeliveryPoint3
-      summary: Retrieves a service point based on the provided country code and service point number.
+      summary: Retrieves a service point based on the provided country code and service point…
       operationId: DeliveryPoint3_GetServicePoint
       parameters:
       - name: countryCode
@@ -60,7 +60,7 @@ paths:
     get:
       tags:
       - DeliveryPoint3
-      summary: Get all Existing Servicepoints for a specified country.
+      summary: Get all Existing Servicepoints for a specified country
       operationId: DeliveryPoint3_GetAllServicePoints
       parameters:
       - name: countryCode
@@ -118,7 +118,7 @@ paths:
     post:
       tags:
       - DeliveryPoint3
-      summary: Get a list of service points nearest to the specified location based on the provided search criteria.
+      summary: Get a list of service points nearest to the specified location based on the…
       operationId: DeliveryPoint3_GetNearestServicePoint
       responses:
         '200':
@@ -246,7 +246,7 @@ paths:
     post:
       tags:
       - DeliveryPoint3
-      summary: Get a list of iBoxes nearest to the specified location based on the provided search criteria.
+      summary: Get a list of iBoxes nearest to the specified location based on the provided…
       operationId: DeliveryPoint3_GetNearestBoxes
       responses:
         '200':
@@ -316,7 +316,7 @@ paths:
     post:
       tags:
       - DeliveryPoint3
-      summary: Get a list of terminals nearest to the specified location.
+      summary: Get a list of terminals nearest to the specified location
       operationId: DeliveryPoint3_GetNearestTerminal
       responses:
         '200':
@@ -384,104 +384,6 @@ paths:
         required: true
 components:
   schemas:
-    ServicePointDTO:
-      required:
-      - Name
-      - Addresses
-      - GeoPoint
-      - OpeningDays
-      - Services
-      - References
-      properties:
-        Name:
-          type: string
-        DeliveryType:
-          type: string
-        Addresses:
-          items:
-            $ref: '#/components/schemas/AddressDTO'
-          xml:
-            name: AddressDTO
-            wrapped: true
-          type: array
-        GeoPoint:
-          $ref: '#/components/schemas/GeoPointDTO'
-        OpeningHoursShort:
-          type: string
-        OpeningHoursRow1:
-          type: string
-        OpeningHoursRow2:
-          type: string
-        OpeningHoursRow3:
-          type: string
-        OpeningDays:
-          items:
-            $ref: '#/components/schemas/WeekdayDTO'
-          xml:
-            name: WeekdayDTO
-            wrapped: true
-          type: array
-        Services:
-          items:
-            $ref: '#/components/schemas/ServiceDTO'
-          xml:
-            name: ServiceDTO
-            wrapped: true
-          type: array
-        References:
-          items:
-            $ref: '#/components/schemas/ReferenceDTO'
-          xml:
-            name: ReferenceDTO
-            wrapped: true
-          type: array
-        DeliveryData:
-          items:
-            $ref: '#/components/schemas/DeliveryDataDTO'
-          xml:
-            name: DeliveryDataDTO
-            wrapped: true
-          type: array
-        Distance:
-          type: string
-        ProviderAddon:
-          type: string
-      xml:
-        name: ServicePointDTO
-      type: object
-    DeliveryDataDTO:
-      properties:
-        DataType:
-          type: string
-        Value:
-          type: string
-      xml:
-        name: DeliveryDataDTO
-      type: object
-    BoxAddressDto:
-      description: BoxAddressDto.
-      properties:
-        Name:
-          description: Gets or sets delivery box name.
-          type: string
-        AddressLine1:
-          description: Gets or sets AddressLine1.
-          type: string
-        AddressLine2:
-          description: Gets or sets AddressLine2.
-          type: string
-        City:
-          description: Gets or sets City.
-          type: string
-        PostalCode:
-          description: Gets or sets PostalCode.
-          type: string
-        CountryCode:
-          description: Gets or sets CountryCode.
-          type: string
-      xml:
-        name: BoxAddressDto
-      type: object
     ServicePointWithPrinterDTO:
       required:
       - Name
@@ -549,6 +451,147 @@ components:
       xml:
         name: ServicePointWithPrinterDTO
       type: object
+    ServicePointDTO:
+      required:
+      - Name
+      - Addresses
+      - GeoPoint
+      - OpeningDays
+      - Services
+      - References
+      properties:
+        Name:
+          type: string
+        DeliveryType:
+          type: string
+        Addresses:
+          items:
+            $ref: '#/components/schemas/AddressDTO'
+          xml:
+            name: AddressDTO
+            wrapped: true
+          type: array
+        GeoPoint:
+          $ref: '#/components/schemas/GeoPointDTO'
+        OpeningHoursShort:
+          type: string
+        OpeningHoursRow1:
+          type: string
+        OpeningHoursRow2:
+          type: string
+        OpeningHoursRow3:
+          type: string
+        OpeningDays:
+          items:
+            $ref: '#/components/schemas/WeekdayDTO'
+          xml:
+            name: WeekdayDTO
+            wrapped: true
+          type: array
+        Services:
+          items:
+            $ref: '#/components/schemas/ServiceDTO'
+          xml:
+            name: ServiceDTO
+            wrapped: true
+          type: array
+        References:
+          items:
+            $ref: '#/components/schemas/ReferenceDTO'
+          xml:
+            name: ReferenceDTO
+            wrapped: true
+          type: array
+        DeliveryData:
+          items:
+            $ref: '#/components/schemas/DeliveryDataDTO'
+          xml:
+            name: DeliveryDataDTO
+            wrapped: true
+          type: array
+        Distance:
+          type: string
+        ProviderAddon:
+          type: string
+      xml:
+        name: ServicePointDTO
+      type: object
+    OpenDTO:
+      required:
+      - From
+      - To
+      properties:
+        From:
+          type: string
+        To:
+          type: string
+      xml:
+        name: OpenDTO
+      type: object
+    WeekdayDTO:
+      required:
+      - Day
+      - DisplayName
+      - OpeningHours
+      properties:
+        Day:
+          type: string
+        DisplayName:
+          type: string
+        OpeningHours:
+          items:
+            $ref: '#/components/schemas/OpenDTO'
+          xml:
+            name: OpenDTO
+            wrapped: true
+          type: array
+      xml:
+        name: WeekdayDTO
+      type: object
+    AddressDTO:
+      required:
+      - AddressType
+      properties:
+        AddressType:
+          type: string
+        AddressId:
+          type: string
+        MailingAddress:
+          $ref: '#/components/schemas/MailingAddressDTO'
+        Contacts:
+          items:
+            $ref: '#/components/schemas/ContactDTO'
+          xml:
+            name: ContactDTO
+            wrapped: true
+          type: array
+      xml:
+        name: AddressDTO
+      type: object
+    BoxAddressDto:
+      description: BoxAddressDto.
+      properties:
+        Name:
+          description: Gets or sets delivery box name.
+          type: string
+        AddressLine1:
+          description: Gets or sets AddressLine1.
+          type: string
+        AddressLine2:
+          description: Gets or sets AddressLine2.
+          type: string
+        City:
+          description: Gets or sets City.
+          type: string
+        PostalCode:
+          description: Gets or sets PostalCode.
+          type: string
+        CountryCode:
+          description: Gets or sets CountryCode.
+          type: string
+      xml:
+        name: BoxAddressDto
+      type: object
     GetNearestBoxesSearchModel:
       description: GetNearestIboxesSearchModel.
       properties:
@@ -573,78 +616,29 @@ components:
       xml:
         name: GetNearestBoxesSearchModel
       type: object
-    SearchModel:
+    GeoPointDTO:
       required:
-      - CountryCode
+      - Latitude
+      - Longitude
       properties:
-        CountryCode:
+        Latitude:
           type: string
-        PostalCode:
-          type: string
-        StreetAddress:
-          type: string
-        City:
-          type: string
-        Amount:
-          type: integer
-          format: int32
-      xml:
-        name: SearchModel
-      type: object
-    OpenDTO:
-      required:
-      - From
-      - To
-      properties:
-        From:
-          type: string
-        To:
+        Longitude:
           type: string
       xml:
-        name: OpenDTO
+        name: GeoPointDTO
       type: object
-    ServiceDTO:
+    ReferenceDTO:
       required:
-      - ServiceType
-      properties:
-        ServiceType:
-          type: string
-        DisplayName:
-          type: string
-      xml:
-        name: ServiceDTO
-      type: object
-    AddressDTO:
-      required:
-      - AddressType
-      properties:
-        AddressType:
-          type: string
-        AddressId:
-          type: string
-        MailingAddress:
-          $ref: '#/components/schemas/MailingAddressDTO'
-        Contacts:
-          items:
-            $ref: '#/components/schemas/ContactDTO'
-          xml:
-            name: ContactDTO
-            wrapped: true
-          type: array
-      xml:
-        name: AddressDTO
-      type: object
-    ContactDTO:
-      required:
-      - ContactType
+      - ReferenceType
       - Value
       properties:
-        ContactType:
+        ReferenceType:
           type: string
         Value:
           type: string
       xml:
-        name: ContactDTO
+        name: ReferenceDTO
       type: object
     MailingAddressDTO:
       required:
@@ -672,29 +666,16 @@ components:
       xml:
         name: MailingAddressDTO
       type: object
-    ReferenceDTO:
+    ServiceDTO:
       required:
-      - ReferenceType
-      - Value
+      - ServiceType
       properties:
-        ReferenceType:
+        ServiceType:
           type: string
-        Value:
+        DisplayName:
           type: string
       xml:
-        name: ReferenceDTO
-      type: object
-    GeoPointDTO:
-      required:
-      - Latitude
-      - Longitude
-      properties:
-        Latitude:
-          type: string
-        Longitude:
-          type: string
-      xml:
-        name: GeoPointDTO
+        name: ServiceDTO
       type: object
     BoxDto:
       description: A object for a specific box location.
@@ -714,25 +695,44 @@ components:
       xml:
         name: BoxDto
       type: object
-    WeekdayDTO:
+    ContactDTO:
       required:
-      - Day
-      - DisplayName
-      - OpeningHours
+      - ContactType
+      - Value
       properties:
-        Day:
+        ContactType:
           type: string
-        DisplayName:
+        Value:
           type: string
-        OpeningHours:
-          items:
-            $ref: '#/components/schemas/OpenDTO'
-          xml:
-            name: OpenDTO
-            wrapped: true
-          type: array
       xml:
-        name: WeekdayDTO
+        name: ContactDTO
+      type: object
+    SearchModel:
+      required:
+      - CountryCode
+      properties:
+        CountryCode:
+          type: string
+        PostalCode:
+          type: string
+        StreetAddress:
+          type: string
+        City:
+          type: string
+        Amount:
+          type: integer
+          format: int32
+      xml:
+        name: SearchModel
+      type: object
+    DeliveryDataDTO:
+      properties:
+        DataType:
+          type: string
+        Value:
+          type: string
+      xml:
+        name: DeliveryDataDTO
       type: object
   securitySchemes:
     basic:

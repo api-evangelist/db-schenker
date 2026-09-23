@@ -2,7 +2,7 @@ openapi: 3.2.0
 info:
   version: V2
   title: Partner services API V2. Delivery Point2 API
-  description: <a target="_blank" href="/Utils/PartnerServices/ParcelServicesExamples.zip">This zip</a> includes example/sample code to connect to DB Schenker Partner API.
+  description: This zip includes example/sample code to connect to DB Schenker Partner API.
   x-swagger-net-version: 8.5.28.001
 servers:
 - url: https://parcelservices-se.dbschenker.com/Apipartner
@@ -14,7 +14,7 @@ paths:
     get:
       tags:
       - DeliveryPoint2
-      summary: Get Servicepoints based on servicepoint number.
+      summary: Get Servicepoints based on servicepoint number
       operationId: DeliveryPoint2_GetServicePoint
       parameters:
       - name: countryCode
@@ -58,7 +58,7 @@ paths:
     get:
       tags:
       - DeliveryPoint2
-      summary: Get all Existing Servicepoints for a specified country.
+      summary: Get all Existing Servicepoints for a specified country
       operationId: DeliveryPoint2_GetAllServicePoints
       parameters:
       - name: countryCode
@@ -116,7 +116,7 @@ paths:
     post:
       tags:
       - DeliveryPoint2
-      summary: Gives you a list of the ServicePoints nearest to the specified location.
+      summary: Gives you a list of the ServicePoints nearest to the specified location
       operationId: DeliveryPoint2_GetNearestServicePoint
       responses:
         '200':
@@ -249,15 +249,6 @@ components:
       xml:
         name: ServicePointDTO
       type: object
-    DeliveryDataDTO:
-      properties:
-        DataType:
-          type: string
-        Value:
-          type: string
-      xml:
-        name: DeliveryDataDTO
-      type: object
     OpenDTO:
       required:
       - From
@@ -270,34 +261,25 @@ components:
       xml:
         name: OpenDTO
       type: object
-    SearchModel:
+    WeekdayDTO:
       required:
-      - CountryCode
+      - Day
+      - DisplayName
+      - OpeningHours
       properties:
-        CountryCode:
-          type: string
-        PostalCode:
-          type: string
-        StreetAddress:
-          type: string
-        City:
-          type: string
-        Amount:
-          type: integer
-          format: int32
-      xml:
-        name: SearchModel
-      type: object
-    ServiceDTO:
-      required:
-      - ServiceType
-      properties:
-        ServiceType:
+        Day:
           type: string
         DisplayName:
           type: string
+        OpeningHours:
+          items:
+            $ref: '#/components/schemas/OpenDTO'
+          xml:
+            name: OpenDTO
+            wrapped: true
+          type: array
       xml:
-        name: ServiceDTO
+        name: WeekdayDTO
       type: object
     AddressDTO:
       required:
@@ -319,17 +301,29 @@ components:
       xml:
         name: AddressDTO
       type: object
-    ContactDTO:
+    ReferenceDTO:
       required:
-      - ContactType
+      - ReferenceType
       - Value
       properties:
-        ContactType:
+        ReferenceType:
           type: string
         Value:
           type: string
       xml:
-        name: ContactDTO
+        name: ReferenceDTO
+      type: object
+    GeoPointDTO:
+      required:
+      - Latitude
+      - Longitude
+      properties:
+        Latitude:
+          type: string
+        Longitude:
+          type: string
+      xml:
+        name: GeoPointDTO
       type: object
     MailingAddressDTO:
       required:
@@ -357,49 +351,55 @@ components:
       xml:
         name: MailingAddressDTO
       type: object
-    ReferenceDTO:
+    ServiceDTO:
       required:
-      - ReferenceType
+      - ServiceType
+      properties:
+        ServiceType:
+          type: string
+        DisplayName:
+          type: string
+      xml:
+        name: ServiceDTO
+      type: object
+    ContactDTO:
+      required:
+      - ContactType
       - Value
       properties:
-        ReferenceType:
+        ContactType:
           type: string
         Value:
           type: string
       xml:
-        name: ReferenceDTO
+        name: ContactDTO
       type: object
-    GeoPointDTO:
+    SearchModel:
       required:
-      - Latitude
-      - Longitude
+      - CountryCode
       properties:
-        Latitude:
+        CountryCode:
           type: string
-        Longitude:
+        PostalCode:
+          type: string
+        StreetAddress:
+          type: string
+        City:
+          type: string
+        Amount:
+          type: integer
+          format: int32
+      xml:
+        name: SearchModel
+      type: object
+    DeliveryDataDTO:
+      properties:
+        DataType:
+          type: string
+        Value:
           type: string
       xml:
-        name: GeoPointDTO
-      type: object
-    WeekdayDTO:
-      required:
-      - Day
-      - DisplayName
-      - OpeningHours
-      properties:
-        Day:
-          type: string
-        DisplayName:
-          type: string
-        OpeningHours:
-          items:
-            $ref: '#/components/schemas/OpenDTO'
-          xml:
-            name: OpenDTO
-            wrapped: true
-          type: array
-      xml:
-        name: WeekdayDTO
+        name: DeliveryDataDTO
       type: object
   securitySchemes:
     basic:

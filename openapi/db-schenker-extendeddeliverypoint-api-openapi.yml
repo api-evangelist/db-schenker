@@ -2,7 +2,7 @@ openapi: 3.2.0
 info:
   version: V1
   title: Partner services API V1. Extended Delivery Point API
-  description: <a target="_blank" href="/Utils/PartnerServices/ParcelServicesExamples.zip">This zip</a> includes example/sample code to connect to DB Schenker Partner API.
+  description: This zip includes example/sample code to connect to DB Schenker Partner API.
   x-swagger-net-version: 8.5.28.001
 servers:
 - url: https://parcelservices-se.dbschenker.com/Apipartner
@@ -14,7 +14,7 @@ paths:
     get:
       tags:
       - ExtendedDeliveryPoint
-      summary: Get all Existing Servicepoints for a specified country.
+      summary: Get all Existing Servicepoints for a specified country
       operationId: ExtendedDeliveryPoint_GetAllServicePoints
       parameters:
       - name: countryCode

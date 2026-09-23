@@ -2,7 +2,7 @@ openapi: 3.2.0
 info:
   version: V1
   title: Partner services API V1. Track And Trace Boxes API
-  description: <a target="_blank" href="/Utils/PartnerServices/ParcelServicesExamples.zip">This zip</a> includes example/sample code to connect to DB Schenker Partner API.
+  description: This zip includes example/sample code to connect to DB Schenker Partner API.
   x-swagger-net-version: 8.5.28.001
 servers:
 - url: https://parcelservices-se.dbschenker.com/Apipartner
@@ -80,6 +80,78 @@ paths:
       - basic: []
 components:
   schemas:
+    AddressDTO:
+      required:
+      - AddressType
+      properties:
+        AddressType:
+          type: string
+        AddressId:
+          type: string
+        MailingAddress:
+          $ref: '#/components/schemas/MailingAddressDTO'
+        Contacts:
+          items:
+            $ref: '#/components/schemas/ContactDTO'
+          xml:
+            name: ContactDTO
+            wrapped: true
+          type: array
+      xml:
+        name: AddressDTO
+      type: object
+    ReferenceDTO:
+      required:
+      - ReferenceType
+      - Value
+      properties:
+        ReferenceType:
+          type: string
+        Value:
+          type: string
+      xml:
+        name: ReferenceDTO
+      type: object
+    LocationDTO:
+      required:
+      - LocationType
+      - Name
+      properties:
+        LocationType:
+          type: string
+        LocationId:
+          type: string
+        Name:
+          type: string
+      xml:
+        name: LocationDTO
+      type: object
+    MailingAddressDTO:
+      required:
+      - Name
+      - AddressLine1
+      - City
+      - PostalCode
+      properties:
+        Name:
+          type: string
+        CoAddress:
+          type: string
+        AddressLine1:
+          type: string
+        AddressLine2:
+          type: string
+        City:
+          type: string
+        PostalCode:
+          type: string
+        CountryCode:
+          type: string
+          maxLength: 3
+          minLength: 2
+      xml:
+        name: MailingAddressDTO
+      type: object
     ParcelWithEventDTO:
       required:
       - DeliveryService
@@ -127,77 +199,17 @@ components:
       xml:
         name: ParcelWithEventDTO
       type: object
-    LocationDTO:
+    MeasureDTO:
       required:
-      - LocationType
-      - Name
-      properties:
-        LocationType:
-          type: string
-        LocationId:
-          type: string
-        Name:
-          type: string
-      xml:
-        name: LocationDTO
-      type: object
-    AddressDTO:
-      required:
-      - AddressType
-      properties:
-        AddressType:
-          type: string
-        AddressId:
-          type: string
-        MailingAddress:
-          $ref: '#/components/schemas/MailingAddressDTO'
-        Contacts:
-          items:
-            $ref: '#/components/schemas/ContactDTO'
-          xml:
-            name: ContactDTO
-            wrapped: true
-          type: array
-      xml:
-        name: AddressDTO
-      type: object
-    ContactDTO:
-      required:
-      - ContactType
+      - MeasureType
       - Value
       properties:
-        ContactType:
+        MeasureType:
           type: string
         Value:
           type: string
       xml:
-        name: ContactDTO
-      type: object
-    MailingAddressDTO:
-      required:
-      - Name
-      - AddressLine1
-      - City
-      - PostalCode
-      properties:
-        Name:
-          type: string
-        CoAddress:
-          type: string
-        AddressLine1:
-          type: string
-        AddressLine2:
-          type: string
-        City:
-          type: string
-        PostalCode:
-          type: string
-        CountryCode:
-          type: string
-          maxLength: 3
-          minLength: 2
-      xml:
-        name: MailingAddressDTO
+        name: MeasureDTO
       type: object
     TrackingEventDTO:
       required:
@@ -223,29 +235,17 @@ components:
       xml:
         name: TrackingEventDTO
       type: object
-    ReferenceDTO:
+    ContactDTO:
       required:
-      - ReferenceType
+      - ContactType
       - Value
       properties:
-        ReferenceType:
+        ContactType:
           type: string
         Value:
           type: string
       xml:
-        name: ReferenceDTO
-      type: object
-    MeasureDTO:
-      required:
-      - MeasureType
-      - Value
-      properties:
-        MeasureType:
-          type: string
-        Value:
-          type: string
-      xml:
-        name: MeasureDTO
+        name: ContactDTO
       type: object
   securitySchemes:
     basic:

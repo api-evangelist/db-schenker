@@ -1,0 +1,26 @@
+# Front Door AI Index — db-schenker — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: db-schenker
+  lexicon_version: '1.0'
+  probed_at: '2026-09-17'
+  host: www.dbschenker.com
+  final_host: www.dsv.com
+  ownership: inherited
+  owner: db-schenker
+  shares_host_with: null
+  inherited_from: www.dsv.com
+  verdict: scored
+  score: null
+  host_score: 2
+  density: null
+  words: 2207
+  tiers:
+    agentic: 2
+    core: 0
+    model: 0
+  ambiguous: 0
+  top_terms:
+    chatbot: 1
+    virtual assistant: 1

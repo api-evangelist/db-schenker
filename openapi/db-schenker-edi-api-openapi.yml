@@ -2,7 +2,7 @@ openapi: 3.2.0
 info:
   version: V1
   title: Partner services API V1. Edi API
-  description: <a target="_blank" href="/Utils/PartnerServices/ParcelServicesExamples.zip">This zip</a> includes example/sample code to connect to DB Schenker Partner API.
+  description: This zip includes example/sample code to connect to DB Schenker Partner API.
   x-swagger-net-version: 8.5.28.001
 servers:
 - url: https://parcelservices-se.dbschenker.com/Apipartner
@@ -14,7 +14,7 @@ paths:
     post:
       tags:
       - Edi
-      summary: "Creates an EDI-Shipment in our system. This is needed for all parcels that are sent with Privpak.\n Called when another TA has managed the creation of the EDI and is notififying PrivPak of data"
+      summary: Creates an EDI-Shipment in our system.
       operationId: Edi_RegisterEdi
       parameters:
       - name: countryCode
@@ -69,9 +69,7 @@ paths:
     post:
       tags:
       - Edi
-      summary: 'Creates a return EDI-Shipment in our system. This is needed for all return parcels that are sent with Privpak.
-
-        Called when another TA has managed the creation of the EDI and is notififying PrivPak of data'
+      summary: Creates a return EDI-Shipment in our system.
       operationId: Edi_RegisterReturnEdi
       parameters:
       - name: countryCode
@@ -124,24 +122,16 @@ paths:
         required: true
 components:
   schemas:
-    CodDTO:
+    CollectorDTO:
       required:
-      - Amount
-      - Currency
-      - Reference
+      - Name
       properties:
-        Amount:
-          type: string
-        Currency:
+        Name:
           type: string
         Reference:
           $ref: '#/components/schemas/ReferenceDTO'
-        AccountType:
-          type: string
-        AccountNumber:
-          type: string
       xml:
-        name: CodDTO
+        name: CollectorDTO
       type: object
     ShipmentDTO:
       properties:
@@ -202,25 +192,24 @@ components:
       xml:
         name: ParcelDTO
       type: object
-    ReturnShipmentDTO:
+    CodDTO:
+      required:
+      - Amount
+      - Currency
+      - Reference
       properties:
-        EntryDate:
+        Amount:
           type: string
-          format: date-time
-        CustomerId:
-          type: integer
-          format: int32
-        PartnerId:
+        Currency:
           type: string
-        Parcels:
-          items:
-            $ref: '#/components/schemas/ReturnParcelDTO'
-          xml:
-            name: ReturnParcelDTO
-            wrapped: true
-          type: array
+        Reference:
+          $ref: '#/components/schemas/ReferenceDTO'
+        AccountType:
+          type: string
+        AccountNumber:
+          type: string
       xml:
-        name: ReturnShipmentDTO
+        name: CodDTO
       type: object
     AddressDTO:
       required:
@@ -242,17 +231,17 @@ components:
       xml:
         name: AddressDTO
       type: object
-    ContactDTO:
+    ReferenceDTO:
       required:
-      - ContactType
+      - ReferenceType
       - Value
       properties:
-        ContactType:
+        ReferenceType:
           type: string
         Value:
           type: string
       xml:
-        name: ContactDTO
+        name: ReferenceDTO
       type: object
     ReturnParcelDTO:
       required:
@@ -319,17 +308,25 @@ components:
       xml:
         name: MailingAddressDTO
       type: object
-    ReferenceDTO:
-      required:
-      - ReferenceType
-      - Value
+    ReturnShipmentDTO:
       properties:
-        ReferenceType:
+        EntryDate:
           type: string
-        Value:
+          format: date-time
+        CustomerId:
+          type: integer
+          format: int32
+        PartnerId:
           type: string
+        Parcels:
+          items:
+            $ref: '#/components/schemas/ReturnParcelDTO'
+          xml:
+            name: ReturnParcelDTO
+            wrapped: true
+          type: array
       xml:
-        name: ReferenceDTO
+        name: ReturnShipmentDTO
       type: object
     MeasureDTO:
       required:
@@ -343,16 +340,17 @@ components:
       xml:
         name: MeasureDTO
       type: object
-    CollectorDTO:
+    ContactDTO:
       required:
-      - Name
+      - ContactType
+      - Value
       properties:
-        Name:
+        ContactType:
           type: string
-        Reference:
-          $ref: '#/components/schemas/ReferenceDTO'
+        Value:
+          type: string
       xml:
-        name: CollectorDTO
+        name: ContactDTO
       type: object
   securitySchemes:
     basic:

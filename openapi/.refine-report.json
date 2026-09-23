@@ -1,0 +1,44 @@
+{
+  "provider": "db-schenker",
+  "sources": [
+    "_original/db-schenker-partner-services-v1-swagger.json",
+    "_original/db-schenker-partner-services-v2-swagger.json",
+    "_original/db-schenker-partner-services-v3-swagger.json",
+    "_original/db-schenker-partner-services-v4-swagger.json"
+  ],
+  "outputs": [
+    "db-schenker-deliverypoint-api-openapi.yml",
+    "db-schenker-edi-api-openapi.yml",
+    "db-schenker-extendeddeliverypoint-api-openapi.yml",
+    "db-schenker-printcode-api-openapi.yml",
+    "db-schenker-sortingcode-api-openapi.yml",
+    "db-schenker-trackandtraceboxes-api-openapi.yml",
+    "db-schenker-deliverypoint2-api-openapi.yml",
+    "db-schenker-trackandtraceadvanced2-api-openapi.yml",
+    "db-schenker-deliverypoint3-api-openapi.yml",
+    "db-schenker-deliverypoint4-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [
+    "sourced from openapi/_original/ (4 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "db-schenker-partner-services-v1-swagger.json: upgraded swagger 2.0 -> OpenAPI 3.2.0",
+    "db-schenker-partner-services-v2-swagger.json: upgraded swagger 2.0 -> OpenAPI 3.2.0",
+    "db-schenker-partner-services-v3-swagger.json: upgraded swagger 2.0 -> OpenAPI 3.2.0",
+    "db-schenker-partner-services-v4-swagger.json: upgraded swagger 2.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "db-schenker-deliverypoint-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "db-schenker-deliverypoint2-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "db-schenker-deliverypoint3-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "db-schenker-deliverypoint4-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "db-schenker-edi-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "db-schenker-extendeddeliverypoint-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "db-schenker-printcode-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "db-schenker-sortingcode-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "db-schenker-trackandtraceadvanced2-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "db-schenker-trackandtraceboxes-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
+}

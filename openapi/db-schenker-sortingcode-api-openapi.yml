@@ -2,7 +2,7 @@ openapi: 3.2.0
 info:
   version: V1
   title: Partner services API V1. Sorting Code API
-  description: <a target="_blank" href="/Utils/PartnerServices/ParcelServicesExamples.zip">This zip</a> includes example/sample code to connect to DB Schenker Partner API.
+  description: This zip includes example/sample code to connect to DB Schenker Partner API.
   x-swagger-net-version: 8.5.28.001
 servers:
 - url: https://parcelservices-se.dbschenker.com/Apipartner
@@ -14,7 +14,7 @@ paths:
     post:
       tags:
       - SortingCode
-      summary: "Returns a sorting code with the corresponding city and postal code.\nThe departure- and arrival code should be printed on the waybill and STES according to AGI.\n\nIf the API returns \"N/A\" the sorting code is missing. This is not an error. Print as is.\nIn case of time-out, print '---' for each code.\nIn case of other errors, print '???' for each code.\nCaching responses for more than 24 hours is not recommended.\n\nTo use endpoint, invoke a HTTP POST request at \n'https://parcelservices-se.dbschenker.com/apipartner/SortingCode/v1/GetSortingCode'"
+      summary: Returns a sorting code with the corresponding city and postal code.
       operationId: SortingCode_GetSortingCode
       responses:
         '200':
@@ -60,6 +60,15 @@ paths:
         required: true
 components:
   schemas:
+    BaseSortingCodeDto:
+      properties:
+        ArrivalCode:
+          type: string
+        DepartureCode:
+          type: string
+      xml:
+        name: BaseSortingCodeDto
+      type: object
     GetSortingCodeExternalDto:
       properties:
         PostalCodeSender:
@@ -113,15 +122,6 @@ components:
           - PHC
       xml:
         name: GetSortingCodeExternalDto
-      type: object
-    BaseSortingCodeDto:
-      properties:
-        ArrivalCode:
-          type: string
-        DepartureCode:
-          type: string
-      xml:
-        name: BaseSortingCodeDto
       type: object
   securitySchemes:
     basic:

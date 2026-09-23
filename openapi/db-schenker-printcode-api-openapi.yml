@@ -2,7 +2,7 @@ openapi: 3.2.0
 info:
   version: V1
   title: Partner services API V1. Print Code API
-  description: <a target="_blank" href="/Utils/PartnerServices/ParcelServicesExamples.zip">This zip</a> includes example/sample code to connect to DB Schenker Partner API.
+  description: This zip includes example/sample code to connect to DB Schenker Partner API.
   x-swagger-net-version: 8.5.28.001
 servers:
 - url: https://parcelservices-se.dbschenker.com/Apipartner
@@ -14,7 +14,7 @@ paths:
     get:
       tags:
       - PrintCode
-      summary: Gets the QR print code for a shipment based on shipment number.
+      summary: Gets the QR print code for a shipment based on shipment number
       operationId: PrintCode_GetQRCode
       parameters:
       - name: shipmentNumber
@@ -58,14 +58,7 @@ paths:
     get:
       tags:
       - PrintCode
-      summary: 'Gets the QR image for a shipment based on shipment number or colli-id.
-
-
-        Easy to use as ex. img-src or background-image on element.
-
-        Ex. set img src to "data:image/svg+xml;base64," + [Svg response from endpoint]
-
-        If png, a bytestream is returned.'
+      summary: Gets the QR image for a shipment based on shipment number or colli-id.
       operationId: PrintCode_GetQRCodeImage
       parameters:
       - name: shipmentNumber
