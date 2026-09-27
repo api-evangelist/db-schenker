@@ -60,15 +60,6 @@ paths:
         required: true
 components:
   schemas:
-    BaseSortingCodeDto:
-      properties:
-        ArrivalCode:
-          type: string
-        DepartureCode:
-          type: string
-      xml:
-        name: BaseSortingCodeDto
-      type: object
     GetSortingCodeExternalDto:
       properties:
         PostalCodeSender:
@@ -122,6 +113,15 @@ components:
           - PHC
       xml:
         name: GetSortingCodeExternalDto
+      type: object
+    BaseSortingCodeDto:
+      properties:
+        ArrivalCode:
+          type: string
+        DepartureCode:
+          type: string
+      xml:
+        name: BaseSortingCodeDto
       type: object
   securitySchemes:
     basic:
