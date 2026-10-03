@@ -360,50 +360,6 @@ paths:
         required: true
 components:
   schemas:
-    ReferenceDTO:
-      required:
-      - ReferenceType
-      - Value
-      properties:
-        ReferenceType:
-          type: string
-        Value:
-          type: string
-      xml:
-        name: ReferenceDTO
-      type: object
-    GeoPointDTO:
-      required:
-      - Latitude
-      - Longitude
-      properties:
-        Latitude:
-          type: string
-        Longitude:
-          type: string
-      xml:
-        name: GeoPointDTO
-      type: object
-    AddressDTO:
-      required:
-      - AddressType
-      properties:
-        AddressType:
-          type: string
-        AddressId:
-          type: string
-        MailingAddress:
-          $ref: '#/components/schemas/MailingAddressDTO'
-        Contacts:
-          items:
-            $ref: '#/components/schemas/ContactDTO'
-          xml:
-            name: ContactDTO
-            wrapped: true
-          type: array
-      xml:
-        name: AddressDTO
-      type: object
     MailingAddressDTO:
       required:
       - Name
@@ -430,85 +386,6 @@ components:
       xml:
         name: MailingAddressDTO
       type: object
-    OpenDTO:
-      required:
-      - From
-      - To
-      properties:
-        From:
-          type: string
-        To:
-          type: string
-      xml:
-        name: OpenDTO
-      type: object
-    ServicePointWithPrinterDTO:
-      required:
-      - Name
-      - Addresses
-      - GeoPoint
-      - OpeningDays
-      - Services
-      - References
-      properties:
-        Name:
-          type: string
-        DeliveryType:
-          type: string
-        Addresses:
-          items:
-            $ref: '#/components/schemas/AddressDTO'
-          xml:
-            name: AddressDTO
-            wrapped: true
-          type: array
-        GeoPoint:
-          $ref: '#/components/schemas/GeoPointDTO'
-        OpeningHoursShort:
-          type: string
-        OpeningHoursRow1:
-          type: string
-        OpeningHoursRow2:
-          type: string
-        OpeningHoursRow3:
-          type: string
-        OpeningDays:
-          items:
-            $ref: '#/components/schemas/WeekdayDTO'
-          xml:
-            name: WeekdayDTO
-            wrapped: true
-          type: array
-        Services:
-          items:
-            $ref: '#/components/schemas/ServiceDTO'
-          xml:
-            name: ServiceDTO
-            wrapped: true
-          type: array
-        References:
-          items:
-            $ref: '#/components/schemas/ReferenceDTO'
-          xml:
-            name: ReferenceDTO
-            wrapped: true
-          type: array
-        HasPrinter:
-          type: boolean
-        DeliveryData:
-          items:
-            $ref: '#/components/schemas/DeliveryDataDTO'
-          xml:
-            name: DeliveryDataDTO
-            wrapped: true
-          type: array
-        Distance:
-          type: string
-        ProviderAddon:
-          type: string
-      xml:
-        name: ServicePointWithPrinterDTO
-      type: object
     ContactDTO:
       required:
       - ContactType
@@ -521,25 +398,14 @@ components:
       xml:
         name: ContactDTO
       type: object
-    WeekdayDTO:
-      required:
-      - Day
-      - DisplayName
-      - OpeningHours
+    DeliveryDataDTO:
       properties:
-        Day:
+        DataType:
           type: string
-        DisplayName:
+        Value:
           type: string
-        OpeningHours:
-          items:
-            $ref: '#/components/schemas/OpenDTO'
-          xml:
-            name: OpenDTO
-            wrapped: true
-          type: array
       xml:
-        name: WeekdayDTO
+        name: DeliveryDataDTO
       type: object
     ServiceDTO:
       required:
@@ -635,14 +501,148 @@ components:
       xml:
         name: ServicePointDTO
       type: object
-    DeliveryDataDTO:
+    OpenDTO:
+      required:
+      - From
+      - To
       properties:
-        DataType:
+        From:
+          type: string
+        To:
+          type: string
+      xml:
+        name: OpenDTO
+      type: object
+    ReferenceDTO:
+      required:
+      - ReferenceType
+      - Value
+      properties:
+        ReferenceType:
           type: string
         Value:
           type: string
       xml:
-        name: DeliveryDataDTO
+        name: ReferenceDTO
+      type: object
+    ServicePointWithPrinterDTO:
+      required:
+      - Name
+      - Addresses
+      - GeoPoint
+      - OpeningDays
+      - Services
+      - References
+      properties:
+        Name:
+          type: string
+        DeliveryType:
+          type: string
+        Addresses:
+          items:
+            $ref: '#/components/schemas/AddressDTO'
+          xml:
+            name: AddressDTO
+            wrapped: true
+          type: array
+        GeoPoint:
+          $ref: '#/components/schemas/GeoPointDTO'
+        OpeningHoursShort:
+          type: string
+        OpeningHoursRow1:
+          type: string
+        OpeningHoursRow2:
+          type: string
+        OpeningHoursRow3:
+          type: string
+        OpeningDays:
+          items:
+            $ref: '#/components/schemas/WeekdayDTO'
+          xml:
+            name: WeekdayDTO
+            wrapped: true
+          type: array
+        Services:
+          items:
+            $ref: '#/components/schemas/ServiceDTO'
+          xml:
+            name: ServiceDTO
+            wrapped: true
+          type: array
+        References:
+          items:
+            $ref: '#/components/schemas/ReferenceDTO'
+          xml:
+            name: ReferenceDTO
+            wrapped: true
+          type: array
+        HasPrinter:
+          type: boolean
+        DeliveryData:
+          items:
+            $ref: '#/components/schemas/DeliveryDataDTO'
+          xml:
+            name: DeliveryDataDTO
+            wrapped: true
+          type: array
+        Distance:
+          type: string
+        ProviderAddon:
+          type: string
+      xml:
+        name: ServicePointWithPrinterDTO
+      type: object
+    GeoPointDTO:
+      required:
+      - Latitude
+      - Longitude
+      properties:
+        Latitude:
+          type: string
+        Longitude:
+          type: string
+      xml:
+        name: GeoPointDTO
+      type: object
+    AddressDTO:
+      required:
+      - AddressType
+      properties:
+        AddressType:
+          type: string
+        AddressId:
+          type: string
+        MailingAddress:
+          $ref: '#/components/schemas/MailingAddressDTO'
+        Contacts:
+          items:
+            $ref: '#/components/schemas/ContactDTO'
+          xml:
+            name: ContactDTO
+            wrapped: true
+          type: array
+      xml:
+        name: AddressDTO
+      type: object
+    WeekdayDTO:
+      required:
+      - Day
+      - DisplayName
+      - OpeningHours
+      properties:
+        Day:
+          type: string
+        DisplayName:
+          type: string
+        OpeningHours:
+          items:
+            $ref: '#/components/schemas/OpenDTO'
+          xml:
+            name: OpenDTO
+            wrapped: true
+          type: array
+      xml:
+        name: WeekdayDTO
       type: object
   securitySchemes:
     basic:

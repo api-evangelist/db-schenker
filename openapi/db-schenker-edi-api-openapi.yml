@@ -122,29 +122,94 @@ paths:
         required: true
 components:
   schemas:
-    ReferenceDTO:
+    MailingAddressDTO:
       required:
-      - ReferenceType
-      - Value
+      - Name
+      - AddressLine1
+      - City
+      - PostalCode
       properties:
-        ReferenceType:
+        Name:
           type: string
-        Value:
+        CoAddress:
           type: string
+        AddressLine1:
+          type: string
+        AddressLine2:
+          type: string
+        City:
+          type: string
+        PostalCode:
+          type: string
+        CountryCode:
+          type: string
+          maxLength: 3
+          minLength: 2
       xml:
-        name: ReferenceDTO
+        name: MailingAddressDTO
       type: object
-    MeasureDTO:
+    ContactDTO:
       required:
-      - MeasureType
+      - ContactType
       - Value
       properties:
-        MeasureType:
+        ContactType:
           type: string
         Value:
           type: string
       xml:
-        name: MeasureDTO
+        name: ContactDTO
+      type: object
+    ReturnShipmentDTO:
+      properties:
+        EntryDate:
+          type: string
+          format: date-time
+        CustomerId:
+          type: integer
+          format: int32
+        PartnerId:
+          type: string
+        Parcels:
+          items:
+            $ref: '#/components/schemas/ReturnParcelDTO'
+          xml:
+            name: ReturnParcelDTO
+            wrapped: true
+          type: array
+      xml:
+        name: ReturnShipmentDTO
+      type: object
+    CollectorDTO:
+      required:
+      - Name
+      properties:
+        Name:
+          type: string
+        Reference:
+          $ref: '#/components/schemas/ReferenceDTO'
+      xml:
+        name: CollectorDTO
+      type: object
+    AddressDTO:
+      required:
+      - AddressType
+      properties:
+        AddressType:
+          type: string
+        AddressId:
+          type: string
+        MailingAddress:
+          $ref: '#/components/schemas/MailingAddressDTO'
+        Contacts:
+          items:
+            $ref: '#/components/schemas/ContactDTO'
+          xml:
+            name: ContactDTO
+            wrapped: true
+          type: array
+      xml:
+        name: AddressDTO
       type: object
     ParcelDTO:
       required:
@@ -185,51 +250,56 @@ components:
       xml:
         name: ParcelDTO
       type: object
-    AddressDTO:
+    CodDTO:
       required:
-      - AddressType
+      - Amount
+      - Currency
+      - Reference
       properties:
-        AddressType:
+        Amount:
           type: string
-        AddressId:
+        Currency:
           type: string
-        MailingAddress:
-          $ref: '#/components/schemas/MailingAddressDTO'
-        Contacts:
+        Reference:
+          $ref: '#/components/schemas/ReferenceDTO'
+        AccountType:
+          type: string
+        AccountNumber:
+          type: string
+      xml:
+        name: CodDTO
+      type: object
+    MeasureDTO:
+      required:
+      - MeasureType
+      - Value
+      properties:
+        MeasureType:
+          type: string
+        Value:
+          type: string
+      xml:
+        name: MeasureDTO
+      type: object
+    ShipmentDTO:
+      properties:
+        EntryDate:
+          type: string
+          format: date-time
+        CustomerId:
+          type: integer
+          format: int32
+        PartnerId:
+          type: string
+        Parcels:
           items:
-            $ref: '#/components/schemas/ContactDTO'
+            $ref: '#/components/schemas/ParcelDTO'
           xml:
-            name: ContactDTO
+            name: ParcelDTO
             wrapped: true
           type: array
       xml:
-        name: AddressDTO
-      type: object
-    MailingAddressDTO:
-      required:
-      - Name
-      - AddressLine1
-      - City
-      - PostalCode
-      properties:
-        Name:
-          type: string
-        CoAddress:
-          type: string
-        AddressLine1:
-          type: string
-        AddressLine2:
-          type: string
-        City:
-          type: string
-        PostalCode:
-          type: string
-        CountryCode:
-          type: string
-          maxLength: 3
-          minLength: 2
-      xml:
-        name: MailingAddressDTO
+        name: ShipmentDTO
       type: object
     ReturnParcelDTO:
       required:
@@ -270,87 +340,17 @@ components:
       xml:
         name: ReturnParcelDTO
       type: object
-    ReturnShipmentDTO:
-      properties:
-        EntryDate:
-          type: string
-          format: date-time
-        CustomerId:
-          type: integer
-          format: int32
-        PartnerId:
-          type: string
-        Parcels:
-          items:
-            $ref: '#/components/schemas/ReturnParcelDTO'
-          xml:
-            name: ReturnParcelDTO
-            wrapped: true
-          type: array
-      xml:
-        name: ReturnShipmentDTO
-      type: object
-    ContactDTO:
+    ReferenceDTO:
       required:
-      - ContactType
+      - ReferenceType
       - Value
       properties:
-        ContactType:
+        ReferenceType:
           type: string
         Value:
           type: string
       xml:
-        name: ContactDTO
-      type: object
-    ShipmentDTO:
-      properties:
-        EntryDate:
-          type: string
-          format: date-time
-        CustomerId:
-          type: integer
-          format: int32
-        PartnerId:
-          type: string
-        Parcels:
-          items:
-            $ref: '#/components/schemas/ParcelDTO'
-          xml:
-            name: ParcelDTO
-            wrapped: true
-          type: array
-      xml:
-        name: ShipmentDTO
-      type: object
-    CollectorDTO:
-      required:
-      - Name
-      properties:
-        Name:
-          type: string
-        Reference:
-          $ref: '#/components/schemas/ReferenceDTO'
-      xml:
-        name: CollectorDTO
-      type: object
-    CodDTO:
-      required:
-      - Amount
-      - Currency
-      - Reference
-      properties:
-        Amount:
-          type: string
-        Currency:
-          type: string
-        Reference:
-          $ref: '#/components/schemas/ReferenceDTO'
-        AccountType:
-          type: string
-        AccountNumber:
-          type: string
-      xml:
-        name: CodDTO
+        name: ReferenceDTO
       type: object
   securitySchemes:
     basic:
