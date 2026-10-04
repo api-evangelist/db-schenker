@@ -80,44 +80,6 @@ paths:
       - basic: []
 components:
   schemas:
-    MailingAddressDTO:
-      required:
-      - Name
-      - AddressLine1
-      - City
-      - PostalCode
-      properties:
-        Name:
-          type: string
-        CoAddress:
-          type: string
-        AddressLine1:
-          type: string
-        AddressLine2:
-          type: string
-        City:
-          type: string
-        PostalCode:
-          type: string
-        CountryCode:
-          type: string
-          maxLength: 3
-          minLength: 2
-      xml:
-        name: MailingAddressDTO
-      type: object
-    ContactDTO:
-      required:
-      - ContactType
-      - Value
-      properties:
-        ContactType:
-          type: string
-        Value:
-          type: string
-      xml:
-        name: ContactDTO
-      type: object
     ParcelWithEventDTO:
       required:
       - DeliveryService
@@ -165,25 +127,41 @@ components:
       xml:
         name: ParcelWithEventDTO
       type: object
-    AddressDTO:
+    ReferenceDTO:
       required:
-      - AddressType
+      - ReferenceType
+      - Value
       properties:
-        AddressType:
+        ReferenceType:
           type: string
-        AddressId:
+        Value:
           type: string
-        MailingAddress:
-          $ref: '#/components/schemas/MailingAddressDTO'
-        Contacts:
-          items:
-            $ref: '#/components/schemas/ContactDTO'
-          xml:
-            name: ContactDTO
-            wrapped: true
-          type: array
       xml:
-        name: AddressDTO
+        name: ReferenceDTO
+      type: object
+    MeasureDTO:
+      required:
+      - MeasureType
+      - Value
+      properties:
+        MeasureType:
+          type: string
+        Value:
+          type: string
+      xml:
+        name: MeasureDTO
+      type: object
+    ContactDTO:
+      required:
+      - ContactType
+      - Value
+      properties:
+        ContactType:
+          type: string
+        Value:
+          type: string
+      xml:
+        name: ContactDTO
       type: object
     LocationDTO:
       required:
@@ -198,18 +176,6 @@ components:
           type: string
       xml:
         name: LocationDTO
-      type: object
-    MeasureDTO:
-      required:
-      - MeasureType
-      - Value
-      properties:
-        MeasureType:
-          type: string
-        Value:
-          type: string
-      xml:
-        name: MeasureDTO
       type: object
     TrackingEventDTO:
       required:
@@ -235,17 +201,51 @@ components:
       xml:
         name: TrackingEventDTO
       type: object
-    ReferenceDTO:
+    AddressDTO:
       required:
-      - ReferenceType
-      - Value
+      - AddressType
       properties:
-        ReferenceType:
+        AddressType:
           type: string
-        Value:
+        AddressId:
           type: string
+        MailingAddress:
+          $ref: '#/components/schemas/MailingAddressDTO'
+        Contacts:
+          items:
+            $ref: '#/components/schemas/ContactDTO'
+          xml:
+            name: ContactDTO
+            wrapped: true
+          type: array
       xml:
-        name: ReferenceDTO
+        name: AddressDTO
+      type: object
+    MailingAddressDTO:
+      required:
+      - Name
+      - AddressLine1
+      - City
+      - PostalCode
+      properties:
+        Name:
+          type: string
+        CoAddress:
+          type: string
+        AddressLine1:
+          type: string
+        AddressLine2:
+          type: string
+        City:
+          type: string
+        PostalCode:
+          type: string
+        CountryCode:
+          type: string
+          maxLength: 3
+          minLength: 2
+      xml:
+        name: MailingAddressDTO
       type: object
   securitySchemes:
     basic:
