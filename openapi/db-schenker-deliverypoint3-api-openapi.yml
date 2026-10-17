@@ -384,122 +384,6 @@ paths:
         required: true
 components:
   schemas:
-    ServicePointDTO:
-      required:
-      - Name
-      - Addresses
-      - GeoPoint
-      - OpeningDays
-      - Services
-      - References
-      properties:
-        Name:
-          type: string
-        DeliveryType:
-          type: string
-        Addresses:
-          items:
-            $ref: '#/components/schemas/AddressDTO'
-          xml:
-            name: AddressDTO
-            wrapped: true
-          type: array
-        GeoPoint:
-          $ref: '#/components/schemas/GeoPointDTO'
-        OpeningHoursShort:
-          type: string
-        OpeningHoursRow1:
-          type: string
-        OpeningHoursRow2:
-          type: string
-        OpeningHoursRow3:
-          type: string
-        OpeningDays:
-          items:
-            $ref: '#/components/schemas/WeekdayDTO'
-          xml:
-            name: WeekdayDTO
-            wrapped: true
-          type: array
-        Services:
-          items:
-            $ref: '#/components/schemas/ServiceDTO'
-          xml:
-            name: ServiceDTO
-            wrapped: true
-          type: array
-        References:
-          items:
-            $ref: '#/components/schemas/ReferenceDTO'
-          xml:
-            name: ReferenceDTO
-            wrapped: true
-          type: array
-        DeliveryData:
-          items:
-            $ref: '#/components/schemas/DeliveryDataDTO'
-          xml:
-            name: DeliveryDataDTO
-            wrapped: true
-          type: array
-        Distance:
-          type: string
-        ProviderAddon:
-          type: string
-      xml:
-        name: ServicePointDTO
-      type: object
-    ReferenceDTO:
-      required:
-      - ReferenceType
-      - Value
-      properties:
-        ReferenceType:
-          type: string
-        Value:
-          type: string
-      xml:
-        name: ReferenceDTO
-      type: object
-    SearchModel:
-      required:
-      - CountryCode
-      properties:
-        CountryCode:
-          type: string
-        PostalCode:
-          type: string
-        StreetAddress:
-          type: string
-        City:
-          type: string
-        Amount:
-          type: integer
-          format: int32
-      xml:
-        name: SearchModel
-      type: object
-    DeliveryDataDTO:
-      properties:
-        DataType:
-          type: string
-        Value:
-          type: string
-      xml:
-        name: DeliveryDataDTO
-      type: object
-    GeoPointDTO:
-      required:
-      - Latitude
-      - Longitude
-      properties:
-        Latitude:
-          type: string
-        Longitude:
-          type: string
-      xml:
-        name: GeoPointDTO
-      type: object
     BoxDto:
       description: A object for a specific box location.
       properties:
@@ -517,6 +401,30 @@ components:
           type: string
       xml:
         name: BoxDto
+      type: object
+    GeoPointDTO:
+      required:
+      - Latitude
+      - Longitude
+      properties:
+        Latitude:
+          type: string
+        Longitude:
+          type: string
+      xml:
+        name: GeoPointDTO
+      type: object
+    ReferenceDTO:
+      required:
+      - ReferenceType
+      - Value
+      properties:
+        ReferenceType:
+          type: string
+        Value:
+          type: string
+      xml:
+        name: ReferenceDTO
       type: object
     ServicePointWithPrinterDTO:
       required:
@@ -585,28 +493,14 @@ components:
       xml:
         name: ServicePointWithPrinterDTO
       type: object
-    ContactDTO:
-      required:
-      - ContactType
-      - Value
+    DeliveryDataDTO:
       properties:
-        ContactType:
+        DataType:
           type: string
         Value:
           type: string
       xml:
-        name: ContactDTO
-      type: object
-    ServiceDTO:
-      required:
-      - ServiceType
-      properties:
-        ServiceType:
-          type: string
-        DisplayName:
-          type: string
-      xml:
-        name: ServiceDTO
+        name: DeliveryDataDTO
       type: object
     WeekdayDTO:
       required:
@@ -628,17 +522,29 @@ components:
       xml:
         name: WeekdayDTO
       type: object
-    OpenDTO:
-      required:
-      - From
-      - To
+    BoxAddressDto:
+      description: BoxAddressDto.
       properties:
-        From:
+        Name:
+          description: Gets or sets delivery box name.
           type: string
-        To:
+        AddressLine1:
+          description: Gets or sets AddressLine1.
+          type: string
+        AddressLine2:
+          description: Gets or sets AddressLine2.
+          type: string
+        City:
+          description: Gets or sets City.
+          type: string
+        PostalCode:
+          description: Gets or sets PostalCode.
+          type: string
+        CountryCode:
+          description: Gets or sets CountryCode.
           type: string
       xml:
-        name: OpenDTO
+        name: BoxAddressDto
       type: object
     AddressDTO:
       required:
@@ -659,6 +565,137 @@ components:
           type: array
       xml:
         name: AddressDTO
+      type: object
+    ServicePointDTO:
+      required:
+      - Name
+      - Addresses
+      - GeoPoint
+      - OpeningDays
+      - Services
+      - References
+      properties:
+        Name:
+          type: string
+        DeliveryType:
+          type: string
+        Addresses:
+          items:
+            $ref: '#/components/schemas/AddressDTO'
+          xml:
+            name: AddressDTO
+            wrapped: true
+          type: array
+        GeoPoint:
+          $ref: '#/components/schemas/GeoPointDTO'
+        OpeningHoursShort:
+          type: string
+        OpeningHoursRow1:
+          type: string
+        OpeningHoursRow2:
+          type: string
+        OpeningHoursRow3:
+          type: string
+        OpeningDays:
+          items:
+            $ref: '#/components/schemas/WeekdayDTO'
+          xml:
+            name: WeekdayDTO
+            wrapped: true
+          type: array
+        Services:
+          items:
+            $ref: '#/components/schemas/ServiceDTO'
+          xml:
+            name: ServiceDTO
+            wrapped: true
+          type: array
+        References:
+          items:
+            $ref: '#/components/schemas/ReferenceDTO'
+          xml:
+            name: ReferenceDTO
+            wrapped: true
+          type: array
+        DeliveryData:
+          items:
+            $ref: '#/components/schemas/DeliveryDataDTO'
+          xml:
+            name: DeliveryDataDTO
+            wrapped: true
+          type: array
+        Distance:
+          type: string
+        ProviderAddon:
+          type: string
+      xml:
+        name: ServicePointDTO
+      type: object
+    GetNearestBoxesSearchModel:
+      description: GetNearestIboxesSearchModel.
+      properties:
+        City:
+          description: Gets or sets City.
+          type: string
+        StreetAddress:
+          description: Gets or sets StreetAddress.
+          type: string
+        PostalCode:
+          description: Gets or sets PostalCode.
+          type: string
+        LocationMaxDistance:
+          description: Gets or sets LocationMaxDistance.
+          type: string
+        LocationsMaxQty:
+          description: Gets or sets LocationsMaxQty.
+          type: string
+        RequiresLowBox:
+          description: Gets or sets a value indicating whether low box is required.
+          type: string
+      xml:
+        name: GetNearestBoxesSearchModel
+      type: object
+    SearchModel:
+      required:
+      - CountryCode
+      properties:
+        CountryCode:
+          type: string
+        PostalCode:
+          type: string
+        StreetAddress:
+          type: string
+        City:
+          type: string
+        Amount:
+          type: integer
+          format: int32
+      xml:
+        name: SearchModel
+      type: object
+    OpenDTO:
+      required:
+      - From
+      - To
+      properties:
+        From:
+          type: string
+        To:
+          type: string
+      xml:
+        name: OpenDTO
+      type: object
+    ContactDTO:
+      required:
+      - ContactType
+      - Value
+      properties:
+        ContactType:
+          type: string
+        Value:
+          type: string
+      xml:
+        name: ContactDTO
       type: object
     MailingAddressDTO:
       required:
@@ -686,53 +723,16 @@ components:
       xml:
         name: MailingAddressDTO
       type: object
-    BoxAddressDto:
-      description: BoxAddressDto.
+    ServiceDTO:
+      required:
+      - ServiceType
       properties:
-        Name:
-          description: Gets or sets delivery box name.
+        ServiceType:
           type: string
-        AddressLine1:
-          description: Gets or sets AddressLine1.
-          type: string
-        AddressLine2:
-          description: Gets or sets AddressLine2.
-          type: string
-        City:
-          description: Gets or sets City.
-          type: string
-        PostalCode:
-          description: Gets or sets PostalCode.
-          type: string
-        CountryCode:
-          description: Gets or sets CountryCode.
+        DisplayName:
           type: string
       xml:
-        name: BoxAddressDto
-      type: object
-    GetNearestBoxesSearchModel:
-      description: GetNearestIboxesSearchModel.
-      properties:
-        City:
-          description: Gets or sets City.
-          type: string
-        StreetAddress:
-          description: Gets or sets StreetAddress.
-          type: string
-        PostalCode:
-          description: Gets or sets PostalCode.
-          type: string
-        LocationMaxDistance:
-          description: Gets or sets LocationMaxDistance.
-          type: string
-        LocationsMaxQty:
-          description: Gets or sets LocationsMaxQty.
-          type: string
-        RequiresLowBox:
-          description: Gets or sets a value indicating whether low box is required.
-          type: string
-      xml:
-        name: GetNearestBoxesSearchModel
+        name: ServiceDTO
       type: object
   securitySchemes:
     basic:
