@@ -1,4 +1,4 @@
-# DB Schenker (db-schenker)
+# DB Schenker
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,141 +66,96 @@
 
 DB Schenker (Schenker AG, headquartered in Essen, Germany) is one of the world's largest freight forwarders and contract logistics providers, moving air, ocean, land and rail freight and running warehousing for shippers across roughly 1,850 locations. As a forwarder it sits in the intermediation layer of the supply chain — between the shipper who owns the cargo and the carriers, terminals and customs authorities who move and clear it — buying capacity it does not own and reselling visibility it did not have to publish. Its API posture is honestly a customer-contract posture, not a public developer posture. Deutsche Bahn sold DB Schenker to DSV A/S, completing 30 April 2025, and as of this profile www.dbschenker.com 301-redirects to dsv.com while the global developer portal at api-portal.dbschenker.com answers HTTP 410 Gone. The one DB Schenker-branded machine-readable API surface still live is the Nordic parcel "Partner services API" at parcelservices-se.dbschenker.com/Apipartner, which publishes four Swagger 2.0 documents openly but returns 401 on every operation without HTTP Basic credentials issued against a signed Swedish transport agreement. Its EDI endpoints are proprietary JSON, not EDIFACT or X12, and no DCSA, IATA ONE Record, GS1 EPCIS or WCO Data Model conformant contract was found on any reachable host.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/db-schenker/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/db-schenker/refs/heads/main/apis.yml)
+**Areas:** Logistics · Supply Chain · Germany · Freight Forwarding · Parcel · Track and Trace · Customs · Air Cargo · Ocean Freight · Contract Logistics · EDI · Freight
 
-## Tags
+## DB Schenker on APIs.io
 
-- Logistics
-- Supply Chain
-- Germany
-- Freight Forwarding
-- Parcel
-- Track and Trace
-- Customs
-- Air Cargo
-- Ocean Freight
-- Contract Logistics
-- EDI
+Everything profiled for DB Schenker is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/db-schenker/](https://apis.io/providers/db-schenker/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (10)
 
-- **Created:** 2026-07-30
-- **Modified:** 2026-07-30
+- [DB Schenker Delivery Point API](https://apis.io/apis/db-schenker/db-schenker-deliverypoint-api/) — Responsible for all Web API functions related to Service Points
+- [DB Schenker Delivery Point2 API](https://apis.io/apis/db-schenker/db-schenker-deliverypoint2-api/) — Responsible for all Web API functions related to Service Points
+- [DB Schenker Delivery Point3 API](https://apis.io/apis/db-schenker/db-schenker-deliverypoint3-api/) — Responsible for all Web API functions related to Service Points
+- [DB Schenker Delivery Point4 API](https://apis.io/apis/db-schenker/db-schenker-deliverypoint4-api/) — Responsible for all Web API functions related to Service Points
+- [DB Schenker Edi API](https://apis.io/apis/db-schenker/db-schenker-edi-api/) — Responsible for all Web API functions related to EDI (For example: Register, Register Return)
+- [DB Schenker Extended Delivery Point API](https://apis.io/apis/db-schenker/db-schenker-extendeddeliverypoint-api/) — Responsible for all Web API functions related to HITTA
+- [DB Schenker Print Code API](https://apis.io/apis/db-schenker/db-schenker-printcode-api/) — Responsible for (QR) print codes.
+- [DB Schenker Sorting Code API](https://apis.io/apis/db-schenker/db-schenker-sortingcode-api/) — Responsible for all Web API functions related to handling sorting codes in MANET.
+- [DB Schenker Track And Trace Advanced2 API](https://apis.io/apis/db-schenker/db-schenker-trackandtraceadvanced2-api/) — Responsible for all Web API functions related to Advanced Track and Trace.
+- [DB Schenker Track And Trace Boxes API](https://apis.io/apis/db-schenker/db-schenker-trackandtraceboxes-api/) — Responsible for all Web API functions related to Boxes Track and Trace.
 
-## APIs
+### Published properties
 
-### DB Schenker Partner Services API V1
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-Version 1 of the Schenker AB (Sweden) Partner services API — the Nordic parcel network surface inherited from Privpak. Nine operations covering service point lookup (DeliveryPoint and ExtendedDeliveryPoint GetAllServicePoints / GetNearestServicePoint), shipment registration via POST /Edi/v1/RegisterEdi and /Edi/v1/RegisterReturnEdi, QR print codes, sorting-code resolution from sender/receiver postal codes and product code, and parcel track-and-trace by barcode. Swagger 2.0, HTTPS only, HTTP Basic authentication; every operation returned 401 unauthenticated when probed 2026-07-30.
+#### Collections (4)
 
-- **Human URL:** [https://parcelservices-se.dbschenker.com/Apipartner/swagger/ui/index](https://parcelservices-se.dbschenker.com/Apipartner/swagger/ui/index)
-- **Base URL:** `https://parcelservices-se.dbschenker.com/Apipartner`
+Postman and Open Collection request collections.
 
-#### Tags
+- [Partner services API V1.](https://apis.io/collections/db-schenker/open-db-schenker-partner-services-v1-swagger/)
+- [Partner services API V2.](https://apis.io/collections/db-schenker/open-db-schenker-partner-services-v2-swagger/)
+- [Partner services API V3.](https://apis.io/collections/db-schenker/open-db-schenker-partner-services-v3-swagger/)
+- [Partner services API V4.](https://apis.io/collections/db-schenker/open-db-schenker-partner-services-v4-swagger/)
 
-- Parcel
-- Track and Trace
-- EDI
-- Service Points
+## Where to find this API
 
-#### Properties
-
-- [OpenAPI](openapi/db-schenker-partner-services-v1-swagger.json) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [API Reference](https://parcelservices-se.dbschenker.com/Apipartner/swagger/ui/index)
-- [Documentation](https://parcelservices-se.dbschenker.com/Apipartner/Help)
-- [Sandbox](https://staging-parcelservices-se.dbschenker.com/Apipartner/swagger/ui/index)
-- [SDK](https://parcelservices-se.dbschenker.com/Utils/PartnerServices/ParcelServicesExamples.zip)
-
-### DB Schenker Partner Services API V2
-
-Version 2 of the Schenker AB (Sweden) Partner services API. Four operations: DeliveryPoint/v2 GetServicePoint (by four-digit service point number), GetAllServicePoints and GetNearestServicePoint, plus TrackAndTraceAdvanced/v2/GetParcel which resolves a parcel and its event history from a country code, reference type and reference. Read-only polling; no webhook or subscription operation is published. Swagger 2.0, HTTP Basic authentication.
-
-- **Human URL:** [https://parcelservices-se.dbschenker.com/Apipartner/swagger/ui/index](https://parcelservices-se.dbschenker.com/Apipartner/swagger/ui/index)
-- **Base URL:** `https://parcelservices-se.dbschenker.com/Apipartner`
-
-#### Tags
-
-- Parcel
-- Track and Trace
-- Service Points
-
-#### Properties
-
-- [OpenAPI](openapi/db-schenker-partner-services-v2-swagger.json) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [API Reference](https://parcelservices-se.dbschenker.com/Apipartner/swagger/ui/index)
-- [Documentation](https://www.dbschenker.com/resource/blob/488782/4dd6a5822abef794b803615c81a8725b/api-tracking-data.pdf)
-
-### DB Schenker Partner Services API V3
-
-Version 3 of the Schenker AB (Sweden) Partner services API, adding the parcel-box surface used in e-commerce checkout. Six operations across DeliveryPoint/v3: GetServicePoint, GetAllServicePoints, GetNearestServicePoint, GetBox, GetNearestBoxes and GetNearestTerminal. Backs the DB SCHENKERparcel box product; the published Parcelbox-API specification is version 1.3.0. Swagger 2.0, HTTP Basic authentication.
-
-- **Human URL:** [https://parcelservices-se.dbschenker.com/Apipartner/swagger/ui/index](https://parcelservices-se.dbschenker.com/Apipartner/swagger/ui/index)
-- **Base URL:** `https://parcelservices-se.dbschenker.com/Apipartner`
-
-#### Tags
-
-- Parcel
-- Parcel Box
-- Service Points
-- Checkout
-
-#### Properties
-
-- [OpenAPI](openapi/db-schenker-partner-services-v3-swagger.json) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [API Reference](https://parcelservices-se.dbschenker.com/Apipartner/swagger/ui/index)
-- [Documentation](https://www.dbschenker.com/resource/blob/837402/4a1ecfc7c167ca6fe2b1d676f41c9f2d/parcelbox-api-data.pdf)
-
-### DB Schenker Partner Services API V4
-
-Version 4 of the Schenker AB (Sweden) Partner services API, the current CollectionPoint surface (published specification version 4.2.0, document dated 2025-04-23). Six operations across DeliveryPoint/v4: GetServicePoint, GetAllServicePoints, GetNearestServicePoint, GetTerminal, GetAllTerminals and GetNearestTerminal — covering DB SCHENKERparcel ombud, ombud Europa, and DB SCHENKERparcel / DB SCHENKERsystem with the Collect at terminal option. DeliveryPoint v1 and v2 were withdrawn from support on 15 January 2025. Swagger 2.0, HTTP Basic authentication; a maximum 12-hour cache is mandated on collection point data.
-
-- **Human URL:** [https://parcelservices-se.dbschenker.com/Apipartner/swagger/ui/index](https://parcelservices-se.dbschenker.com/Apipartner/swagger/ui/index)
-- **Base URL:** `https://parcelservices-se.dbschenker.com/Apipartner`
-
-#### Tags
-
-- Parcel
-- Service Points
-- Terminals
-- Checkout
-
-#### Properties
-
-- [OpenAPI](openapi/db-schenker-partner-services-v4-swagger.json) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [API Reference](https://parcelservices-se.dbschenker.com/Apipartner/swagger/ui/index)
-- [Documentation](https://www.dbschenker.com/resource/blob/488786/f0364447f37034a10f72e0768fc110ef/collectionpointinfo-data.pdf)
-
-## Common Properties
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.dbschenker.com/)
-- [API Reference](https://parcelservices-se.dbschenker.com/Apipartner/swagger/ui/index)
 - [Documentation](https://parcelservices-se.dbschenker.com/Apipartner/Help)
-- [GitHub Organization](https://github.com/dbschenker)
-- [LinkedIn](https://www.linkedin.com/company/db-schenker)
-- [Support Documentation](https://help.eschenker.dbschenker.com/helpsystem/content/)
-- [Successor Organization](https://www.dsv.com/en)
+- [API reference](https://parcelservices-se.dbschenker.com/Apipartner/swagger/ui/index)
+- [GitHub](https://github.com/dbschenker)
 
-## Interoperability
+## API Evangelist rating
 
-A shipment crosses many parties. What matters is whether what DB Schenker publishes can be spoken by the next party in the chain. See [review.yml](review.yml) for the full evidence trail and every probed URL with its HTTP status.
+**Kin Score 21.5** — emerging · rubric 0.24.0 · scored 2026-10-17
 
-| Dimension | Finding |
-| --- | --- |
-| Standard conformance | No standard reference found — no DCSA, IATA ONE Record, Cargo-XML, GS1 EPCIS, UN/CEFACT MMT, WCO Data Model, eFTI or MLETR reference on any reachable host |
-| Interface shape | `proprietary-documented` — versioned, machine-readable, publicly fetchable, and shared with nobody |
-| Identifier scheme | Carrier-private shipment number, colli ID / barcode, four-digit service point number, terminal code, Box ID, plus ISO country and postal codes. No GS1, container, B/L, AWB, UN/LOCODE, SCAC or EORI identifiers |
-| Event model | `polling-only` — GetParcel returns an Events array; no webhook, subscription or AsyncAPI operation exists, and the docs mandate 12-hour re-polling |
-| EDI legacy | `RegisterEdi` / `RegisterReturnEdi` are proprietary JSON, not EDIFACT or X12; eSchenker used XML file drop plus an administrator-issued Access Key; no VAN or AS2 referenced |
-| Multi-party posture | Publishes downward to contracted shippers and their TA/ERP or checkout integrators only; nothing a carrier or peer forwarder could consume back |
-| Access gate | `customer-account-required` — a country transport agreement, an authorization request, then HTTP Basic credentials |
-| Ocean / DCSA | Not a DCSA member (forwarder, not a vessel operator) and publishes no DCSA-conformant contract; there is no ocean-freight API under dbschenker.com at all |
+| Facet | Score |
+|---|---|
+| Discoverability | 71.4 |
+| Contract quality | 43.3 |
+| Contract governance | 0.0 |
+| Operational transparency | 2.6 |
+| Developer ergonomics | 31.0 |
+| Access clarity | 0.0 |
 
-## Corporate status
+**Agent readiness 15.5** — agent-aware
 
-Deutsche Bahn completed the sale of DB Schenker to **DSV A/S** on **30 April 2025**. As of 2026-07-30 the estate is visibly mid-migration:
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
 
-- `www.dbschenker.com`, `schenker.com`, `connect.dbschenker.com`, `www.schenker.se`, `www.dbschenker.se` and `www.dbschenker.fi` all **301 to dsv.com**
-- `api-portal.dbschenker.com` — the former global developer portal — answers **HTTP 410 Gone**
-- `help.eschenker.dbschenker.com` still serves, now branded **myDSV Online Help**
-- `developer.logisticstechnology.no` still titles itself "DB Schenker APIs" but its footer reads **"2026 © DSV Road AS"**; its APIs are attributed to DSV, not to DB Schenker, in this profile
-- `parcelservices-se.dbschenker.com/Apipartner` remains live and DB Schenker-branded, and is the source of all four harvested specifications
+**Regulatory alignment 0.0** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/db-schenker/](https://apis.io/providers/db-schenker/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for DB Schenker: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/db-schenker/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
